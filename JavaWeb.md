@@ -1,4 +1,4 @@
-
+ 
 
 # mysql
 
@@ -122,9 +122,9 @@
 
 ![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314225621218.png)
 
-## 方法
+## 方法![image-20220314230016868](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314230016868.png)![image-20220830142431795](JavaWeb.assets/image-20220830142431795.png)
 
-![image-20220314230016868](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314230016868.png)
+![image-20220830142502115](JavaWeb.assets/image-20220830142502115.png)
 
 ## Servlet urlpatten
 
@@ -145,6 +145,14 @@ servlet-name为下文mapping提供 class为实现了servlet接口的类
 url表示请求路径 *是通配符 注意前面有**/** 	比如Localhost：8080/任意都进入该class类
 
 url可以写成*.ln格式 此时没有**/**   任何前缀加.ln均可进入该webapp
+
+## 保存作用域
+
+![image-20220829142716258](JavaWeb.assets/image-20220829142716258.png)
+
+# 路径问题
+
+![image-20220829143338281](JavaWeb.assets/image-20220829143338281.png)
 
 # Request
 
@@ -775,13 +783,19 @@ ORM:对象关系映射
 
 ![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318205243623.png)
 
-
-
-
-
 ![image-20211026153400190](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211026153400190.png)
 
+# IOC
+
+![image-20220830165952396](JavaWeb.assets/image-20220830165952396.png)
+
+# Threadlocal![image-20220831195327282](JavaWeb.assets/image-20220831195327282.png)![image-20220831195515404](JavaWeb.assets/image-20220831195515404.png)
+
 #  Filter（重点）
+
+![](JavaWeb.assets/image-20220830171422167.png)
+
+![](JavaWeb.assets/image-20220830171829809.png)
 
 1、添加依赖
 
@@ -879,6 +893,8 @@ public class Filter implements javax.servlet.Filter {
 ```
 
 # Listener
+
+![image-20220831200650630](JavaWeb.assets/image-20220831200650630.png)
 
 实现一个监听器的接口
 

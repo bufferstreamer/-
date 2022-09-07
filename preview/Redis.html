@@ -1,0 +1,226 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="nosql">NoSql</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422224507385.png" alt="">    </p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422224908951.png" alt="image-20220422224908951"></p>
+<h1 id="redis">Redis</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422225527035.png" alt="image-20220422225527035"></p>
+<h2 id="-">数据结构</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422230753658.png" alt="image-20220422230753658"></p>
+<h2 id="-">通用命令</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422231837903.png" alt="image-20220422231837903"></p>
+<h2 id="string">String</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422232107534.png" alt="image-20220422232107534"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422232553157.png" alt="image-20220422232553157"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422233013558.png" alt="image-20220422233013558"></p>
+<h2 id="hash">hash</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422233145305.png" alt="image-20220422233145305"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422233202578.png" alt="image-20220422233202578"></p>
+<h2 id="list">List</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422233538050.png" alt="image-20220422233538050"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422233612708.png" alt="image-20220422233612708"></p>
+<h2 id="set">Set</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422234457279.png" alt="image-20220422234457279"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422234611294.png" alt="image-20220422234611294"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422234655188.png" alt="image-20220422234655188"></p>
+<h2 id="sortedset">SortedSet</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422235255938.png" alt="image-20220422235255938"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422235502696.png" alt=""></p>
+<h1 id="redis-java-">Redis的JAVA客户端</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220423000257806.png" alt="image-20220423000257806"></p>
+<h2 id="jedis">Jedis</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220429161207255.png" alt="image-20220429161207255"></p>
+<h2 id="jedis-">jedis连接池</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220429161233038.png" alt="image-20220429161233038"></p>
+<h2 id="springdataredis">springDataRedis</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220429161530129.png" alt="image-20220429161530129"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220429162016608.png" alt="image-20220429162016608"></p>
+<h3 id="-">快速入门</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220429162046157.png" alt="image-20220429162046157"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220429162956226.png" alt="image-20220429162956226"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220429162246550.png" alt="image-20220429162246550"></p>
+<h3 id="stringredistemplate">StringRedisTemplate</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220430145313541.png" alt="image-20220430145313541"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220430150335622.png" alt="image-20220430150335622"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220430150532245.png" alt="image-20220430150532245"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220430150613353.png" alt="image-20220430150613353"></p>
+<h1 id="-">案例演示</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220430164225507.png" alt="image-20220430164225507"></p>
+<p> <img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220430170649203.png" alt="image-20220430170649203"></p>
+<h2 id="-">登录</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220430172953085.png" alt="image-20220430172953085"></p>
+<h2 id="-">商户缓存</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502143441951.png" alt="image-20220502143441951"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502143728162.png" alt="image-20220502143728162"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502144656103.png" alt="image-20220502144656103"></p>
+<h2 id="-">缓存更新</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502160514912.png" alt="image-20220502160514912"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502160824325.png" alt="image-20220502160824325"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502161216424.png" alt="image-20220502161216424"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502161756644.png" alt=""></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502161819679.png" alt="image-20220502161819679"></p>
+<h2 id="-">缓存穿透</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502163601086.png" alt=""></p>
+<h2 id="-">缓存雪崩</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502170419737.png" alt="image-20220502170419737"></p>
+<h2 id="-">缓存击穿</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502170710567.png" alt="image-20220502170710567"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502171206735.png" alt="image-20220502171206735"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220502171340523.png" alt="image-20220502171340523"></p>
+<h2 id="-">优惠券秒杀</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220504174435039.png" alt="image-20220504174435039"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220504160156844.png" alt="image-20220504160156844"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220504175624907.png" alt="image-20220504175624907"></p>
+<h2 id="-">超卖问题</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220504180537408.png" alt="image-20220504180537408"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220504180828289.png" alt="image-20220504180828289"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220504181550923.png" alt="image-20220504181550923"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220504181604410.png" alt="image-20220504181604410"></p>
+<h2 id="-">集群情况</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505161631219.png" alt="image-20220505161631219"></p>
+<p>为了解决不同jvm之间使用同一个锁监视器的情况 需要用到分布式锁</p>
+<h2 id="-">分布式锁</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505204833716.png" alt="image-20220505204833716"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505205337083.png" alt="image-20220505205337083"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505205831972.png" alt="image-20220505205831972"></p>
+<h2 id="-">误删锁问题</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505212029994.png" alt="image-20220505212029994"></p>
+<p>根本原因是自己线程阻塞后，自己的锁由于超时自动释放了，当自己业务完成时删除了别人的锁，导致其他线程在这段时间内可以再获得锁</p>
+<h2 id="-">解决办法</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505212820419.png" alt="image-20220505212820419"></p>
+<h2 id="-2">误删锁问题2</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505213303932.png" alt="image-20220505213303932"></p>
+<p>根本原因是判断锁是不是自己的和删除锁两个动作是独立的 假如判断成功后发生阻塞至该锁过期，则会出现并发问题</p>
+<h2 id="-">解决办法（保证判断和删除的原子性）</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505213744655.png" alt=""></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505214139572.png" alt="image-20220505214139572"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505214522944.png" alt="image-20220505214522944"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505214615523.png" alt="image-20220505214615523"></p>
+<h2 id="-">存在的问题</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505225407478.png" alt="image-20220505225407478"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220506155613043.png" alt="image-20220506155613043"></p>
+<h2 id="-redisson">解决办法——Redisson</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505225732021.png" alt="image-20220505225732021"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505225805758.png" alt="image-20220505225805758"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505225929587.png" alt="image-20220505225929587"></p>
+<h2 id="redisson-">Redisson可重入锁原理</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505232524796.png" alt="image-20220505232524796"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505232747573.png" alt="image-20220505232747573"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220505232736237.png" alt="image-20220505232736237"></p>
+<h2 id="redisson-">Redisson分布式可重试锁原理</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220506155453964.png" alt="image-20220506155453964"></p>
+<h2 id="redisson-">Redisson分布式主从一致锁原理</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220506160117220.png" alt="image-20220506160117220"></p>
+<h2 id="-">总结</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220506161430175.png" alt="image-20220506161430175"></p>
+<h2 id="-">秒杀优化</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507203121616.png" alt="image-20220507203121616"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220506174134932.png" alt="image-20220506174134932"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220506174623375.png" alt="image-20220506174623375"></p>
+<h2 id="-">消息队列</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507203646276.png" alt="image-20220507203646276"></p>
+<h3 id="list">List</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507204039972.png" alt="image-20220507204039972"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507204158296.png" alt="image-20220507204158296"></p>
+<h3 id="pubsub">pubsub</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507204529532.png" alt="image-20220507204529532"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507204814680.png" alt="image-20220507204814680"></p>
+<h3 id="stream">stream</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507205400601.png" alt="image-20220507205400601"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507210026818.png" alt="image-20220507210026818"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507210243585.png" alt="image-20220507210243585"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507210351107.png" alt="image-20220507210351107"></p>
+<h3 id="-">消费者组</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507211049187.png" alt="image-20220507211049187"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507211309587.png" alt="image-20220507211309587"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507211612740.png" alt="image-20220507211612740"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507212456687.png" alt="image-20220507212456687"></p>
+<h3 id="-">总结</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220507212511166.png" alt="image-20220507212511166"></p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

@@ -1,6 +1,24 @@
 # IOC
 
-控制反转，一种设计思想。spring的核心内容
+## 简介
+
+![image-20220831211117485](spring.assets/image-20220831211117485.png)
+
+![image-20220831211134910](spring.assets/image-20220831211134910.png)
+
+控制反转，一种设计思想。spring的核心内容![](spring.assets/image-20220831211206050.png)
+
+## bean管理
+
+### 基于xml
+
+![](spring.assets/image-20220831211943552.png)
+
+![image-20220901131058955](spring.assets/image-20220901131058955.png)
+
+### 基于注解
+
+![image-20220901145554785](spring.assets/image-20220901145554785.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -340,3 +358,38 @@ controller层：@controller
 
 ![image-20220326225431172](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326225431172.png)
 
+# AOP
+
+![image-20220901162932300](spring.assets/image-20220901162932300.png)
+
+![image-20220901162505606](spring.assets/image-20220901162505606.png)
+
+![image-20220901162955982](spring.assets/image-20220901162955982.png)
+
+## jdk动态代理
+
+```java
+UserDao proxyInstance = (UserDao)Proxy.newProxyInstance(MyProxy.class.getClassLoader(), new Class[]{UserDao.class}, (proxy, method, args1) -> {
+    System.out.println("加强");
+    method.invoke(new UserImpl(), args1);
+    System.out.println("加强后");
+    return null;
+});
+proxyInstance.add();
+```
+
+## aop术语
+
+![](spring.assets/image-20220902130923428.png)
+
+## 操作
+
+![image-20220902131500614](spring.assets/image-20220902131500614.png)
+
+![image-20220902132447168](spring.assets/image-20220902132447168.png)
+
+![image-20220902132536387](spring.assets/image-20220902132536387.png)
+
+# webflux
+
+![image-20220902152740005](spring.assets/image-20220902152740005.png)

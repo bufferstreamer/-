@@ -1,0 +1,163 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-">基础操作</h1>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220313221455371.png" alt="image-20220313221455371"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220313222430166.png" alt="image-20220313222430166"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220313222444911.png" alt="image-20220313222444911"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220313222844679.png" alt="image-20220313222844679"></p>
+<h1 id="-">分支</h1>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220313223945963.png" alt="image-20220313223945963"></p>
+<h2 id="-">指定本地分支追踪远程分支</h2>
+<p>git branch -u origin/dev master</p>
+<p>即指定本地master分支追踪远程dev分支 如果当前分支就是master 则最后的master可以省略</p>
+<p>git checkout -b newBranch origin/branch</p>
+<p>即指定一个新的分支追踪远程分支 即是当前并没有该分支</p>
+<p>==即指定当前分支追踪某个分支时使用git branch -u 远程仓库名/远程分支名==</p>
+<p>==如果想新建一个分支并追踪某个分支则使用 git checkout -b 本地新分支名 远程仓库名/远程分支名==</p>
+<h2 id="push-">push的参数</h2>
+<p>git push <remote>  <source>:<destination></p>
+<p>将source分支推送到指定远程仓库 destination分支</p>
+<p>当目标分支不存在时远程仓库会创建该分支</p>
+<p>==推送的同时也就默认将源分支追踪了目的分支，也达到了2.1的效果==</p>
+<h2 id="reset-revert">reset和revert</h2>
+<p>reset用于本地分支 对远程分支无效 直接将head指向之前</p>
+<p><img src="git.assets/image-20220818144518246.png" alt="image-20220818144518246"></p>
+<p>revert用于远程分支 将做一次新的修改来弥补之前的修改</p>
+<p><img src="git.assets/image-20220818144507341.png" alt="image-20220818144507341"></p>
+<p>新提交记录 <code>C2&#39;</code> 引入了<strong>更改</strong> —— 这些更改刚好是用来撤销 <code>C2</code> 这个提交的。也就是说 <code>C2&#39;</code> 的状态与 <code>C1</code> 是相同的。</p>
+<h2 id="merge-rebase">merge和rebase</h2>
+<h3 id="merge">merge</h3>
+<p>在 Git 中合并两个分支时会产生一个特殊的提交记录，它有两个父节点。翻译成自然语言相当于：“我要把这两个父节点本身及它们所有的祖先都包含进来。”</p>
+<p><img src="git.assets/image-20220818144727199.png" alt="image-20220818144727199"></p>
+<p>首先，<code>master</code> 现在指向了一个拥有两个父节点的提交记录。假如从 <code>master</code> 开始沿着箭头向上看，在到达起点的路上会经过所有的提交记录。这意味着 <code>master</code> 包含了对代码库的所有修改。</p>
+<p><img src="git.assets/image-20220818144831727.png" alt="image-20220818144831727"></p>
+<p>再把 <code>master</code> 分支合并到 <code>bugFix</code></p>
+<p>因为 <code>master</code> 继承自 <code>bugFix</code>，Git 什么都不用做，只是简单地把 <code>bugFix</code> 移动到 <code>master</code> 所指向的那个提交记录。</p>
+<h3 id="rebase">rebase</h3>
+<p>Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。</p>
+<p><img src="git.assets/image-20220818145200750.png" alt="image-20220818145200750"></p>
+<p>注意当前所在的分支是 bugFix（星号标识的是当前分支）</p>
+<p>我们想要把 bugFix 分支里的工作直接移到 master 分支上。移动以后会使得两个分支的功能看起来像是按顺序开发，但实际上它们是并行开发的。</p>
+<p>注意，提交记录 C3 依然存在（树上那个半透明的节点），而 C3&#39; 是我们 Rebase 到 master 分支上的 C3 的副本。</p>
+<p>切换到了 <code>master</code> 上。把它 rebase 到 <code>bugFix</code> 分支上……</p>
+<p>==git rebase bugFix==</p>
+<p>由于 <code>bugFix</code> 继承自 <code>master</code>，所以 Git 只是简单的把 <code>master</code> 分支的引用向前移动了一下</p>
+<p><img src="git.assets/image-20220818145410848.png" alt="image-20220818145410848"></p>
+<p>==merge是将目标分支合并到当前分支，并产生一个新的记录，原来的记录不变；rebase是将当前分支与目标分支合并，当前分支原来节点废弃，产生新的节点包含了所有的记录==</p>
+<p>==merge可以理解为我合并了目标分支，主线还是我，rebase则是变基到目标分支，主线是目标分支的主线==</p>
+<h2 id="-">相对引用</h2>
+<p>通过哈希值指定提交记录很不方便，所以 Git 引入了相对引用。这个就很厉害了!</p>
+<p>使用相对引用的话，你就可以从一个易于记忆的地方（比如 <code>bugFix</code> 分支或 <code>HEAD</code>）开始计算。</p>
+<p>相对引用非常给力，这里我介绍两个简单的用法：</p>
+<ul>
+<li>使用 <code>^</code> 向上移动 1 个提交记录</li>
+<li>使用 <code>~&lt;num&gt;</code> 向上移动多个提交记录，如 <code>~3</code></li>
+</ul>
+<p>首先看看操作符 (^)。把这个符号加在引用名称的后面，表示让 Git 寻找指定提交记录的父提交。</p>
+<p>所以 <code>master^</code> 相当于“<code>master</code> 的父节点”。</p>
+<p><code>master^^</code> 是 <code>master</code> 的第二个父节点</p>
+<p>现在咱们切换到 master 的父节点</p>
+<p>git checkout master^</p>
+<p><img src="git.assets/image-20220818150156516.png" alt="image-20220818150156516"></p>
+<p>如果你想在提交树中向上移动很多步的话，敲那么多 <code>^</code> 貌似也挺烦人的，Git 当然也考虑到了这一点，于是又引入了操作符 <code>~</code>。</p>
+<p>该操作符后面可以跟一个数字（可选，不跟数字时与 <code>^</code> 相同，向上移动一次），指定向上移动多少次。</p>
+<p><img src="git.assets/image-20220818150354802.png" alt="image-20220818150354802"></p>
+<p>==使用相对引用最多的就是移动分支。可以直接使用 <code>-f</code> 选项让分支指向另一个提交。例如:==</p>
+<pre><code class="lang-git">git branch -f master HEAD~3
+</code></pre>
+<p>==上面的命令会将 master 分支强制指向 HEAD 的第 3 级父提交。==</p>
+<h2 id="head-">HEAD==大写==</h2>
+<p>HEAD 是一个对当前检出记录的符号==引用（同样的，分支名也是引用）== —— 也就是指向你正在其基础上进行工作的提交记录。</p>
+<p>HEAD 总是指向当前分支上最近一次提交记录。大多数修改提交树的 Git 命令都是从改变 HEAD 的指向开始的。</p>
+<p>HEAD 通常情况下是指向分支名的（如 bugFix）。在你提交时，改变了 bugFix 的状态，这一变化通过 HEAD 变得可见。</p>
+<p>HEAD 指向了 <code>master</code>，随着提交向前移动。</p>
+<p>如果想看 HEAD 指向，可以通过 <code>cat .git/HEAD</code> 查看， 如果 HEAD 指向的是一个引用，还可以用 <code>git symbolic-ref HEAD</code> 查看它的指向。</p>
+<p><img src="git.assets/image-20220818151031810.png" alt=""></p>
+<p>==也就是说 checkout改变的是head的指向位置，而不是分支所指向的位置，我们想要移动分支是通过branch -f 分支名 移动位置 来操作==</p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

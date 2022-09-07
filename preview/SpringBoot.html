@@ -1,0 +1,430 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-">基础篇</h1>
+<h2 id="-">对比</h2>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330195844581.png" alt="image-20220330195844581"></p>
+<h2 id="-">初体验</h2>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330200136743.png" alt="image-20220330200136743" style="zoom:130%;" /></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330200150205.png" alt="image-20220330200150205"></p>
+<p>@RestController相当于@Controller+@ResponBody</p>
+<h2 id="-">解读</h2>
+<h3 id="pom">POM</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330200852964.png" alt="image-20220330200852964"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330202102612.png" alt="image-20220330202102612"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330203445554.png" alt="image-20220330203445554"></p>
+<h3 id="-">引导类</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330203759740.png" alt=""></p>
+<h3 id="-tomcat">内嵌tomcat</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330204404021.png" alt="image-20220330204404021"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330204228214.png" alt="image-20220330204228214"></p>
+<p>starter-web里面调用了starter-tomcat然后调用了starter-embed-core</p>
+<p>如果不想用tomcat可以采用exclusion去除 再另行添加别的服务器</p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330204246939.png" alt="image-20220330204246939"></p>
+<p>三种服务器</p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330204337089.png" alt="image-20220330204337089"></p>
+<h2 id="restful">restful</h2>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330204922802.png" alt="image-20220330204922802"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330205154873.png" alt=""></p>
+<h3 id="-">案例</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330210213131.png" alt="image-20220330210213131"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330210258459.png" alt="image-20220330210258459"></p>
+<h3 id="-">简化注解</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330212308336.png" alt="image-20220330212308336"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330212314898.png" alt="image-20220330212314898"></p>
+<h2 id="-">属性配置</h2>
+<h3 id="-">修改服务器端口</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330212943727.png" alt="image-20220330212943727"></p>
+<p>即只需在该配置文件中书写需要修改的属性即可</p>
+<p><strong>举例：</strong></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330213635608.png" alt="image-20220330213635608"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330220022886.png" alt="image-20220330220022886"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330220653520.png" alt="image-20220330220653520"></p>
+<h3 id="yaml">YAML</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330221147109.png" alt="image-20220330221147109"></p>
+<h4 id="-">语法</h4>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330221245213.png" alt="image-20220330221245213"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330221904258.png" alt="image-20220330221904258"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330221926278.png" alt="image-20220330221926278"></p>
+<h4 id="-yaml-">读取YAML数据</h4>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330232528725.png" alt="image-20220330232528725"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330232450220.png" alt="image-20220330232450220"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330232748828.png" alt="image-20220330232748828"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330232733932.png" alt="image-20220330232733932"></p>
+<h4 id="-yaml-">一次读取yaml全部数据</h4>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330232937068.png" alt="image-20220330232937068"></p>
+<h5 id="-">封装数据</h5>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330233536405.png" alt="image-20220330233536405"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330233509308.png" alt="image-20220330233509308"></p>
+<h2 id="-">整合第三方技术</h2>
+<h3 id="-junit">整合Junit</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330234057843.png" alt="image-20220330234057843"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330234050894.png" alt="image-20220330234050894"></p>
+<p><strong>==注意：==</strong></p>
+<pre><code>![image-20220330235014834](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330235014834.png)
+</code></pre><p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220330234927593.png" alt="image-20220330234927593"></p>
+<h3 id="-mybatis">整合mybatis</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220331000523682.png" alt="image-20220331000523682"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220331000444379.png" alt="image-20220331000444379"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220331000452991.png" alt="image-20220331000452991"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220331000512317.png" alt="image-20220331000512317"></p>
+<h3 id="-mybatisplus">整合mybatisPlus</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220331223101474.png" alt="image-20220331223101474"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220331223156346.png" alt="image-20220331223156346"></p>
+<h3 id="-druid">整合Druid</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220331224238527.png" alt="image-20220331224238527"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220331224231874.png" alt="image-20220331224231874"></p>
+<h2 id="ssmp-">ssmp整合</h2>
+<h3 id="dao">dao</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401150043028.png" alt="image-20220401150043028"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401145950798.png" alt="image-20220401145950798"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401150004726.png" alt="image-20220401150004726"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401150029675.png" alt="image-20220401150029675"></p>
+<h3 id="service">service</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401145813922.png" alt="image-20220401145813922"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401145643171.png" alt="image-20220401145643171"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401145725758.png" alt="image-20220401145725758"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401145747072.png" alt="image-20220401145747072"></p>
+<h3 id="controller">controller</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401163103794.png" alt="image-20220401163103794"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401162850761.png" alt="image-20220401162850761"></p>
+<p>返回格式：</p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401163312519.png" alt="image-20220401163312519"></p>
+<h3 id="-">数据格式统一</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401163953694.png" alt=""></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401163600362.png" alt="image-20220401163600362"></p>
+<h3 id="-">前后端联调</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401164719306.png" alt="image-20220401164719306"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401164710492.png" alt="image-20220401164710492"></p>
+<h1 id="-">运维篇</h1>
+<h2 id="-">打包</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401172145767.png" alt="image-20220401172145767"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401172126860.png" alt="image-20220401172126860"></p>
+<h3 id="-">比较</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401173139280.png" alt="image-20220401173139280"></p>
+<p>关键是下面的文件</p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401173217207.png" alt="image-20220401173217207"></p>
+<h2 id="-">配置</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401180103874.png" alt="image-20220401180103874"></p>
+<h3 id="-">端口被占用</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401173412641.png" alt="image-20220401173412641"></p>
+<h3 id="-">临时属性修改</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401174143250.png" alt="image-20220401174143250"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401174017968.png" alt="image-20220401174017968"></p>
+<h3 id="idea-">idea临时属性</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401174529012.png" alt="image-20220401174529012"></p>
+<h4 id="-">通过程序实现</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401174504325.png" alt="image-20220401174504325"></p>
+<h4 id="-">通过代码实现</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401174606707.png" alt="image-20220401174606707"></p>
+<h3 id="-">配置文件权限</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401175410523.png" alt="image-20220401175410523"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401175325023.png" alt="image-20220401175325023"></p>
+<h3 id="-">自定义配置文件</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401175853910.png" alt="image-20220401175853910"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401175819619.png" alt="image-20220401175819619"></p>
+<pre><code>![image-20220401175831937](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401175831937.png)
+</code></pre><h2 id="-">多环境开发</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401181222887.png" alt="image-20220401181222887"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401180812542.png" alt="image-20220401180812542"></p>
+<h3 id="yaml-">YAML版</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401181126868.png" alt="image-20220401181126868"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401181202195.png" alt=""></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401181852764.png" alt="image-20220401181852764"></p>
+<p>解决办法</p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401182040515.png" alt="image-20220401182040515"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401182143218.png" alt="image-20220401182143218"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401182019430.png" alt="image-20220401182019430"></p>
+<h3 id="properties">properties</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401182419623.png" alt="image-20220401182419623"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401182411973.png" alt="image-20220401182411973"></p>
+<h3 id="-">功能拆分</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401183338744.png" alt=""></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401183354788.png" alt="image-20220401183354788"></p>
+<h3 id="-">开发控制</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401184153822.png" alt="image-20220401184153822"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401183924891.png" alt="image-20220401183924891"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401183936050.png" alt="image-20220401183936050"></p>
+<h2 id="-">日志</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401185146265.png" alt="image-20220401185146265"></p>
+<h3 id="-">基础</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401184637418.png" alt="image-20220401184637418"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401185123406.png" alt="image-20220401185123406"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401185157282.png" alt="image-20220401185157282"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401185416192.png" alt="image-20220401185416192"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401185842792.png" alt="image-20220401185842792"></p>
+<h3 id="-">输出格式</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401190046748.png" alt="image-20220401190046748"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401190611452.png" alt="image-20220401190611452"></p>
+<h3 id="-">日志文件</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220401190946958.png" alt="image-20220401190946958"></p>
+<h1 id="-">开发篇</h1>
+<h2 id="-">热部署</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402133947389.png" alt="image-20220402133947389"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402133836109.png" alt="image-20220402133836109"></p>
+<h3 id="-">自动热部署</h3>
+<p>算了 感觉没啥用 手动挺好</p>
+<h3 id="-">范围</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402135125748.png" alt="image-20220402135125748"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402135431969.png" alt="image-20220402135431969"></p>
+<h2 id="-">配置高级</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402154933507.png" alt="image-20220402154933507"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402155204323.png" alt="image-20220402155204323"></p>
+<pre><code>![image-20220402171237837](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402171237837.png)
+</code></pre><h3 id="-">宽松绑定</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404135948831.png" alt="image-20220404135948831"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404140234728.png" alt="image-20220404140234728"></p>
+<h3 id="-">单位</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404140852731.png" alt="image-20220404140852731"></p>
+<h3 id="-">格式校验</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404141752090.png" alt="image-20220404141752090"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404141711113.png" alt="image-20220404141711113"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404141737920.png" alt="image-20220404141737920"></p>
+<h2 id="-">测试</h2>
+<h3 id="-">测试专用属性</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404150451932.png" alt="image-20220404150451932"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404150503424.png" alt="image-20220404150503424"></p>
+<h3 id="-">测试专用配置</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404150948897.png" alt="image-20220404150948897"></p>
+<h3 id="web-">web测试</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404151403117.png" alt="image-20220404151403117"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404152454864.png" alt="image-20220404152454864"></p>
+<h4 id="-">请求匹配</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220404154243479.png" alt="image-20220404154243479"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416134003678.png" alt="image-20220416134003678"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416135000420.png" alt="image-20220416135000420"></p>
+<h3 id="-">测试事务回滚</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416141110555.png" alt="image-20220416141110555"></p>
+<h3 id="-">测试数据自动生成</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416141719986.png" alt="image-20220416141719986"></p>
+<h1 id="-">数据层</h1>
+<h2 id="sql">SQL</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416151659834.png" alt="image-20220416151659834"></p>
+<h3 id="-">数据源</h3>
+<p> <img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416143344555.png" alt="image-20220416143344555"></p>
+<h3 id="-">持久化方案</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416144527373.png" alt="image-20220416144527373"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416144458726.png" alt="image-20220416144458726"></p>
+<h3 id="-">数据库</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416151346380.png" alt="image-20220416151346380"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416151411414.png" alt="image-20220416151411414"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416151447496.png" alt="image-20220416151447496"></p>
+<h2 id="nosql">NOSQL</h2>
+<h3 id="redis">Redis</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416160842184.png" alt="image-20220416160842184"></p>
+<h4 id="-">简介</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416153226863.png" alt="image-20220416153226863"></p>
+<h4 id="-">整合步骤</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416160717361.png" alt="image-20220416160717361"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416160728263.png" alt="image-20220416160728263"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416160743303.png" alt="image-20220416160743303"></p>
+<h4 id="-">测试</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416160826918.png" alt="image-20220416160826918"></p>
+<h4 id="-">客户端选择</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416162159594.png" alt="image-20220416162159594"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416162124209.png" alt="image-20220416162124209"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416162236861.png" alt="image-20220416162236861"></p>
+<h4 id="-">补充</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416161447606.png" alt="image-20220416161447606"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416161504606.png" alt="image-20220416161504606"></p>
+<p>也可以redisTemplate指定泛型为String</p>
+<h3 id="mongodb">MongoDB</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416162407665.png" alt="image-20220416162407665"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416162838023.png" alt="image-20220416162838023"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416165154711.png" alt="image-20220416165154711"></p>
+<h4 id="-">整合</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416170859711.png" alt="image-20220416170859711"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416170814126.png" alt="image-20220416170814126"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416170823317.png" alt="image-20220416170823317"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416170836907.png" alt="image-20220416170836907"></p>
+<h3 id="es">ES</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416210347950.png" alt="image-20220416210347950"></p>
+<h4 id="-">索引</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416222627483.png" alt="image-20220416222627483"></p>
+<p>其中books即为索引名字</p>
+<p><strong>创建索引规则：</strong></p>
+<hr>
+<p>在正常put索引时在body添加mapping条件</p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416223335451.png" alt="image-20220416223335451"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416222650343.png" alt="image-20220416222650343"></p>
+<h4 id="-">文档</h4>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416224848843.png" alt="image-20220416224848843"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416224856786.png" alt="image-20220416224856786"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416225657341.png" alt="image-20220416225657341"></p>
+<h4 id="-">整合</h4>
+<h5 id="-">低版本</h5>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416232150138.png" alt="image-20220416232150138"></p>
+<h5 id="-">高版本</h5>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416232217538.png" alt="image-20220416232217538"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416232232937.png" alt="image-20220416232232937"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416232347988.png" alt="image-20220416232347988"></p>
+<h1 id="-">整合第三方</h1>
+<h2 id="-">缓存</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220418211627166.png" alt=""></p>
+<h3 id="springboot-">springboot缓存</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220418212430016.png" alt="image-20220418212430016"  /></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220418212344347.png" alt="image-20220418212344347"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220418212353368.png" alt="image-20220418212353368"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220418212407277.png" alt="image-20220418212407277"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220418212605406.png" alt="image-20220418212605406"></p>
+<h3 id="-">缓存商变更</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422222636052.png" alt="image-20220422222636052"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422222649028.png" alt="image-20220422222649028"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422222704991.png" alt="image-20220422222704991"></p>
+<h1 id="thymeleaf">Thymeleaf</h1>
+<p>代替jsp，不用tomcat服务器就可以访问，将HTML赋予动态效果    </p>
+<p><img src="SpringBoot.assets/image-20220726140156671.png" alt="image-20220726140156671"></p>
+<p><img src="SpringBoot.assets/image-20220726140233400.png" alt="image-20220726140233400"></p>
+<p><img src="SpringBoot.assets/image-20220726140357790.png" alt="image-20220726140357790"></p>
+<p><img src="SpringBoot.assets/image-20220728150903760.png" alt="image-20220728150903760"></p>
+<p><img src="SpringBoot.assets/image-20220728151024344.png" alt="image-20220728151024344"></p>
+<p>​    </p>
+<h1 id="-enableautoconfiguration">@EnableAutoConfiguration</h1>
+<p><img src="SpringBoot.assets/image-20220903203359451.png" alt="image-20220903203359451"></p>
+<p><img src="SpringBoot.assets/image-20220903204335472.png" alt="image-20220903204335472"></p>
+<p><img src="SpringBoot.assets/image-20220903204523602.png" alt="image-20220903204523602"></p>
+<p><img src="SpringBoot.assets/image-20220903204532047.png" alt="image-20220903204532047"></p>
+<h1 id="-yml-">自定义配置类yml文件代码提示</h1>
+<p>自定义的类和配置文件绑定一般没有提示。添加后使得有提示</p>
+<pre><code class="lang-xml">    &lt;dependency&gt;
+           &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+           &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+           &lt;optional&gt;true&lt;/optional&gt;
+       &lt;/dependency&gt;
+
+
+&lt;build&gt;
+       &lt;plugins&gt;
+           &lt;plugin&gt;
+               &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+               &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+               &lt;configuration&gt;
+                   &lt;excludes&gt;
+                       &lt;exclude&gt;
+                           &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                           &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+                       &lt;/exclude&gt;
+                   &lt;/excludes&gt;
+               &lt;/configuration&gt;
+           &lt;/plugin&gt;
+       &lt;/plugins&gt;
+   &lt;/build&gt;
+</code></pre>
+<h1 id="-">静态资源访问</h1>
+<p> <img src="SpringBoot.assets/image-20220904154356114.png" alt="image-20220904154356114"></p>
+<pre><code class="lang-yml">  spring:
+    web:
+     resources:
+      static-locations: 
+</code></pre>
+<p> 改变静态资源的位置默认为</p>
+<pre><code class="lang-java">  {
+&quot;classpath:/METAINF/resources/&quot;,
+&quot;classpath:/resources/&quot;,&quot;classpath:/static/&quot;, &quot;classpath:/public/&quot; 
+  }
+</code></pre>
+<p><img src="SpringBoot.assets/image-20220904154629401.png" alt="image-20220904154629401"></p>
+<h2 id="-">欢迎页</h2>
+<p><img src="SpringBoot.assets/image-20220904191737204.png" alt="image-20220904191737204"></p>
+<p><img src="SpringBoot.assets/image-20220904195621944.png" alt="image-20220904195621944"></p>
+<h2 id="-">静态资源配置原理</h2>
+<p><img src="SpringBoot.assets/image-20220906152047821.png" alt="image-20220906152047821"></p>
+<h1 id="-rest-">表单提rest风格请求</h1>
+<p>原生表单只能提交get和post请求，put和delete请求会被转为post</p>
+<p>springboot提供了一个拦截器来实现多请求兼容</p>
+<p><img src="SpringBoot.assets/image-20220906161349637.png" alt="image-20220906161349637"></p>
+<pre><code class="lang-java">@Bean
+@Conditional0nMissingBean(HiddenHttpMethodFilter.class)
+ConditionalOnProperty(prefix = &quot;spring.mvc.hiddenmethod.filter &quot;, name = &quot;enabled&quot;, matchIfMissing = false)
+    public OrderedHiddenHttpMethodFilter hiddenHttpMethodFilter() {
+return new OrderedHiddenHttpMethodFilter();
+</code></pre>
+<p><img src="SpringBoot.assets/image-20220906161042583.png" alt="image-20220906161042583"></p>
+<p><img src="SpringBoot.assets/image-20220906161152112.png" alt="image-20220906161152112"></p>
+<p><img src="SpringBoot.assets/image-20220906161232743.png" alt="image-20220906161232743"></p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

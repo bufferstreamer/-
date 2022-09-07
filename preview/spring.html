@@ -1,0 +1,333 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="ioc">IOC</h1>
+<h2 id="-">简介</h2>
+<p><img src="spring.assets/image-20220831211117485.png" alt="image-20220831211117485"></p>
+<p><img src="spring.assets/image-20220831211134910.png" alt="image-20220831211134910"></p>
+<p>控制反转，一种设计思想。spring的核心内容<img src="spring.assets/image-20220831211206050.png" alt=""></p>
+<h2 id="bean-">bean管理</h2>
+<h3 id="-xml">基于xml</h3>
+<p><img src="spring.assets/image-20220831211943552.png" alt=""></p>
+<p><img src="spring.assets/image-20220901131058955.png" alt="image-20220901131058955"></p>
+<h3 id="-">基于注解</h3>
+<p><img src="spring.assets/image-20220901145554785.png" alt="image-20220901145554785"></p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+&lt;!--
+        使用spring来创建对象，在spring中成为bean
+        类型   变量名 = new 类型
+        Hello hello = new Hello()
+        bean = 对象
+        id   = 变量名
+        class = 类的全路径名
+        property 变量值设定
+
+        核心是通过set方法来实现的
+        value     基本数据类型
+        ref       引用spring创建好的对象 即bean的id
+--&gt;
+        &lt;bean id=&quot;hello&quot; class=&quot;dut.ln.pojo.hello&quot;&gt;
+            &lt;property name=&quot;srt&quot; value=&quot;spring&quot;/&gt;
+        &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<pre><code class="lang-java">package dut.ln.pojo;
+
+public class hello {
+    private String srt;
+
+    public String getSrt() {
+        return srt;
+    }
+
+    public void setSrt(String srt) {
+        this.srt = srt;
+    }
+
+    public  void show ( ) {
+        System.out.println(&quot;hello spring&quot;);
+    }
+
+
+}
+</code></pre>
+<p>不需要new hello 只需要使用ClassPathApplicationContext获取注册了hello的bean的对应的xml文件，在使用getbean得到对应的bean，就完成了实例化</p>
+<pre><code class="lang-java">import dut.ln.pojo.hello;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class myTest {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+        hello h = (hello) context.getBean(&quot;hello&quot;);
+        h.show();
+    }
+}
+</code></pre>
+<h2 id="ioc-">IOC创建对象的方式</h2>
+<h3 id="-">默认为无参构造方式</h3>
+<h3 id="-">有参构造方式</h3>
+<h4 id="-">第一种</h4>
+<p>下标赋值</p>
+<pre><code class="lang-xml">&lt;bean id=&quot;hello&quot; class=&quot;dut.ln.pojo.hello&quot;&gt;
+    &lt;constructor-arg index=&quot;0&quot; value=&quot;有参构造方式&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<h4 id="-">第二种</h4>
+<pre><code class="lang-xml">&lt;bean id=&quot;hello&quot; class=&quot;dut.ln.pojo.hello&quot;&gt;
+   &lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;有参构造&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>但是当hello类的有参构造函数有多个形参的时候，就不建议使用第二种方法</p>
+<h4 id="-">第三种</h4>
+<p>直接赋值给构造函数的形参</p>
+<pre><code class="lang-xml">&lt;bean id=&quot;hello&quot; class=&quot;dut.ln.pojo.hello&quot;&gt;
+    &lt;constructor-arg name=&quot;srt&quot; value=&quot;有参构造2&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>在配置文件加载的时候，文件内的bean就已经被加载了</p>
+<h1 id="spring-">Spring配置</h1>
+<h2 id="-alias">别名alias</h2>
+<pre><code class="lang-xml">&lt;alias name=&quot;hello&quot; alias=&quot;hello2&quot;/&gt;
+</code></pre>
+<p>相当于给实例化的对象取了一个别名</p>
+<h2 id="bean">bean</h2>
+<pre><code class="lang-xml">&lt;bean id=&quot;hello&quot; class=&quot;dut.ln.pojo.hello&quot; name=&quot;hello3，hello4&quot;&gt;
+    &lt;constructor-arg name=&quot;srt&quot; value=&quot;有参构造2&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>id   = 变量名
+        class = 类的全路径名
+        name = 别名  并且可以取多个 通过; 空格 和，分割</p>
+<h2 id="import">import</h2>
+<p>将多个配置文件导入合并</p>
+<h1 id="-">依赖注入</h1>
+<h2 id="-">构造器注入</h2>
+<h2 id="set-">set注入</h2>
+<h3 id="-bean-">依赖：bean对象的创建依赖于容器</h3>
+<h3 id="-bean-">注入：bean对象中的所有属性，由容器来注入</h3>
+<pre><code class="lang-xml">&lt;bean id=&quot;user&quot; class=&quot;dut.ln.pojo.user&quot;&gt;
+    &lt;property name=&quot;id&quot; value=&quot;12&quot;/&gt;
+    &lt;property name=&quot;name&quot; value=&quot;ln&quot;/&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;hello&quot; class=&quot;dut.ln.pojo.hello&quot; name=&quot;hello3,hello4&quot;&gt;
+    &lt;property name=&quot;use&quot; ref=&quot;user&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<h2 id="-">其他方式</h2>
+<h3 id="p-">p命名空间</h3>
+<p>需要导入 xmlns:p=&quot;<a href="http://www.springframework.org/schema/p&quot;">http://www.springframework.org/schema/p&quot;</a></p>
+<pre><code class="lang-xml">&lt;bean id=&quot;user&quot; class=&quot;dut.ln.pojo.user&quot; p:id=&quot;11112&quot; p:name=&quot;ln&quot;/&gt;
+</code></pre>
+<p>p即property，可以直接注入属性值</p>
+<h3 id="c-">c命名空间</h3>
+<p>需要导入xmlns:c=&quot;<a href="http://www.springframework.org/schema/c&quot;">http://www.springframework.org/schema/c&quot;</a></p>
+<pre><code class="lang-xml">&lt;bean id=&quot;user2&quot; class=&quot;dut.ln.pojo.user&quot; c:id=&quot;115&quot; c:name=&quot;ln&quot;/&gt;
+</code></pre>
+<p>c即constructor，即通过构造器注入</p>
+<p>总的来说只有通过set注入和通过构造器注入两种方式</p>
+<h1 id="bean-">BEAN作用域</h1>
+<h2 id="-">单例模式</h2>
+<p>每次从容器中getbean的时候，都产生的是同一个对象，只是命名不同</p>
+<pre><code class="lang-xml">&lt;bean id=&quot;user&quot; class=&quot;dut.ln.pojo.user&quot; p:id=&quot;11112&quot; p:name=&quot;ln&quot; scope=&quot;singleton&quot;/&gt;
+</code></pre>
+<h2 id="-">原型模式</h2>
+<p>每次取得的是不同的对象</p>
+<pre><code class="lang-xml">&lt;bean id=&quot;user2&quot; class=&quot;dut.ln.pojo.user&quot; c:id=&quot;115&quot; c:name=&quot;ln&quot; scope=&quot;prototype&quot;/&gt;
+</code></pre>
+<h1 id="bean-">bean的自动装配</h1>
+<p>spring会在上下文中自动寻找装配</p>
+<pre><code class="lang-java">@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class hello {
+    private String srt;
+    private user user;
+    private student student;
+}
+</code></pre>
+<pre><code class="lang-xml">&lt;bean id=&quot;user&quot; class=&quot;dut.ln.pojo.user&quot;/&gt;
+&lt;bean id=&quot;student&quot; class=&quot;dut.ln.pojo.student&quot;/&gt;
+
+
+&lt;bean id=&quot;hello&quot; class=&quot;dut.ln.pojo.hello&quot; autowire=&quot;byName&quot;&gt;
+    &lt;property name=&quot;srt&quot; value=&quot;ln&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>autowire=byname会根据上文的beanid 自动将其装配到hello的bean中，要求id值与class中对应的属性值相同，即user而不能是user1111.</p>
+<p>同时autowire=&quot;byType&quot;会根据bean的class来自动装配</p>
+<p>但是两种方法都需要id或者class唯一</p>
+<h1 id="-">注解实现自动装配</h1>
+<p>需要导入</p>
+<pre><code class="lang-xml">xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+</code></pre>
+<p>使用注解支持</p>
+<pre><code class="lang-xml">  &lt;context:annotation-config/&gt;
+        &lt;bean id=&quot;user&quot; class=&quot;dut.ln.pojo.user&quot;/&gt;
+        &lt;bean id=&quot;student&quot; class=&quot;dut.ln.pojo.student&quot;/&gt;
+        &lt;bean id=&quot;hello&quot; class=&quot;dut.ln.pojo.hello&quot;/&gt;
+</code></pre>
+<p>在需要装配的属性上加@Autowired</p>
+<p>@autowired先bytype后byname</p>
+<p>@resource先byname</p>
+<h1 id="-">注解开发</h1>
+<p>原始注解</p>
+<p>@Component注解</p>
+<p>作用：用于把当前类的对象存入到spring容器中</p>
+<p>属性：value：指定bean的id，不写的时候默认是当前的类名，且首字母小写。当指定属性的值的时候就要用该值</p>
+<p>其他controller等同理</p>
+<p>@Autowired： 根据类型注入          </p>
+<p>@Resource ：默认根据名字注入，其次按照类型搜索</p>
+<p> 既不指定name属性，也不指定type属性，则自动按byName方式进行查找。如果没有找到符合的bean，则回 退为一个原始类型进行进行查找，如果找到就注入。
+          只是指定了@Resource注解的name，则按name后的名字去bean元素里查找有与之相等的name属性bean。
+           只指定@Resource注解的type属性，则从上下文中找到类型匹配的唯一bean进行装配，找不到或者找到多个，都会抛出异常。</p>
+<p>@Autowired ：@Qualifie(&quot;dogServiceImpl&quot;) 两个结合起来可以根据名字和类型注入</p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220309113015217.png" alt="image-20220309113015217"></p>
+<p>新注解</p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220309142716150.png" alt="image-20220309142716150"></p>
+<h2 id="bean-">bean注册</h2>
+<p>需要导入context</p>
+<pre><code class="lang-xml">&lt;context:component-scan base-package=&quot;dut.ln.pojo&quot;/&gt;
+</code></pre>
+<p>该包下的注解会被扫描</p>
+<p>然后在相应的类中使用@component</p>
+<pre><code class="lang-java">@Component
+public class hello {
+    private String srt;
+    @Autowired
+    private user user;
+    @Autowired
+    private student student;
+}
+</code></pre>
+<h2 id="-">属性注入</h2>
+<p>通过@value</p>
+<pre><code class="lang-java">@Value(&quot;LN&quot;)
+private String srt;
+</code></pre>
+<h2 id="-">衍生注解</h2>
+<p>在MVC三层架构中</p>
+<p>Dao层：@repository</p>
+<p>service层：@service</p>
+<p>controller层：@controller</p>
+<p>同@component作用相同，都是将某个类注入到spring容器中。</p>
+<h1 id="-java-spring">使用java的方式配置spring</h1>
+<p>@configuration代表这是一个配置类，作用与xml文件相同</p>
+<h2 id="-bean">@bean</h2>
+<p>注册一个bean，使用在方法上，相当于之前的bean标签，该方法的名字相当于bean中的id属性，方法的返回值就是返回的注入到bean中的对象。</p>
+<h2 id="-import-xxx-class-">@import（xxx.class）</h2>
+<p>引入另一个@configuration</p>
+<h1 id="spring-junit">Spring集成junit</h1>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326225431172.png" alt="image-20220326225431172"></p>
+<h1 id="aop">AOP</h1>
+<p><img src="spring.assets/image-20220901162932300.png" alt="image-20220901162932300"></p>
+<p><img src="spring.assets/image-20220901162505606.png" alt="image-20220901162505606"></p>
+<p><img src="spring.assets/image-20220901162955982.png" alt="image-20220901162955982"></p>
+<h2 id="jdk-">jdk动态代理</h2>
+<pre><code class="lang-java">UserDao proxyInstance = (UserDao)Proxy.newProxyInstance(MyProxy.class.getClassLoader(), new Class[]{UserDao.class}, (proxy, method, args1) -&gt; {
+    System.out.println(&quot;加强&quot;);
+    method.invoke(new UserImpl(), args1);
+    System.out.println(&quot;加强后&quot;);
+    return null;
+});
+proxyInstance.add();
+</code></pre>
+<h2 id="aop-">aop术语</h2>
+<p><img src="spring.assets/image-20220902130923428.png" alt=""></p>
+<h2 id="-">操作</h2>
+<p><img src="spring.assets/image-20220902131500614.png" alt="image-20220902131500614"></p>
+<p><img src="spring.assets/image-20220902132447168.png" alt="image-20220902132447168"></p>
+<p><img src="spring.assets/image-20220902132536387.png" alt="image-20220902132536387"></p>
+<h1 id="webflux">webflux</h1>
+<p><img src="spring.assets/image-20220902152740005.png" alt="image-20220902152740005"></p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

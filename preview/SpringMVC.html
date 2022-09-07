@@ -1,0 +1,646 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-springmvc">初识SpringMVC</h1>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319221241136.png" alt=""></p>
+<p>1、spring框架围绕Dispatcherservlet展开，dispatcherservlet本质上还是一个servlet，所有的请求都会经过dispatcherservlet，所以只在web.xml中注册一个servlet。</p>
+<pre><code class="lang-xml"> &lt;servlet&gt;
+   &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+   &lt;servlet-class&gt;
+       org.springframework.web.servlet.DispatcherServlet
+   &lt;/servlet-class&gt;
+&lt;!--        dispatcher绑定spring的配置文件--&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:springmvc-servlet.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+&lt;!--        启动级别1 随服务器一起启动--&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+</code></pre>
+<p>其中<url-pattern>/</url-pattern>的/会匹配所有的请求，但是不会匹配jsp页面</p>
+<p>而/*则会匹配请求和jsp页面。</p>
+<p>比如输入localhost：8080/r/a.jsp</p>
+<p>也会匹配进入dispatchservlet，然后走到视图解析器的时候再拼接.jsp后缀，最后变成a.jsp.jsp会导致出错。</p>
+<p>classpath是当前类的路径    </p>
+<p>2、HandlerMapping是处理器映射，被diapatcherservlet调用。他会根据url查找handler，如下图的<bean id="/hello" class="com.ln.control.HelloController"/>，通过/hello就匹配到了。相当于servlet的mapping。</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;!--配置annotation类型的处理映射器--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping&quot;/&gt;
+    &lt;!--配置annotation类型的处理器适配器--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter&quot;/&gt;
+    &lt;!--视图解析器--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot; id=&quot;internalResourceViewResolver&quot;&gt;
+        &lt;!--    前缀--&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+        &lt;!--        后缀--&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;/hello&quot; class=&quot;com.ln.control.HelloController&quot;/&gt;
+&lt;/beans&gt;
+</code></pre>
+<p>3、执行HandlerExecution，解析控制器后返回给dispatcherservlet。即通过handlemapping所匹配到的bean，进一步执行。</p>
+<p>4、handleadaptation会通过mapping接受的handle，跳转到hellocontroller控制器中。</p>
+<pre><code class="lang-java">public class HelloController implements Controller {
+    @Override
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        //业务代码
+        String result = &quot;springmvc&quot;;
+        mv.addObject(&quot;dd&quot;, result);
+        //视图跳转
+        mv.setViewName(&quot;hello&quot;);
+        return mv;
+    }
+}
+</code></pre>
+<p>5、controller调用业务层，进行操作，然后将modelandview返回给adapter，然后adapt将请求返回dispatcherservlet</p>
+<p>6、dispatch调用视图解析器，viewResolver获得viewandmodel的数据，解析视图的名字，如上式的hello，然后拼接上前缀和后缀，得到完整的视图名字，然后将数据渲染到视图上。</p>
+<p>这种实现control接口的方法，一个类只能实现一个方法，而且每一次都要注册bean 所以推荐下面使用注解的方法</p>
+<h1 id="springmvc-">springMVC的配置文件</h1>
+<h2 id="pom-xml">pom.xml</h2>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;org.example&lt;/groupId&gt;
+    &lt;artifactId&gt;Spring-MVC&lt;/artifactId&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;modules&gt;
+        &lt;module&gt;springmvc-annotation&lt;/module&gt;
+    &lt;/modules&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+&lt;!--        spring  --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;5.3.12&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+            &lt;version&gt;5.3.12&lt;/version&gt;
+        &lt;/dependency&gt;
+&lt;!--        servlet --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+            &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+            &lt;version&gt;2.5&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
+            &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;
+            &lt;version&gt;2.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+            &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+            &lt;version&gt;1.2&lt;/version&gt;
+        &lt;/dependency&gt;
+&lt;!--        mybatis  --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+            &lt;version&gt;3.5.7&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+            &lt;version&gt;2.0.6&lt;/version&gt;
+        &lt;/dependency&gt;
+&lt;!--    JSON    --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+            &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+            &lt;version&gt;2.13.0&lt;/version&gt;
+        &lt;/dependency&gt;
+&lt;!--    LOMBOK    --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;1.18.22&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+&lt;!--        json    --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+            &lt;version&gt;1.2.78&lt;/version&gt;
+        &lt;/dependency&gt;
+&lt;!--        数据库驱动   --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;8.0.25&lt;/version&gt;
+        &lt;/dependency&gt;
+&lt;!--        junit   --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;4.13.2&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+&lt;!--        数据库连接池  --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.mchange&lt;/groupId&gt;
+            &lt;artifactId&gt;c3p0&lt;/artifactId&gt;
+            &lt;version&gt;0.9.5.5&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;build&gt;
+    &lt;resources&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/java&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/*.xml&lt;/include&gt;
+                &lt;include&gt;**/*.properties&lt;/include&gt;
+            &lt;/includes&gt;
+            &lt;filtering&gt;true&lt;/filtering&gt;
+        &lt;/resource&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/resources&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/*.xml&lt;/include&gt;
+                &lt;include&gt;**/*.properties&lt;/include&gt;
+            &lt;/includes&gt;
+            &lt;filtering&gt;true&lt;/filtering&gt;
+        &lt;/resource&gt;
+    &lt;/resources&gt;
+&lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+<h2 id="web-xml">web.xml</h2>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+         version=&quot;4.0&quot;&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;
+            org.springframework.web.servlet.DispatcherServlet
+        &lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;encoding&lt;/filter-name&gt;
+        &lt;filter-class&gt;
+            org.springframework.web.filter.CharacterEncodingFilter
+        &lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;encoding&lt;/param-name&gt;
+            &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;encoding&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+&lt;/web-app&gt;
+</code></pre>
+<h2 id="spring-xml">spring配置xml</h2>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+
+                         http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/mvc
+                            http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+&lt;!--    在该包下的controller就会被识别    --&gt;
+&lt;context:component-scan base-package=&quot;dlut.ln.contr&quot;/&gt;
+&lt;!--    注解驱动    --&gt;
+    &lt;!-- mvc 返回乱码处理 --&gt;
+    &lt;mvc:annotation-driven&gt;
+        &lt;mvc:message-converters register-defaults=&quot;true&quot;&gt;
+            &lt;bean
+         class=&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;
+                &lt;constructor-arg value=&quot;utf-8&quot;/&gt;
+            &lt;/bean&gt;
+            &lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
+                &lt;property name=&quot;objectMapper&quot;&gt;
+                    &lt;bean class=&quot;org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean&quot;&gt;
+                        &lt;property name=&quot;failOnEmptyBeans&quot; value=&quot;false&quot;/&gt;
+                    &lt;/bean&gt;
+                &lt;/property&gt;
+            &lt;/bean&gt;
+        &lt;/mvc:message-converters&gt;
+    &lt;/mvc:annotation-driven&gt;
+&lt;!--    过滤静态资源  --&gt;
+    &lt;mvc:default-servlet-handler/&gt;
+&lt;!--    视图解析器   --&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot; id=&quot;internalResourceViewResolver&quot;&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<h2 id="mybatis-xml-">mybatis配置xml文件</h2>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration
+        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;environments default=&quot;development&quot;&gt;
+        &lt;environment id=&quot;development&quot;&gt;
+            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;
+                &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/storage?useSSL=true&amp;amp;userUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=GMT&quot;/&gt;
+                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;Dao/CommodityMapper.xml&quot;/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+
+</code></pre>
+<h1 id="-">不同的请求方法</h1>
+<p>1、GET请求会向数据库发索取数据的请求，从而来获取信息，该请求就像数据库的select操作一样，只是用来查询一下数据，不会修改、增加数据，不会影响资源的内容，即该请求不会产生副作用。无论进行多少次操作，结果都是一样的。</p>
+<p>2、与GET不同的是，PUT请求是向服务器端发送数据的，从而改变信息，该请求就像数据库的update操作一样，用来修改数据的内容，但是不会增加数据的种类等，也就是说无论进行多少次PUT操作，其结果并没有不同。</p>
+<p>3、POST请求同PUT请求类似，都是向服务器端发送数据的，但是该请求会改变数据的种类等资源，就像数据库的insert操作一样，会创建新的内容。几乎目前所有的提交操作都是用POST请求的。</p>
+<p>4、DELETE请求顾名思义，就是用来删除某一个资源的，该请求就像数据库的delete操作。</p>
+<p>就像前面所讲的一样，既然PUT和POST操作都是向服务器端发送数据的，那么两者有什么区别呢。。。POST主要作用在一个集合资源之上的（url），而PUT主要作用在一个具体资源之上的（url/xxx），通俗一下讲就是，如URL可以在客户端确定，那么可使用PUT，否则用POST。</p>
+<p>综上所述，我们可理解为以下：</p>
+<p>1、POST /url 创建 
+        2、DELETE /url/xxx 删除 
+        3、PUT /url/xxx 更新
+        4、GET /url/xxx 查看</p>
+<p>总结一下，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求，在FORM（表单）中，Method默认为&quot;GET&quot;，实质上，GET和POST只是发送机制不同，并不是一个取一个发！</p>
+<h1 id="-">注解</h1>
+<p>注解开发</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/mvc
+                            http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+&lt;!--    在该包下的controller注解就会被识别    --&gt;
+&lt;context:component-scan base-package=&quot;dlut.ln&quot;/&gt;
+&lt;!--    注解驱动    --&gt;
+    &lt;mvc:annotation-driven/&gt;
+&lt;!--    过滤静态资源  --&gt;
+    &lt;mvc:default-servlet-handler/&gt;
+&lt;!--    视图解析器   --&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot; id=&quot;internalResourceViewResolver&quot;&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<pre><code class="lang-java">@Controller//代表会被spring自动接管，被这个注解的类的方法返回值是string，并且有该页面的话就会被解析
+public class annotation {
+    @RequestMapping(&quot;/h1&quot;)//映射访问路径
+    //需要传数据的时候可以形参设置为model
+    public String hello(@org.jetbrains.annotations.NotNull Model model){
+        model.addAttribute(&quot;msg&quot;,&quot;hello&quot;);
+        return &quot;hello&quot;;//回到哪个视图
+    }
+    @RequestMapping(&quot;/h2&quot;)//映射访问路径
+    //需要传数据的时候可以形参设置为model
+    public String hello2(@org.jetbrains.annotations.NotNull Model model){
+        model.addAttribute(&quot;msg&quot;,&quot;hello22222222&quot;);
+        return &quot;hello&quot;;//回到哪个视图
+    }
+}
+</code></pre>
+<p>可以看到，不同的请求会指向同一个页面，展现不同的信息，所以控制器和视图是弱耦合</p>
+<h2 id="requestmapping">RequestMapping</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319221725718.png" alt="image-20220319221725718"></p>
+<h2 id="responsebody">ResponseBody</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319223716614.png" alt="image-20220319223716614"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319224501993.png" alt="image-20220319224501993"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319224613281.png" alt="image-20220319224613281"></p>
+<h2 id="requestbody">RequestBody</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319225909871.png" alt="image-20220319225909871"></p>
+<h2 id="requestparam">RequestParam</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319230617610.png" alt="image-20220319230617610"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319230850577.png" alt="image-20220319230850577"></p>
+<h2 id="requestheader">RequestHeader</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319232549179.png" alt="image-20220319232549179"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319232806555.png" alt="image-20220319232806555"></p>
+<h1 id="restful">Restful</h1>
+<p>一种资源操作和资源定位的风格。</p>
+<p>原始风格</p>
+<pre><code class="lang-java">@Controller
+public class Restful {
+    @RequestMapping(&quot;/r&quot;)
+    public String res(int a, int b, Model model){
+        int res = a + b;
+        model.addAttribute(&quot;msg&quot;,&quot;结果是： &quot; + res);
+        return &quot;hello&quot;;
+    }
+}
+</code></pre>
+<p>想要得到结果需要的URL如下</p>
+<p><a href="http://localhost:8080/springmvc/r?a=2&amp;b=1">http://localhost:8080/springmvc/r?a=2&amp;b=1</a></p>
+<p>输出结果为3</p>
+<p>Restful风格</p>
+<pre><code class="lang-java">@Controller
+public class Restful {
+    @RequestMapping(&quot;/r/{a}/{b}&quot;)
+    public String res(@PathVariable int a, @PathVariable int b, Model model){
+        int res = a + b;
+        model.addAttribute(&quot;msg&quot;,&quot;结果是： &quot; + res);
+        return &quot;hello&quot;;
+    }
+}
+</code></pre>
+<p>通过注解@Pathvariable使得不需要繁琐的url</p>
+<p>新的url如下</p>
+<p><a href="http://localhost:8080/springmvc/r/2/1">http://localhost:8080/springmvc/r/2/1</a></p>
+<p>输出结果为3</p>
+<p>return +&quot;/&quot;或者+&quot;forward&quot; 表示转发</p>
+<p>+&quot;redirect&quot;表示重定向。需要将视图解析器注释掉</p>
+<h2 id="-">接受请求参数</h2>
+<pre><code class="lang-java">@Controller
+public class User {
+    @GetMapping(&quot;/user&quot;)
+    public String user(String name, Model model){
+        System.out.println(&quot;name:&quot; + name);
+        model.addAttribute(&quot;msg&quot;,name);
+        return &quot;hello&quot;;
+    }
+}
+</code></pre>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211105215707082.png" alt="image-20211105215707082"></p>
+<p>URL如上，即name和user的形参格式一致时，可以直接接收到。</p>
+<p>如果不一致</p>
+<pre><code class="lang-java">@Controller
+public class User {
+    @GetMapping(&quot;/user&quot;)
+    public String user(@RequestParam(&quot;username&quot;) String name, Model model){
+        System.out.println(&quot;name:&quot; + name);
+        model.addAttribute(&quot;msg&quot;,name);
+        return &quot;hello&quot;;
+    }
+}
+</code></pre>
+<p>@RequestParam可以将括号内的参数识别为name</p>
+<p>此时的url</p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211105220116795.png" alt="image-20211105220116795"></p>
+<p>如果前端传递的是一个对象，参数直接使用对象即可，但是表单所提供的属性参数必须和对象的属性相同。</p>
+<h1 id="-">类型转换器</h1>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319231928995.png" alt="image-20220319231928995"></p>
+<h1 id="-">乱码问题</h1>
+<p>springmvc为我们提供了一个乱码问题的过滤器</p>
+<pre><code class="lang-xml">&lt;filter&gt;
+    &lt;filter-name&gt;encoding&lt;/filter-name&gt;
+    &lt;filter-class&gt;
+        org.springframework.web.filter.CharacterEncodingFilter
+    &lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;encoding&lt;/param-name&gt;
+        &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;encoding&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre>
+<p>注意url匹配的要是/*过滤掉jsp等文件</p>
+<h1 id="-">文件上传</h1>
+<h1 id="json">JSON</h1>
+<p>一种数据格式，使前后端可以通过该方式进行数据传输，做到数据的一致性</p>
+<pre><code class="lang-java">import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data   //提供了get set hashcode equal等方法
+@AllArgsConstructor     //有参构造器
+@NoArgsConstructor      //无参构造器
+public class User {
+    private String name;
+    private int age;
+    private String sex;
+}
+</code></pre>
+<pre><code class="lang-java">@Controller
+public class Json {
+    @RequestMapping(&quot;j1&quot;)
+    @ResponseBody   //该注解使函数不经过视图解析器，return返回的就是普通的字符串 同@Restcontroller
+    public String json(){
+
+        User user = new User(&quot;LN&quot;,22,&quot;man&quot;);
+
+        return user.toString();
+    }
+}
+</code></pre>
+<p>此时前端的页面响应为</p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211106140704372.png" alt="image-20211106140704372"></p>
+<p>可见，将一个对象转化为字符串形式，这也是json的思想</p>
+<p>上文的@Data   //提供了get set hashcode equal等方法
+                    @AllArgsConstructor     //有参构造器
+                    @NoArgsConstructor      //无参构造器</p>
+<p>需要导入lombok包</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;version&gt;1.18.12&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>json包</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+    &lt;version&gt;2.12.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>导入json后会出现中文乱码问题，由于不是响应过程，过滤器不起作用。spring提供了专用于json的乱码解决框架</p>
+<pre><code class="lang-xml">&lt;mvc:annotation-driven&gt;
+    &lt;mvc:message-converters register-defaults=&quot;true&quot;&gt;
+        &lt;bean class=&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;
+            &lt;constructor-arg value=&quot;utf-8&quot;/&gt;
+        &lt;/bean&gt;
+        &lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
+            &lt;property name=&quot;objectMapper&quot;&gt;
+                &lt;bean class=&quot;org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean&quot;&gt;
+                    &lt;property name=&quot;failOnEmptyBeans&quot; value=&quot;false&quot;/&gt;
+                &lt;/bean&gt;
+            &lt;/property&gt;
+        &lt;/bean&gt;
+    &lt;/mvc:message-converters&gt;
+&lt;/mvc:annotation-driven&gt;
+</code></pre>
+<h1 id="ajax">Ajax</h1>
+<p>无需在刷新整个页面的情况下，更新部分页面的的技术</p>
+<pre><code>&lt;groupId&gt;org.example&lt;/groupId&gt;
+&lt;artifactId&gt;Spring-MVC-archetype&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+&lt;packaging&gt;maven-archetype&lt;/packaging&gt;
+</code></pre><h1 id="jdbctemplate">jdbcTemplate</h1>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220320174155592.png" alt="image-20220320174155592"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220321202343957.png" alt="image-20220321202343957"></p>
+<h1 id="-">拦截器</h1>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220322184513003.png" alt="image-20220322184513003"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220322190411488.png" alt="image-20220322190411488"></p>
+<h1 id="-">异常处理</h1>
+<h1 id="aop">AOP</h1>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220323203523548.png" alt="image-20220323203523548"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326134503146.png" alt="image-20220326134503146"></p>
+<h2 id="xml-">XML方式</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173231840.png" alt="image-20220326173231840"></p>
+<h3 id="-image-20220326171457214">切点表达式写法<img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171457214.png" alt="image-20220326171457214"></h3>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171535009.png" alt="image-20220326171535009"></p>
+<h3 id="-">通知类型</h3>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171610145.png" alt="image-20220326171610145"></p>
+<p>其中环绕通知的通知中形参必须有一个proceedingJoinPoint 作为当前的切点 如下：</p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326172324461.png" alt="image-20220326172324461"></p>
+<h3 id="-">切点表达式抽取</h3>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173056764.png" alt="image-20220326173056764"></p>
+<h2 id="-">注解方式</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326182419183.png" alt="image-20220326182419183"></p>
+<h3 id="-">注解通知类型</h3>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173953987.png" alt="image-20220326173953987"></p>
+<h3 id="-">切点表达式抽取</h3>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326182401732.png" alt="image-20220326182401732"></p>
+<p>本来想自己定义一个字符串 结果发现不是单纯的字符串 他不能识别</p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326190702402.png" alt="image-20220326190702402"></p>
+<h1 id="-">事务</h1>
+<h2 id="-">编程式事务</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210514575.png" alt="image-20220326210514575"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210550018.png" alt="image-20220326210550018"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210606215.png" alt="image-20220326210606215"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210629819.png" alt="image-20220326210629819"></p>
+<h2 id="-">声明式事务</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326211331967.png" alt=""></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328134925187.png" alt="image-20220328134925187"></p>
+<p>先声明一个事务管理器 然后进行相应的事务增强配置</p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326213141834.png" alt="image-20220326213141834"></p>
+<h2 id="-">基于注解的事务配置</h2>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326215923267.png" alt="image-20220326215923267"></p>
+<p>同样需要配置事务管理器 然后开启注解驱动 在相应的类或者方法上面加注解即可</p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135014326.png" alt="image-20220328135014326"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135106935.png" alt="image-20220328135106935"></p>
+<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135151614.png" alt="image-20220328135151614"></p>
+<h1 id="ssm-">SSM整合</h1>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
