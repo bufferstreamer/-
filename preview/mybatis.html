@@ -1,0 +1,527 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-">持久化</h1>
+<p>数据持久化</p>
+<pre><code>持久化就是将程序的数据在持久状态和瞬时状态转化的过程
+
+内存：断电即失，但是为了保存数据，所以需要数据持久化
+</code></pre><h1 id="-">持久层</h1>
+<p>完成持久化工作的代码块</p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326223855971.png" alt="image-20220326223855971"></p>
+<h2 id="-mybatis-">创建mybatis配置文件</h2>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration
+        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;environments default=&quot;development&quot;&gt;
+        &lt;environment id=&quot;development&quot;&gt;
+            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;
+       &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/storage?useSSL=true&amp;amp;userUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=GMT&quot;/&gt;
+                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;Dao/CommodityMapper.xml&quot;/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+<h2 id="-mybatis-">创建mybatis工具类</h2>
+<pre><code class="lang-java">package Utils;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+public class MybatisUtils {
+    public static SqlSessionFactory sqlSessionFactory;
+    //创建一个sqlSession工厂
+    static {
+        String resources = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = null;
+        try {
+            inputStream = Resources.getResourceAsStream(resources);
+        } catch (IOException e) {
+            e.printStackTrace();    
+        }
+         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+    }
+    //获得一个openSession,即SqlSession的实例，其中包含了所有sql的方法
+    public static SqlSession getSqlSession(){
+        return sqlSessionFactory.openSession();
+    }
+}
+</code></pre>
+<h2 id="-xml">创建一个接口类并创建相应的xml</h2>
+<pre><code class="lang-java">package Dao;
+
+import pojo.Commodity;
+
+import java.util.List;
+
+public interface CommodityDao {
+    List&lt;Commodity&gt; getCommodityList();
+}
+</code></pre>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!--绑定一个对应的mapper接口--&gt;
+&lt;mapper namespace=&quot;Dao.CommodityDao&quot;&gt;
+
+    &lt;select id=&quot;CommodityDao&quot; resultType=&quot;Dao.CommodityDao.Commodity&quot;&gt;
+        select * from storage.commodity
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+<h2 id="-">测试</h2>
+<pre><code class="lang-java">public class CommodityDaoTest {
+    @Test
+    public void test(){
+        //获得sqlSession对象
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        CommodityDao commodityDao = sqlSession.getMapper(CommodityDao.class);
+        List&lt;Commodity&gt; commodityList = commodityDao.getCommodityList();
+        for (Commodity commodity : commodityList) {
+            System.out.println(commodity);
+        }
+        sqlSession.close();
+    }
+}
+</code></pre>
+<pre><code class="lang-java">Commodity(id=1, cateId=null, name=ln, subtitle=null, main_image=, sub_images=null, detail=, price=15.0, quantity=100, location=sss, status=0)
+
+</code></pre>
+<p>结果如上</p>
+<h1 id="crud">CRUD</h1>
+<p>步骤：</p>
+<p>在DAO层编写抽象方法</p>
+<p>DAO对应的mapper.xml实现相应的sql语句</p>
+<p>测试</p>
+<h2 id="select">select</h2>
+<pre><code class="lang-java">public interface CommodityDao {
+    //查询全部商品
+    List&lt;Commodity&gt; getCommodityList();
+    //根据ID查询商品
+    Commodity getCommodityByID(int id);
+    //插入新的商品
+    void addCommodity(Commodity commodity);
+    //修改商品信息
+    void updateCommodity(Commodity commodity);
+    //删除商品信息
+    void deleteCommodity(int id);
+}
+</code></pre>
+<pre><code class="lang-xml">&lt;mapper namespace=&quot;Dao.CommodityDao&quot;&gt;
+    &lt;select id=&quot;getCommodityList&quot; resultType=&quot;pojo.Commodity&quot; parameterType=&quot;&quot;&gt;
+        select * from storage.commodity
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+<p>id为namespace空间对应的类中的方法名</p>
+<p>resultType为返回值类型</p>
+<p>parameterType为参数类型</p>
+<pre><code class="lang-java">@Test
+public void test(){
+    //获得sqlSession对象
+    SqlSession sqlSession = MybatisUtils.getSqlSession();
+    CommodityDao commodityDao = sqlSession.getMapper(CommodityDao.class);
+    List&lt;Commodity&gt; commodityList = commodityDao.getCommodityList();
+    for (Commodity commodity : commodityList) {
+        System.out.println(commodity);
+    }
+    sqlSession.close();
+}
+@Test
+public void testId(){
+    SqlSession sqlSession = MybatisUtils.getSqlSession();
+    CommodityDao mapper = sqlSession.getMapper(CommodityDao.class);
+    System.out.println(mapper.getCommodityByID(1));
+    sqlSession.close();
+}
+</code></pre>
+<h2 id="insert">insert</h2>
+<pre><code class="lang-xml">&lt;insert id=&quot;addCommodity&quot; parameterType=&quot;pojo.Commodity&quot;&gt;
+    insert into storage.commodity(id, CateId, name, subtitle, main_image, sub_images, detail, price, quantity, location, status) VALUES (#{id},#{CateId},#{name},#{subtitle},#{main_image},#{sub_images},#{detail},#{price},#{quantity},#{location},#{status})
+&lt;/insert&gt;# 
+</code></pre>
+<pre><code class="lang-java">@Test
+public void testAdd(){
+    SqlSession sqlSession = MybatisUtils.getSqlSession();
+    CommodityDao sqlSessionMapper = sqlSession.getMapper(CommodityDao.class);
+    sqlSessionMapper.addCommodity(new Commodity(&quot;6&quot;,&quot;dm&quot;,&quot;dd&quot;,&quot;dd&quot;,&quot;dd&quot;,&quot;dd&quot;,&quot;dd&quot;,20.0,1,&quot;dd&quot;,0));
+    System.out.println(&quot;插入成功&quot;);
+    sqlSession.commit();
+    sqlSession.close();
+}
+</code></pre>
+<h2 id="update">update</h2>
+<pre><code class="lang-xml">&lt;update id=&quot;updateCommodity&quot; parameterType=&quot;pojo.Commodity&quot;&gt;
+    update storage.commodity
+        set name = #{name}
+    where id = #{id};
+&lt;/update&gt;
+</code></pre>
+<pre><code class="lang-java">@Test
+public void testUpdate(){
+    SqlSession sqlSession = MybatisUtils.getSqlSession();
+    CommodityDao sqlSessionMapper = sqlSession.getMapper(CommodityDao.class);
+    sqlSessionMapper.updateCommodity(new Commodity(&quot;4&quot;,&quot;dd&quot;,&quot;ss&quot;,&quot;dd&quot;,&quot;dd&quot;,&quot;dd&quot;,&quot;dd&quot;,20.0,1,&quot;dd&quot;,0));
+    sqlSession.commit();
+    sqlSession.close();
+}
+</code></pre>
+<h2 id="delete">delete</h2>
+<pre><code class="lang-xml">&lt;delete id=&quot;deleteCommodity&quot; parameterType=&quot;int&quot;&gt;
+    delete from storage.commodity WHERE id = #{id}
+&lt;/delete&gt;
+</code></pre>
+<pre><code class="lang-java">@Test
+public void testDelete(){
+    SqlSession sqlSession = MybatisUtils.getSqlSession();
+    CommodityDao mapper = sqlSession.getMapper(CommodityDao.class);
+    mapper.deleteCommodity(4);
+    sqlSession.commit();
+    sqlSession.close();
+}
+</code></pre>
+<h2 id="-">模糊查询</h2>
+<p>使用通配符%</p>
+<pre><code class="lang-java">public void testLike(){
+    SqlSession sqlSession = MybatisUtils.getSqlSession();
+    CommodityDao mapper = sqlSession.getMapper(CommodityDao.class);
+    List&lt;Commodity&gt; commodityLike = mapper.getCommodityLike(&quot;%l%&quot;);
+    for (Commodity commodity : commodityLike) {
+        System.out.println(commodity);
+    }
+    sqlSession.close();
+</code></pre>
+<h1 id="-">配置解析</h1>
+<h2 id="-mybatis-config-xml">核心配置文件 mybatis-config.xml</h2>
+<ul>
+<li>configuration（配置）<ul>
+<li>properties（属性）</li>
+<li>settings（设置）</li>
+<li>typeAliases（类型别名）</li>
+<li>typeHandlers（类型处理器）</li>
+<li>objectFactory（对象工厂）</li>
+<li>plugins（插件）</li>
+<li>environments（环境配置）<ul>
+<li>environment（环境变量）<ul>
+<li>transactionManager（事务管理器）</li>
+<li>dataSource（数据源）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>databaseIdProvider（数据库厂商标识）</li>
+<li>mappers（映射器）</li>
+</ul>
+</li>
+</ul>
+<h3 id="environments">environments</h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326230835594.png" alt="image-20220326230835594"></p>
+<pre><code class="lang-xml">&lt;environments default=&quot;development&quot;&gt;
+    &lt;environment id=&quot;development&quot;&gt;
+        &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+        &lt;dataSource type=&quot;POOLED&quot;&gt;
+            &lt;property name=&quot;driver&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;
+            &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/storage?useSSL=true&amp;amp;userUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=GMT&quot;/&gt;
+            &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+            &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+        &lt;/dataSource&gt;
+    &lt;/environment&gt;
+&lt;/environments&gt;
+</code></pre>
+<h3 id="-transactionmanager-"><strong>事务管理器（transactionManager）</strong></h3>
+<p>在 MyBatis 中有两种类型的事务管理器（也就是 type=&quot;[JDBC|MANAGED]&quot;）：</p>
+<ul>
+<li><p>JDBC – 这个配置直接使用了 JDBC 的提交和回滚设施，它依赖从数据源获得的连接来管理事务作用域。</p>
+</li>
+<li><p>MANAGED – 这个配置几乎没做什么。它从不提交或回滚一个连接，而是让容器来管理事务的整个生命周期（比如 JEE 应用服务器的上下文）。 默认情况下它会关闭连接。然而一些容器并不希望连接被关闭，因此需要将 closeConnection 属性设置为 false 来阻止默认的关闭行为</p>
+<p>  <strong>提示</strong> 如果你正在使用 Spring + MyBatis，则没有必要配置事务管理器，因为 Spring 模块会使用自带的管理器来覆盖前面的配置。</p>
+</li>
+</ul>
+<h3 id="-datasource-"><strong>数据源（dataSource）</strong></h3>
+<p>dataSource 元素使用标准的 JDBC 数据源接口来配置 JDBC 连接对象的资源。</p>
+<p><strong>UNPOOLED</strong>– 这个数据源的实现会每次请求时打开和关闭连接。虽然有点慢，但对那些数据库连接可用性要求不高的简单应用程序来说，是一个很好的选择。 性能表现则依赖于使用的数据库，对某些数据库来说，使用连接池并不重要，这个配置就很适合这种情形。UNPOOLED 类型的数据源仅仅需要配置以下 5 种属性：</p>
+<ul>
+<li><code>driver</code> – 这是 JDBC 驱动的 Java 类全限定名（并不是 JDBC 驱动中可能包含的数据源类）。</li>
+<li><code>url</code> – 这是数据库的 JDBC URL 地址。</li>
+<li><code>username</code> – 登录数据库的用户名。</li>
+<li><code>password</code> – 登录数据库的密码。</li>
+<li><code>defaultTransactionIsolationLevel</code> – 默认的连接事务隔离级别。</li>
+<li><code>defaultNetworkTimeout</code> – 等待数据库操作完成的默认网络超时时间（单位：毫秒）。查看 <code>java.sql.Connection#setNetworkTimeout()</code> 的 API 文档以获取更多信息。</li>
+</ul>
+<p>作为可选项，你也可以传递属性给数据库驱动。只需在属性名加上“driver.”前缀即可，例如：</p>
+<ul>
+<li><code>driver.encoding=UTF8</code></li>
+</ul>
+<p>这将通过 DriverManager.getConnection(url, driverProperties) 方法传递值为 <code>UTF8</code> 的 <code>encoding</code> 属性给数据库驱动。</p>
+<p><strong>POOLED</strong>– 这种数据源的实现利用“池”的概念将 JDBC 连接对象组织起来，避免了创建新的连接实例时所必需的初始化和认证时间。 这种处理方式很流行，能使并发 Web 应用快速响应请求。</p>
+<p>除了上述提到 UNPOOLED 下的属性外，还有更多属性用来配置 POOLED 的数据源：</p>
+<ul>
+<li><code>poolMaximumActiveConnections</code> – 在任意时间可存在的活动（正在使用）连接数量，默认值：10</li>
+<li><code>poolMaximumIdleConnections</code> – 任意时间可能存在的空闲连接数。</li>
+<li><code>poolMaximumCheckoutTime</code> – 在被强制返回之前，池中连接被检出（checked out）时间，默认值：20000 毫秒（即 20 秒）</li>
+<li><code>poolTimeToWait</code> – 这是一个底层设置，如果获取连接花费了相当长的时间，连接池会打印状态日志并重新尝试获取一个连接（避免在误配置的情况下一直失败且不打印日志），默认值：20000 毫秒（即 20 秒）。</li>
+<li><code>poolMaximumLocalBadConnectionTolerance</code> – 这是一个关于坏连接容忍度的底层设置， 作用于每一个尝试从缓存池获取连接的线程。 如果这个线程获取到的是一个坏的连接，那么这个数据源允许这个线程尝试重新获取一个新的连接，但是这个重新尝试的次数不应该超过 <code>poolMaximumIdleConnections</code> 与 <code>poolMaximumLocalBadConnectionTolerance</code> 之和。 默认值：3（新增于 3.4.5）</li>
+<li><code>poolPingQuery</code> – 发送到数据库的侦测查询，用来检验连接是否正常工作并准备接受请求。默认是“NO PING QUERY SET”，这会导致多数数据库驱动出错时返回恰当的错误消息。</li>
+<li><code>poolPingEnabled</code> – 是否启用侦测查询。若开启，需要设置 <code>poolPingQuery</code> 属性为一个可执行的 SQL 语句（最好是一个速度非常快的 SQL 语句），默认值：false。</li>
+<li><code>poolPingConnectionsNotUsedFor</code> – 配置 poolPingQuery 的频率。可以被设置为和数据库连接超时时间一样，来避免不必要的侦测，默认值：0（即所有连接每一时刻都被侦测 — 当然仅当 poolPingEnabled 为 true 时适用）。</li>
+</ul>
+<p><strong>JNDI</strong> – 这个数据源实现是为了能在如 EJB 或应用服务器这类容器中使用，容器可以集中或在外部配置数据源，然后放置一个 JNDI 上下文的数据源引用。这种数据源配置只需要两个属性：</p>
+<ul>
+<li><code>initial_context</code> – 这个属性用来在 InitialContext 中寻找上下文（即，initialContext.lookup(initial_context)）。这是个可选属性，如果忽略，那么将会直接从 InitialContext 中寻找 data_source 属性。</li>
+<li><code>data_source</code> – 这是引用数据源实例位置的上下文路径。提供了 initial_context 配置时会在其返回的上下文中进行查找，没有提供时则直接在 InitialContext 中查找。</li>
+</ul>
+<p>和其他数据源配置类似，可以通过添加前缀“env.”直接把属性传递给 InitialContext。比如：</p>
+<ul>
+<li><code>env.encoding=UTF8</code></li>
+</ul>
+<p>这就会在 InitialContext 实例化时往它的构造方法传递值为 <code>UTF8</code> 的 <code>encoding</code> 属性。</p>
+<h3 id="-properties-">属性（properties）</h3>
+<p>这些属性可以在外部进行配置，并可以进行动态替换。你既可以在典型的 Java 属性文件中配置这些属性，也可以在 properties 元素的子元素中设置。例如：</p>
+<pre><code class="lang-xml">                    《引用外部配置文件》
+&lt;properties resource=&quot;database.properties&quot;&gt;
+  &lt;property name=&quot;username&quot; value=&quot;dev_user&quot;/&gt;
+  &lt;property name=&quot;password&quot; value=&quot;F2Fa3!33TYyg&quot;/&gt;
+&lt;/properties&gt;
+                    或
+ &lt;properties resource=&quot;database.properties&quot;/&gt;
+</code></pre>
+<p>设置好的属性可以在整个配置文件中用来替换需要动态配置的属性值。比如:</p>
+<pre><code class="lang-xml">                《内部引用，当没有外部引用时，value如properties方式写》
+&lt;dataSource type=&quot;POOLED&quot;&gt;
+  &lt;property name=&quot;driver&quot; value=&quot;${driver}&quot;/&gt;
+  &lt;property name=&quot;url&quot; value=&quot;${url}&quot;/&gt;
+  &lt;property name=&quot;username&quot; value=&quot;${username}&quot;/&gt;
+  &lt;property name=&quot;password&quot; value=&quot;${password}&quot;/&gt;
+&lt;/dataSource&gt;
+</code></pre>
+<p>这个例子中的 username 和 password 将会由 properties 元素中设置的相应值来替换。 driver 和 url 属性将会由 config.properties 文件中对应的值来替换。这样就为配置提供了诸多灵活选择。</p>
+<pre><code class="lang-properties">                        《database.properties》
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/storage?useSSL=true&amp;userUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=GMT
+username=root
+password=123456
+</code></pre>
+<p>同时使用外部和内部文件引用时，以外部为主</p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326231157422.png" alt="image-20220326231157422"></p>
+<h3 id="-typealiases-">类型别名（typeAliases）</h3>
+<p>类型别名可为 Java 类型设置一个缩写名字。 它仅用于 XML 配置，意在降低冗余的全限定类名书写。例如：</p>
+<pre><code class="lang-xml">&lt;typeAliases&gt;
+  &lt;typeAlias alias=&quot;Author&quot; type=&quot;domain.blog.Author&quot;/&gt;
+  &lt;typeAlias alias=&quot;Blog&quot; type=&quot;domain.blog.Blog&quot;/&gt;
+  &lt;typeAlias alias=&quot;Comment&quot; type=&quot;domain.blog.Comment&quot;/&gt;
+  &lt;typeAlias alias=&quot;Post&quot; type=&quot;domain.blog.Post&quot;/&gt;
+  &lt;typeAlias alias=&quot;Section&quot; type=&quot;domain.blog.Section&quot;/&gt;
+  &lt;typeAlias alias=&quot;Tag&quot; type=&quot;domain.blog.Tag&quot;/&gt;
+&lt;/typeAliases&gt;
+</code></pre>
+<p>当这样配置时，<code>Blog</code> 可以用在任何使用 <code>domain.blog.Blog</code> 的地方。</p>
+<p>也可以指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean，比如：</p>
+<pre><code class="lang-xml">&lt;typeAliases&gt;
+  &lt;package name=&quot;domain.blog&quot;/&gt;
+&lt;/typeAliases&gt;
+</code></pre>
+<p>每一个在包 <code>domain.blog</code> 中的 Java Bean，在没有注解的情况下，会使用 Bean 的首字母小写的非限定类名来作为它的别名。即指定的该包下的所有类，都以其类名首字母小写来作为别名 比如 <code>domain.blog.Author</code> 的别名为 <code>author</code>；若有注解，则别名为其注解值。见下面的例子：</p>
+<pre><code class="lang-java">@Alias(&quot;author&quot;)
+public class Author {
+    ...
+}
+</code></pre>
+<h3 id="-settings-">设置（settings）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">设置名</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">有效值</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">cacheEnabled</td>
+<td style="text-align:left">全局性地开启或关闭所有映射器配置文件中已配置的任何缓存。</td>
+<td style="text-align:left">true \</td>
+<td style="text-align:center">false</td>
+<td>true</td>
+</tr>
+<tr>
+<td style="text-align:left">lazyLoadingEnabled</td>
+<td style="text-align:left">延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 <code>fetchType</code> 属性来覆盖该项的开关状态。</td>
+<td style="text-align:left">true \</td>
+<td style="text-align:center">false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>logImpl</th>
+<th>指定 MyBatis 所用日志的具体实现，未指定时将自动查找。</th>
+<th>SLF4J \</th>
+<th>LOG4J \</th>
+<th>LOG4J2 \</th>
+<th>JDK_LOGGING \</th>
+<th>COMMONS_LOGGING \</th>
+<th>STDOUT_LOGGING \</th>
+<th>NO_LOGGING</th>
+<th>未设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-mappers-">映射器（mappers）</h3>
+<p>既然 MyBatis 的行为已经由上述元素配置完了，我们现在就要来定义 SQL 映射语句了。 但首先，我们需要告诉 MyBatis 到哪里去找到这些语句。 在自动查找资源方面，Java 并没有提供一个很好的解决方案，所以最好的办法是直接告诉 MyBatis 到哪里去找映射文件。 你可以使用相对于类路径的资源引用，或完全限定资源定位符（包括 <code>file:///</code> 形式的 URL），或类名和包名等。例如：</p>
+<pre><code class="lang-xml">&lt;!-- 使用相对于类路径的资源引用 --&gt;
+&lt;mappers&gt;
+  &lt;mapper resource=&quot;org/mybatis/builder/AuthorMapper.xml&quot;/&gt;
+  &lt;mapper resource=&quot;org/mybatis/builder/BlogMapper.xml&quot;/&gt;
+  &lt;mapper resource=&quot;org/mybatis/builder/PostMapper.xml&quot;/&gt;
+&lt;/mappers&gt;
+&lt;!-- 使用完全限定资源定位符（URL） --&gt;
+&lt;mappers&gt;
+  &lt;mapper url=&quot;file:///var/mappers/AuthorMapper.xml&quot;/&gt;
+  &lt;mapper url=&quot;file:///var/mappers/BlogMapper.xml&quot;/&gt;
+  &lt;mapper url=&quot;file:///var/mappers/PostMapper.xml&quot;/&gt;
+&lt;/mappers&gt;
+&lt;!-- 使用映射器接口实现类的完全限定类名 --&gt;
+&lt;mappers&gt;
+  &lt;mapper class=&quot;org.mybatis.builder.AuthorMapper&quot;/&gt;
+  &lt;mapper class=&quot;org.mybatis.builder.BlogMapper&quot;/&gt;
+  &lt;mapper class=&quot;org.mybatis.builder.PostMapper&quot;/&gt;
+&lt;/mappers&gt;
+&lt;!-- 将包内的映射器接口实现全部注册为映射器 --&gt;
+&lt;mappers&gt;
+  &lt;package name=&quot;org.mybatis.builder&quot;/&gt;
+&lt;/mappers&gt;
+</code></pre>
+<p>这些配置会告诉 MyBatis 去哪里找映射文件，剩下的细节就应该是每个 SQL 映射文件了，也就是接下来我们要讨论的。</p>
+<h2 id="mapper-xml-">Mapper.xml文件</h2>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326224507904.png" alt="image-20220326224507904"></p>
+<h1 id="-api">常用API</h1>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326231833706.png" alt="image-20220326231833706"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326231840557.png" alt="image-20220326231840557"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326231927201.png" alt="image-20220326231927201"></p>
+<h1 id="dao-">DAO实现</h1>
+<h2 id="-">代理开发</h2>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327204404552.png" alt="image-20220327204404552"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327204429188.png" alt="image-20220327204429188">.</p>
+<h1 id="-sql">动态SQL</h1>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327205428069.png" alt="image-20220327205428069"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327205819337.png" alt="image-20220327205819337"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327214141284.png" alt="image-20220327214141284"></p>
+<h2 id="-">自定义类型转换器</h2>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327215551357.png" alt="image-20220327215551357"></p>
+<p>方法的参数有的时候再看</p>
+<h1 id="-">注解开发</h1>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328143235530.png" alt="image-20220328143235530"></p>
+<h1 id="-">一些规则</h1>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220312223253440.png" alt="image-20220312223253440"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220312223340965.png" alt="image-20220312223340965"></p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

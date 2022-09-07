@@ -34,7 +34,7 @@ for of 遍历的是值
 
 ``可以在字符串拼接时起到很好的作用
 
-如<img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220218135223470.png" alt="image-20220218135223470" style="zoom:50%;" />
+如<img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220218135223470.png" alt="image-20220218135223470" style="zoom:50%;" />
 
 
 
@@ -48,29 +48,29 @@ for of 遍历的是值
 
 ...在等号左边时相当于聚合功能
 
-![image-20220225155701726](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225155701726.png)
+![image-20220225155701726](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225155701726.png)
 
-![image-20220225155718455](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225155718455.png)
+![image-20220225155718455](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225155718455.png)
 
-![image-20220225155740405](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225155740405.png)
+![image-20220225155740405](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225155740405.png)
 
-![image-20220225155757605](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225155757605.png)
+![image-20220225155757605](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225155757605.png)
 
-![image-20220225160340169](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225160340169.png)
+![image-20220225160340169](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225160340169.png)
 
-![image-20220225160406153](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225160406153.png)
+![image-20220225160406153](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225160406153.png)
 
-![image-20220225160655184](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225160655184.png)
+![image-20220225160655184](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225160655184.png)
 
-![image-20220225160707565](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225160707565.png)
+![image-20220225160707565](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225160707565.png)
 
 #### 分散
 
 ...在等号右边时相当于分散功能
 
-![image-20220225161534186](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225161534186.png)
+![image-20220225161534186](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225161534186.png)
 
-![image-20220225161555098](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220225161555098.png)
+![image-20220225161555098](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220225161555098.png)
 
 
 
@@ -84,9 +84,9 @@ for of 遍历的是值
 
 定义：var 函数名 = function （）{}
 
-​			或者  function 函数名 （）{}
+			或者  function 函数名 （）{}
 
-其中函数参数定义个数和实际传入的参数个数可以不相等，js提供了一个关键字arguments数组来获取形参个数。还引入了rest来表示<img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220115145920259.png" alt="image-20220115145920259" style="zoom:67%;" />
+其中函数参数定义个数和实际传入的参数个数可以不相等，js提供了一个关键字arguments数组来获取形参个数。还引入了rest来表示<img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220115145920259.png" alt="image-20220115145920259" style="zoom:67%;" />
 
 ## 字符串
 
@@ -1121,13 +1121,13 @@ setTimeout(() => {
 
 ## BOM
 
-![image-20220314194412799](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314194412799.png)
+![image-20220314194412799](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314194412799.png)
 
-![image-20220314194446140](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314194446140.png)
+![image-20220314194446140](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314194446140.png)
 
 ## DOM
 
-![image-20220314194610319](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314194610319.png)
+![image-20220314194610319](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314194610319.png)
 
 
 
@@ -1137,11 +1137,11 @@ var定义的作用域同java类似
 
 ## 方法
 
-<img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220115152204588.png" alt="image-20220115152204588" style="zoom:50%;" />
+<img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220115152204588.png" alt="image-20220115152204588" style="zoom:50%;" />
 
 this指向调用方法的对象，任何函数都有一个apply方法来修改this指向的对象
 
-<img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220115152533411.png" alt="image-20220115152533411" style="zoom:50%;" />
+<img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220115152533411.png" alt="image-20220115152533411" style="zoom:50%;" />
 
 ## 正则表达式
 
@@ -1211,7 +1211,7 @@ this指向调用方法的对象，任何函数都有一个apply方法来修改th
 
 ## jQuery
 
-![image-20220116145243398](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220116145243398.png)
+![image-20220116145243398](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220116145243398.png)
 
 需要引入
 

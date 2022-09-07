@@ -66,7 +66,7 @@
         <div id='readme' style='width:70%;margin-left:20%;'>
           	<article class='markdown-body'>
             	<h1 id="-springmvc">初识SpringMVC</h1>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319221241136.png" alt=""></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319221241136.png" alt=""></p>
 <p>1、spring框架围绕Dispatcherservlet展开，dispatcherservlet本质上还是一个servlet，所有的请求都会经过dispatcherservlet，所以只在web.xml中注册一个servlet。</p>
 <pre><code class="lang-xml"> &lt;servlet&gt;
    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
@@ -411,19 +411,19 @@ public class annotation {
 </code></pre>
 <p>可以看到，不同的请求会指向同一个页面，展现不同的信息，所以控制器和视图是弱耦合</p>
 <h2 id="requestmapping">RequestMapping</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319221725718.png" alt="image-20220319221725718"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319221725718.png" alt="image-20220319221725718"></p>
 <h2 id="responsebody">ResponseBody</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319223716614.png" alt="image-20220319223716614"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319224501993.png" alt="image-20220319224501993"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319224613281.png" alt="image-20220319224613281"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319223716614.png" alt="image-20220319223716614"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319224501993.png" alt="image-20220319224501993"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319224613281.png" alt="image-20220319224613281"></p>
 <h2 id="requestbody">RequestBody</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319225909871.png" alt="image-20220319225909871"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319225909871.png" alt="image-20220319225909871"></p>
 <h2 id="requestparam">RequestParam</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319230617610.png" alt="image-20220319230617610"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319230850577.png" alt="image-20220319230850577"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319230617610.png" alt="image-20220319230617610"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319230850577.png" alt="image-20220319230850577"></p>
 <h2 id="requestheader">RequestHeader</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319232549179.png" alt="image-20220319232549179"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319232806555.png" alt="image-20220319232806555"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319232549179.png" alt="image-20220319232549179"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319232806555.png" alt="image-20220319232806555"></p>
 <h1 id="restful">Restful</h1>
 <p>一种资源操作和资源定位的风格。</p>
 <p>原始风格</p>
@@ -468,7 +468,7 @@ public class User {
     }
 }
 </code></pre>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211105215707082.png" alt="image-20211105215707082"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211105215707082.png" alt="image-20211105215707082"></p>
 <p>URL如上，即name和user的形参格式一致时，可以直接接收到。</p>
 <p>如果不一致</p>
 <pre><code class="lang-java">@Controller
@@ -483,10 +483,10 @@ public class User {
 </code></pre>
 <p>@RequestParam可以将括号内的参数识别为name</p>
 <p>此时的url</p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211105220116795.png" alt="image-20211105220116795"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211105220116795.png" alt="image-20211105220116795"></p>
 <p>如果前端传递的是一个对象，参数直接使用对象即可，但是表单所提供的属性参数必须和对象的属性相同。</p>
 <h1 id="-">类型转换器</h1>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319231928995.png" alt="image-20220319231928995"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319231928995.png" alt="image-20220319231928995"></p>
 <h1 id="-">乱码问题</h1>
 <p>springmvc为我们提供了一个乱码问题的过滤器</p>
 <pre><code class="lang-xml">&lt;filter&gt;
@@ -534,7 +534,7 @@ public class Json {
 }
 </code></pre>
 <p>此时前端的页面响应为</p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211106140704372.png" alt="image-20211106140704372"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211106140704372.png" alt="image-20211106140704372"></p>
 <p>可见，将一个对象转化为字符串形式，这也是json的思想</p>
 <p>上文的@Data   //提供了get set hashcode equal等方法
                     @AllArgsConstructor     //有参构造器
@@ -577,50 +577,50 @@ public class Json {
     &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
 &lt;packaging&gt;maven-archetype&lt;/packaging&gt;
 </code></pre><h1 id="jdbctemplate">jdbcTemplate</h1>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220320174155592.png" alt="image-20220320174155592"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220321202343957.png" alt="image-20220321202343957"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220320174155592.png" alt="image-20220320174155592"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220321202343957.png" alt="image-20220321202343957"></p>
 <h1 id="-">拦截器</h1>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220322184513003.png" alt="image-20220322184513003"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220322190411488.png" alt="image-20220322190411488"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220322184513003.png" alt="image-20220322184513003"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220322190411488.png" alt="image-20220322190411488"></p>
 <h1 id="-">异常处理</h1>
 <h1 id="aop">AOP</h1>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220323203523548.png" alt="image-20220323203523548"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326134503146.png" alt="image-20220326134503146"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220323203523548.png" alt="image-20220323203523548"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326134503146.png" alt="image-20220326134503146"></p>
 <h2 id="xml-">XML方式</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173231840.png" alt="image-20220326173231840"></p>
-<h3 id="-image-20220326171457214">切点表达式写法<img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171457214.png" alt="image-20220326171457214"></h3>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171535009.png" alt="image-20220326171535009"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326173231840.png" alt="image-20220326173231840"></p>
+<h3 id="-image-20220326171457214">切点表达式写法<img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326171457214.png" alt="image-20220326171457214"></h3>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326171535009.png" alt="image-20220326171535009"></p>
 <h3 id="-">通知类型</h3>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171610145.png" alt="image-20220326171610145"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326171610145.png" alt="image-20220326171610145"></p>
 <p>其中环绕通知的通知中形参必须有一个proceedingJoinPoint 作为当前的切点 如下：</p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326172324461.png" alt="image-20220326172324461"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326172324461.png" alt="image-20220326172324461"></p>
 <h3 id="-">切点表达式抽取</h3>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173056764.png" alt="image-20220326173056764"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326173056764.png" alt="image-20220326173056764"></p>
 <h2 id="-">注解方式</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326182419183.png" alt="image-20220326182419183"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326182419183.png" alt="image-20220326182419183"></p>
 <h3 id="-">注解通知类型</h3>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173953987.png" alt="image-20220326173953987"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326173953987.png" alt="image-20220326173953987"></p>
 <h3 id="-">切点表达式抽取</h3>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326182401732.png" alt="image-20220326182401732"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326182401732.png" alt="image-20220326182401732"></p>
 <p>本来想自己定义一个字符串 结果发现不是单纯的字符串 他不能识别</p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326190702402.png" alt="image-20220326190702402"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326190702402.png" alt="image-20220326190702402"></p>
 <h1 id="-">事务</h1>
 <h2 id="-">编程式事务</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210514575.png" alt="image-20220326210514575"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210550018.png" alt="image-20220326210550018"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210606215.png" alt="image-20220326210606215"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210629819.png" alt="image-20220326210629819"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326210514575.png" alt="image-20220326210514575"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326210550018.png" alt="image-20220326210550018"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326210606215.png" alt="image-20220326210606215"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326210629819.png" alt="image-20220326210629819"></p>
 <h2 id="-">声明式事务</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326211331967.png" alt=""></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328134925187.png" alt="image-20220328134925187"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326211331967.png" alt=""></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328134925187.png" alt="image-20220328134925187"></p>
 <p>先声明一个事务管理器 然后进行相应的事务增强配置</p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326213141834.png" alt="image-20220326213141834"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326213141834.png" alt="image-20220326213141834"></p>
 <h2 id="-">基于注解的事务配置</h2>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326215923267.png" alt="image-20220326215923267"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326215923267.png" alt="image-20220326215923267"></p>
 <p>同样需要配置事务管理器 然后开启注解驱动 在相应的类或者方法上面加注解即可</p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135014326.png" alt="image-20220328135014326"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135106935.png" alt="image-20220328135106935"></p>
-<p><img src="C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135151614.png" alt="image-20220328135151614"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328135014326.png" alt="image-20220328135014326"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328135106935.png" alt="image-20220328135106935"></p>
+<p><img src="C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328135151614.png" alt="image-20220328135151614"></p>
 <h1 id="ssm-">SSM整合</h1>
 
           	</article>

@@ -1,0 +1,188 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-">并发编程</h1>
+<h2 id="-">进程与线程</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510222932824.png" alt="image-20220510222932824"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510223250056.png" alt="image-20220510223250056"></p>
+<h2 id="-">并行与并发</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510223644025.png" alt="image-20220510223644025"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510223828343.png" alt="image-20220510223828343"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510223852680.png" alt="image-20220510223852680"></p>
+<h2 id="-">应用</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510224413100.png" alt="image-20220510224413100"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510224700328.png" alt="image-20220510224700328"></p>
+<h1 id="java-">java线程</h1>
+<h2 id="-">创建线程</h2>
+<h3 id="thread">Thread</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510225715458.png" alt="image-20220510225715458"></p>
+<h3 id="runnable">Runnable</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510225807252.png" alt="image-20220510225807252"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510230310708.png" alt="image-20220510230310708"></p>
+<h3 id="futuretask">FutureTask</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510230805127.png" alt="image-20220510230805127"></p>
+<h2 id="-">原理</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510231809849.png" alt="image-20220510231809849"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510233956448.png" alt="image-20220510233956448"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510234256666.png" alt="image-20220510234256666"></p>
+<h2 id="-">常见方法</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510234708233.png" alt="image-20220510234708233"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510234857336.png" alt="image-20220510234857336"></p>
+<h3 id="start-run">start run</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510235510880.png" alt="image-20220510235510880"></p>
+<h3 id="sleep-yield">sleep yield</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510235556461.png" alt="image-20220510235556461"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513122839095.png" alt="image-20220513122839095"></p>
+<h3 id="join">join</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513124007143.png" alt="image-20220513124007143"></p>
+<h3 id="interrupt">interrupt</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513124044994.png" alt="image-20220513124044994"></p>
+<h3 id="-">两阶段终止模式</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513130153281.png" alt="image-20220513130153281"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513130628462.png" alt="image-20220513130628462"></p>
+<h2 id="-">守护线程</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513131420146.png" alt="image-20220513131420146"></p>
+<h2 id="-">线程状态</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513131715670.png" alt="image-20220513131715670"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513131703038.png" alt="image-20220513131703038"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513131803251.png" alt="image-20220513131803251"></p>
+<h1 id="-">线程安全</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513161617819.png" alt="image-20220513161617819"></p>
+<h2 id="synchronize">synchronize</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513161720653.png" alt="image-20220513161720653"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513161820526.png" alt="image-20220513161820526"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513162718499.png" alt="image-20220513162718499"></p>
+<h2 id="-">变量分析</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513164918927.png" alt="image-20220513164918927"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513165043535.png" alt="image-20220513165043535"></p>
+<h2 id="-">线程安全类</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513170405476.png" alt="image-20220513170405476"></p>
+<h1 id="monitor">monitor</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514132645354.png" alt="image-20220514132645354"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514133113301.png" alt="image-20220514133113301"></p>
+<h2 id="-">轻量级锁</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514171229444.png" alt="image-20220514171229444"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514171507066.png" alt="image-20220514171507066"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514171522218.png" alt="image-20220514171522218"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514171624630.png" alt="image-20220514171624630"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514171833425.png" alt="image-20220514171833425"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514172009402.png" alt="image-20220514172009402"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514172103970.png" alt="image-20220514172103970"></p>
+<h2 id="-">自旋优化</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514173235357.png" alt="image-20220514173235357"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514173425648.png" alt="image-20220514173425648"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514173451223.png" alt="image-20220514173451223"></p>
+<h2 id="-">偏向锁</h2>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514173830962.png" alt="image-20220514173830962"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514173944344.png" alt="image-20220514173944344"></p>
+<h3 id="-">偏向状态</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514174024797.png" alt="image-20220514174024797"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514175409278.png" alt="image-20220514175409278"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514175900358.png" alt="image-20220514175900358"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514175912142.png" alt="image-20220514175912142"></p>
+<h3 id="-">批量重偏向</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514180010599.png" alt="image-20220514180010599"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514180036043.png" alt="image-20220514180036043"></p>
+<h3 id="-">批量撤销</h3>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514180655376.png" alt="image-20220514180655376"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514180748347.png" alt="image-20220514180748347"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514180814779.png" alt="image-20220514180814779"></p>
+<h3 id="-">锁消除</h3>
+<p>JVM中存在JIT即时优化器，运行前会优化代码，如运行之前检查加锁是否生效，如果不生效就会优化掉锁直接执行代码（加锁后效率可能降低十倍），可以手动控制优化机制是否生效</p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514182157771.png" alt="image-20220514182157771"></p>
+<h1 id="wait-notify">wait notify</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514191603551.png" alt="image-20220514191603551"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514191825044.png" alt="image-20220514191825044"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220514193739691.png" alt="image-20220514193739691"></p>
+<h1 id="-">保护性暂停</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220517205602295.png" alt="image-20220517205602295"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220517210914569.png" alt="image-20220517210914569"></p>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220517212346543.png" alt="image-20220517212346543"></p>
+<h1 id="join-">join原理</h1>
+<p><img src="C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220517212200445.png" alt="image-20220517212200445"></p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

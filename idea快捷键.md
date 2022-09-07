@@ -16,13 +16,13 @@ ctrl+鼠标中键
 
 shift + t
 
-![image-20220402161438825](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220402161438825.png)
+![image-20220402161438825](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402161438825.png)
 
 ## 提取变量
 
 shift + E
 
-![image-20220402162247364](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220402162247364.png)
+![image-20220402162247364](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402162247364.png)
 
 
 
@@ -46,7 +46,7 @@ shift + enter
 
 shift + x
 
-![image-20220416155328955](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220416155328955.png)
+![image-20220416155328955](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416155328955.png)
 
 ## 运行
 
@@ -62,25 +62,25 @@ alt + e
 
 alt + 1
 
-![image-20220416233031626](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220416233031626.png)
+![image-20220416233031626](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416233031626.png)
 
 ## 类注释
 
 *c
 
-![image-20220421225120974](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220421225120974.png)
+![image-20220421225120974](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220421225120974.png)
 
 ## 方法注释
 
 /**+enter
 
-![](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220421235115810.png)
+![](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220421235115810.png)
 
 ## 图
 
 ctrl + alt + q
 
-![image-20220417124349717](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220417124349717.png)
+![image-20220417124349717](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220417124349717.png)
 
 # 默认
 
@@ -96,7 +96,7 @@ alt+enter
 
 ctrl+Q
 
-![image-20220402160216648](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220402160216648.png)
+![image-20220402160216648](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402160216648.png)
 
 
 
@@ -106,7 +106,7 @@ ctrl+Q
 
 CTRL + 空格
 
-![image-20220402160550962](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220402160550962.png)
+![image-20220402160550962](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402160550962.png)
 
 ### 类型匹配补全
 
@@ -114,7 +114,7 @@ ctrl + shift + 空格
 
 上面的只提示补全信息 这个可以按照类型提示
 
-![image-20220402160603669](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220402160603669.png)
+![image-20220402160603669](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402160603669.png)
 
 ### 补全语句
 
@@ -162,4 +162,4 @@ alt + shift + j 取消选择最后一个
 
 ctrl + alt + shift + j 选择全部相同
 
- 
+

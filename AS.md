@@ -10,9 +10,9 @@ a=a^b;
 
 # 提取最右的1
 
-![image-20220417220018557](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220417220018557.png)
+![image-20220417220018557](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220417220018557.png)
 
-![image-20220417220045366](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220417220045366.png)
+![image-20220417220045366](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220417220045366.png)
 
 # 小和问题
 
@@ -210,15 +210,15 @@ java提供的以小顶堆为结构的
 PriorityQueue<Integer> heap = new PriorityQueue<>();
 ```
 
-![image-20220419154038836](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220419154038836.png)
+![image-20220419154038836](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220419154038836.png)
 
 可以解决基本有序数组排序问题（即每个数在最终排好序的位置与当前位置的差不超过K）
 
 # 比较器
 
-![image-20220419155404475](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220419155404475.png)
+![image-20220419155404475](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220419155404475.png)
 
-![image-20220419154306228](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220419154306228.png)
+![image-20220419154306228](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220419154306228.png)
 
 # 桶排
 
@@ -280,13 +280,13 @@ public class BucketTest {
 
 # 哈希表和有序表
 
-![image-20220420211722085](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220420211722085.png)
+![image-20220420211722085](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220420211722085.png)
 
-![image-20220420211731447](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220420211731447.png)
+![image-20220420211731447](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220420211731447.png)
 
 ## 回文链表
 
-![image-20220420211829666](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220420211829666.png)
+![image-20220420211829666](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220420211829666.png)
 
 ```java
 class Node {
@@ -422,15 +422,15 @@ class Node {
 
 不用额外空间时采用快慢指针   若有环则相遇 快指针回到原点再次相遇即为环首
 
-![image-20220421152543935](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220421152543935.png)
+![image-20220421152543935](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220421152543935.png)
 
 # 二叉树
 
-![image-20220422125604121](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220422125604121.png)
+![image-20220422125604121](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422125604121.png)
 
 ## 递归序
 
-![image-20220422121845613](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220422121845613.png)
+![image-20220422121845613](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422121845613.png)
 
 1为第一次到达该节点 2为第二次到达 3为第三次到达  每个节点都会被经历过三次 
 
@@ -446,25 +446,25 @@ class Node {
 
 ## 题目
 
-![image-20220424191614877](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220424191614877.png)
+![image-20220424191614877](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220424191614877.png)
 
-![image-20220424200540473](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220424200540473.png)
+![image-20220424200540473](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220424200540473.png)
 
-![image-20220425124208230](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220425124208230.png)
+![image-20220425124208230](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220425124208230.png)
 
-![image-20220425124844162](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220425124844162.png)
+![image-20220425124844162](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220425124844162.png)
 
-![image-20220425133313726](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220425133313726.png)
+![image-20220425133313726](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220425133313726.png)
 
 其实除了第一次对折会产生一个凹痕 剩下的每次对折都是在当前已经有的折痕上方产生一个凹痕 下方产生一个凸痕 也就是说折叠N次的纸条的痕迹就是N层的 头结点为凹的 每一个节点的左孩子为凹右孩子为凸的满二叉树  而折痕从上向下的顺序也就是对应的二叉树的中序遍历
 
 # 图
 
-![image-20220426131951288](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220426131951288.png)
+![image-20220426131951288](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220426131951288.png)
 
 # 递归
 
-![image-20220426210021836](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220426210021836.png)
+![image-20220426210021836](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220426210021836.png)
 
 # 从高位到低位解析数字
 
@@ -719,8 +719,10 @@ class UF {
     /* 返回图中有多少个连通分量 */
     public int count();
     
+
     /* 返回当前节点的根节点 */
     private int find(int x);
+
 }
 存储数据结构
 如何表示节点与节点之间的连通性关系呢？？
@@ -988,4 +990,4 @@ private int[] getNext(char[] chars) {
 
 # 集合转数组
 
-![image-20220605142906730](C:/Users/%E5%88%98%E6%80%BC%E6%80%BC/AppData/Roaming/Typora/typora-user-images/image-20220605142906730.png)
+![image-20220605142906730](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220605142906730.png)

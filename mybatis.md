@@ -2,15 +2,15 @@
 
 数据持久化
 
-​	持久化就是将程序的数据在持久状态和瞬时状态转化的过程
+	持久化就是将程序的数据在持久状态和瞬时状态转化的过程
 
-​	内存：断电即失，但是为了保存数据，所以需要数据持久化
+	内存：断电即失，但是为了保存数据，所以需要数据持久化
 
 # 持久层
 
 完成持久化工作的代码块
 
-![image-20220326223855971](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326223855971.png)
+![image-20220326223855971](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326223855971.png)
 
 ## 创建mybatis配置文件
 
@@ -288,7 +288,7 @@ public void testLike(){
 
 ### environments
 
-![image-20220326230835594](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326230835594.png)
+![image-20220326230835594](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326230835594.png)
 
 ```xml
 <environments default="development">
@@ -397,7 +397,7 @@ password=123456
 
 同时使用外部和内部文件引用时，以外部为主
 
-![image-20220326231157422](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326231157422.png)
+![image-20220326231157422](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326231157422.png)
 
 ### 类型别名（typeAliases）
 
@@ -477,47 +477,47 @@ public class Author {
 
 ## Mapper.xml文件
 
-![image-20220326224507904](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326224507904.png)
+![image-20220326224507904](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326224507904.png)
 
 # 常用API
 
-![image-20220326231833706](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326231833706.png)
+![image-20220326231833706](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326231833706.png)
 
-![image-20220326231840557](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326231840557.png)
+![image-20220326231840557](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326231840557.png)
 
-![image-20220326231927201](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326231927201.png)
+![image-20220326231927201](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326231927201.png)
 
 # DAO实现
 
 ## 代理开发
 
-![image-20220327204404552](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220327204404552.png)
+![image-20220327204404552](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327204404552.png)
 
-![image-20220327204429188](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220327204429188.png).
+![image-20220327204429188](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327204429188.png).
 
 # 动态SQL
 
-![image-20220327205428069](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220327205428069.png)
+![image-20220327205428069](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327205428069.png)
 
-![image-20220327205819337](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220327205819337.png)
+![image-20220327205819337](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327205819337.png)
 
-![image-20220327214141284](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220327214141284.png)
+![image-20220327214141284](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327214141284.png)
 
 ## 自定义类型转换器
 
-![image-20220327215551357](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220327215551357.png)
+![image-20220327215551357](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220327215551357.png)
 
 方法的参数有的时候再看
 
 # 注解开发
 
-![image-20220328143235530](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328143235530.png)
+![image-20220328143235530](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328143235530.png)
 
 
 
 # 一些规则
 
-![image-20220312223253440](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220312223253440.png)
+![image-20220312223253440](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220312223253440.png)
 
-![image-20220312223340965](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220312223340965.png)
+![image-20220312223340965](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220312223340965.png)
 

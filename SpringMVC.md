@@ -1,6 +1,6 @@
 #  	初识SpringMVC
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319221241136.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319221241136.png)
 
 1、spring框架围绕Dispatcherservlet展开，dispatcherservlet本质上还是一个servlet，所有的请求都会经过dispatcherservlet，所以只在web.xml中注册一个servlet。
 
@@ -400,31 +400,31 @@ public class annotation {
 
 ## RequestMapping
 
-![image-20220319221725718](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319221725718.png)
+![image-20220319221725718](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319221725718.png)
 
 ## ResponseBody
 
-![image-20220319223716614](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319223716614.png)
+![image-20220319223716614](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319223716614.png)
 
-![image-20220319224501993](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319224501993.png)
+![image-20220319224501993](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319224501993.png)
 
-![image-20220319224613281](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319224613281.png)
+![image-20220319224613281](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319224613281.png)
 
 ## RequestBody
 
-![image-20220319225909871](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319225909871.png)
+![image-20220319225909871](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319225909871.png)
 
 ## RequestParam
 
-![image-20220319230617610](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319230617610.png)
+![image-20220319230617610](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319230617610.png)
 
-![image-20220319230850577](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319230850577.png)
+![image-20220319230850577](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319230850577.png)
 
 ## RequestHeader
 
-![image-20220319232549179](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319232549179.png)
+![image-20220319232549179](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319232549179.png)
 
-![image-20220319232806555](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319232806555.png)
+![image-20220319232806555](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319232806555.png)
 
 
 
@@ -496,7 +496,7 @@ public class User {
 }
 ```
 
-![image-20211105215707082](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211105215707082.png)
+![image-20211105215707082](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211105215707082.png)
 
 URL如上，即name和user的形参格式一致时，可以直接接收到。
 
@@ -518,13 +518,13 @@ public class User {
 
 此时的url
 
-![image-20211105220116795](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211105220116795.png)
+![image-20211105220116795](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211105220116795.png)
 
 如果前端传递的是一个对象，参数直接使用对象即可，但是表单所提供的属性参数必须和对象的属性相同。
 
 # 类型转换器
 
-![image-20220319231928995](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319231928995.png)
+![image-20220319231928995](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319231928995.png)
 
 
 
@@ -590,7 +590,7 @@ public class Json {
 
 此时前端的页面响应为
 
-![image-20211106140704372](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211106140704372.png)
+![image-20211106140704372](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211106140704372.png)
 
 可见，将一个对象转化为字符串形式，这也是json的思想
 
@@ -651,95 +651,95 @@ json包
 
 # jdbcTemplate
 
-![image-20220320174155592](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220320174155592.png)
+![image-20220320174155592](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220320174155592.png)
 
-![image-20220321202343957](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220321202343957.png)
+![image-20220321202343957](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220321202343957.png)
 
 # 	拦截器
 
-![image-20220322184513003](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220322184513003.png)
+![image-20220322184513003](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220322184513003.png)
 
-![image-20220322190411488](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220322190411488.png)
+![image-20220322190411488](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220322190411488.png)
 
 # 异常处理
 
 # AOP
 
-![image-20220323203523548](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220323203523548.png)
+![image-20220323203523548](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220323203523548.png)
 
-![image-20220326134503146](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326134503146.png)
+![image-20220326134503146](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326134503146.png)
 
 ## XML方式
 
-![image-20220326173231840](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173231840.png)
+![image-20220326173231840](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326173231840.png)
 
-###  切点表达式写法![image-20220326171457214](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171457214.png)
+###  切点表达式写法![image-20220326171457214](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326171457214.png)
 
-![image-20220326171535009](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171535009.png)
+![image-20220326171535009](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326171535009.png)
 
 ### 通知类型
 
-![image-20220326171610145](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326171610145.png)
+![image-20220326171610145](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326171610145.png)
 
 其中环绕通知的通知中形参必须有一个proceedingJoinPoint 作为当前的切点 如下：
 
-![image-20220326172324461](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326172324461.png)
+![image-20220326172324461](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326172324461.png)
 
 ### 切点表达式抽取
 
-![image-20220326173056764](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173056764.png)
+![image-20220326173056764](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326173056764.png)
 
 ## 注解方式
 
-![image-20220326182419183](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326182419183.png)
+![image-20220326182419183](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326182419183.png)
 
 ### 注解通知类型
 
-![image-20220326173953987](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326173953987.png)
+![image-20220326173953987](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326173953987.png)
 
 ### 切点表达式抽取
 
-![image-20220326182401732](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326182401732.png)
+![image-20220326182401732](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326182401732.png)
 
 本来想自己定义一个字符串 结果发现不是单纯的字符串 他不能识别
 
-![image-20220326190702402](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326190702402.png)
+![image-20220326190702402](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326190702402.png)
 
 # 事务
 
 ## 编程式事务
 
-![image-20220326210514575](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210514575.png)
+![image-20220326210514575](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326210514575.png)
 
-![image-20220326210550018](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210550018.png)
+![image-20220326210550018](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326210550018.png)
 
-![image-20220326210606215](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210606215.png)
+![image-20220326210606215](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326210606215.png)
 
-![image-20220326210629819](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326210629819.png)
+![image-20220326210629819](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326210629819.png)
 
 ## 声明式事务
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326211331967.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326211331967.png)
 
-![image-20220328134925187](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328134925187.png)
+![image-20220328134925187](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328134925187.png)
 
 先声明一个事务管理器 然后进行相应的事务增强配置
 
-![image-20220326213141834](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326213141834.png)
+![image-20220326213141834](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326213141834.png)
 
 ## 基于注解的事务配置
 
-![image-20220326215923267](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326215923267.png)
+![image-20220326215923267](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326215923267.png)
 
 
 
 同样需要配置事务管理器 然后开启注解驱动 在相应的类或者方法上面加注解即可
 
-![image-20220328135014326](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135014326.png)
+![image-20220328135014326](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328135014326.png)
 
-![image-20220328135106935](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135106935.png)
+![image-20220328135106935](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328135106935.png)
 
-![image-20220328135151614](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220328135151614.png)
+![image-20220328135151614](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220328135151614.png)
 
 
 

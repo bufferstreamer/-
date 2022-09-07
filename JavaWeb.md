@@ -1,146 +1,146 @@
- 
+
 
 # mysql
 
 ## DDL(database define )
 
-![image-20220310103408924](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310103408924.png)
+![image-20220310103408924](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310103408924.png)
 
-![image-20220310103555288](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310103555288.png)
+![image-20220310103555288](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310103555288.png)
 
-![image-20220310103629529](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310103629529.png)
+![image-20220310103629529](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310103629529.png)
 
-![image-20220310104041910](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310104041910.png)
+![image-20220310104041910](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310104041910.png)
 
-![image-20220310105424636](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310105424636.png)
+![image-20220310105424636](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310105424636.png)
 
 ## DML
 
-![image-20220310112443392](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310112443392.png)
+![image-20220310112443392](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310112443392.png)
 
-![image-20220310112917819](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310112917819.png)
+![image-20220310112917819](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310112917819.png)
 
-![image-20220310112930104](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310112930104.png)
+![image-20220310112930104](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310112930104.png)
 
 ## DQL
 
-![image-20220310113232060](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310113232060.png)
+![image-20220310113232060](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310113232060.png)
 
-![image-20220310113602453](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310113602453.png)
+![image-20220310113602453](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310113602453.png)
 
-![image-20220310113752671](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310113752671.png)
+![image-20220310113752671](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310113752671.png)
 
-![image-20220310114206136](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310114206136.png)
+![image-20220310114206136](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310114206136.png)
 
-![image-20220310114432195](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310114432195.png)
+![image-20220310114432195](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310114432195.png)
 
-![image-20220310114715713](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310114715713.png)
+![image-20220310114715713](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310114715713.png)
 
-![image-20220310115420665](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310115420665.png)
+![image-20220310115420665](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310115420665.png)
 
 ## 约束
 
-![image-20220310120447090](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310120447090.png)
+![image-20220310120447090](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310120447090.png)
 
-![image-20220310161118672](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310161118672.png)
+![image-20220310161118672](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310161118672.png)
 
 ## 多表查询
 
-![image-20220310163742347](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310163742347.png)
+![image-20220310163742347](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310163742347.png)
 
-![image-20220310164013426](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310164013426.png)
+![image-20220310164013426](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310164013426.png)
 
-![image-20220310164343761](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310164343761.png)
+![image-20220310164343761](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310164343761.png)
 
 ## 事务
 
-![image-20220310171440774](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310171440774.png)
+![image-20220310171440774](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310171440774.png)
 
-![image-20220310172129577](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310172129577.png)
+![image-20220310172129577](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310172129577.png)
 
 # JDBC
 
 
 
-![image-20220310172932116](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310172932116.png)
+![image-20220310172932116](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310172932116.png)
 
 
 
-![image-20220310204320401](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310204320401.png)
+![image-20220310204320401](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310204320401.png)
 
 
 
-![image-20220311132146183](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220311132146183.png)
+![image-20220311132146183](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220311132146183.png)
 
-![image-20220310204945243](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220310204945243.png)
+![image-20220310204945243](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220310204945243.png)
 
 
 
-![image-20220311154908183](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220311154908183.png)
+![image-20220311154908183](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220311154908183.png)
 
-![image-20220311160035579](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220311160035579.png)
+![image-20220311160035579](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220311160035579.png)
 
 # 连接池
 
-![image-20220311161306294](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220311161306294.png)
+![image-20220311161306294](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220311161306294.png)
 
-![image-20220311161440736](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220311161440736.png)
+![image-20220311161440736](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220311161440736.png)
 
 # Maven
 
-![image-20220311204248262](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220311204248262.png)
+![image-20220311204248262](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220311204248262.png)
 
 # Web
 
-![image-20220314211206377](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314211206377.png)
+![image-20220314211206377](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314211206377.png)
 
 ## HTTP
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314211716423.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314211716423.png)
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314212026254.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314212026254.png)
 
-![image-20220314212322622](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314212322622.png)
+![image-20220314212322622](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314212322622.png)
 
 
 
 ## 响应状态码
 
-![image-20220314220909324](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314220909324.png)
+![image-20220314220909324](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314220909324.png)
 
 
 
 # **servlet**
 
-![image-20220314223226441](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314223226441.png)
+![image-20220314223226441](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314223226441.png)
 
 ## 执行流程
 
-![image-20220314225505802](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314225505802.png)
+![image-20220314225505802](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314225505802.png)
 
 ## 生命周期
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314225621218.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314225621218.png)
 
-## 方法![image-20220314230016868](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220314230016868.png)![image-20220830142431795](JavaWeb.assets/image-20220830142431795.png)
+## 方法![image-20220314230016868](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220314230016868.png)![image-20220830142431795](JavaWeb.assets/image-20220830142431795.png)
 
 ![image-20220830142502115](JavaWeb.assets/image-20220830142502115.png)
 
 ## Servlet urlpatten
 
-![image-20220318122214627](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318122214627.png)
+![image-20220318122214627](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318122214627.png)
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318122703062.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318122703062.png)
 
 ## xml版本servlet
 
 
 
-​		![image-20211021223704800](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211021223704800.png)
+		![image-20211021223704800](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211021223704800.png)
 
 servlet-name为下文mapping提供 class为实现了servlet接口的类
 
-![image-20211021223214132](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211021223214132.png)
+![image-20211021223214132](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211021223214132.png)
 
 url表示请求路径 *是通配符 注意前面有**/** 	比如Localhost：8080/任意都进入该class类
 
@@ -156,29 +156,29 @@ url可以写成*.ln格式 此时没有**/**   任何前缀加.ln均可进入该w
 
 # Request
 
-![image-20220318124313056](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318124313056.png)
+![image-20220318124313056](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318124313056.png)
 
-![image-20220318125007082](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318125007082.png)
+![image-20220318125007082](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318125007082.png)
 
-![image-20220318154809694](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318154809694.png)
+![image-20220318154809694](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318154809694.png)
 
 ## 请求转发
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318155318684.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318155318684.png)
 
 
 
 # Response
 
-![image-20220318155542611](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318155542611.png)
+![image-20220318155542611](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318155542611.png)
 
 ## 重定向
 
-![image-20220318155847429](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318155847429.png)
+![image-20220318155847429](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318155847429.png)
 
-![image-20220318160357862](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318160357862.png)
+![image-20220318160357862](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318160357862.png)
 
-![image-20220318200154947](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318200154947.png)
+![image-20220318200154947](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318200154947.png)
 
 
 
@@ -193,7 +193,7 @@ url可以写成*.ln格式 此时没有**/**   任何前缀加.ln均可进入该w
 public servletContext getServletContext();
 ```
 
-​			
+			
 
 ```java
 public class HelloServlet extends HttpServlet {
@@ -330,6 +330,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 <h2>1、简单分类
 
+
 向浏览器发送数据的方法
 
 ```java
@@ -351,7 +352,7 @@ public PrintWriter getWriter()//写中文
 
 ```java
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    String path = "C:\\Users\\刘怼怼\\Desktop\\html\\xtx-pc-client\\images\\教育部学籍在线验证报告_刘楠.pdf";
+    String path = "C:\\Users\\LN\\Desktop\\html\\xtx-pc-client\\images\\教育部学籍在线验证报告_刘楠.pdf";
     String filename = path.substring(path.lastIndexOf('\\') + 1);
     resp.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename,"utf-8"));
     resp.setCharacterEncoding("utf-8");
@@ -407,13 +408,13 @@ private String getRandom(){
 
 ### **重定向**
 
-![image-20211024104638097](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211024104638097.png)
+![image-20211024104638097](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211024104638097.png)
 
 B收到A得请求会告诉A去找C		url会改变
 
 常见场景：
 
-​	用户登录
+	用户登录
 
 ```java
 public void sendRedirect(String location)
@@ -515,7 +516,7 @@ request.getRequestDispatcher("/success.jsp")生成的URL是http://localhost/r/su
 
 ##  会话
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318210236395.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318210236395.png)
 
 打开浏览器，做了一些事，关闭浏览器，这个过程称为会话
 
@@ -535,7 +536,7 @@ request.getRequestDispatcher("/success.jsp")生成的URL是http://localhost/r/su
 
 ##  cookie
 
-![image-20220318210617151](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318210617151.png)
+![image-20220318210617151](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318210617151.png)
 
 从请求中拿到cookie信息
 
@@ -550,17 +551,17 @@ resp.addCookie();//添加cookie
 cookie.setMaxAge//设置cookie有效期
 ```
 
-![image-20220318211056272](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318211056272.png)
+![image-20220318211056272](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318211056272.png)
 
-![image-20220318211631145](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318211631145.png)
+![image-20220318211631145](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318211631145.png)
 
 ##  session（重点）
 
-![image-20220318211813245](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318211813245.png)
+![image-20220318211813245](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318211813245.png)
 
-![image-20220318212224213](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318212224213.png)
+![image-20220318212224213](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318212224213.png)
 
-![image-20220318212649758](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318212649758.png)
+![image-20220318212649758](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318212649758.png)
 
 
 
@@ -570,11 +571,11 @@ cookie.setMaxAge//设置cookie有效期
 
 **session和cookie的区别**
 
-​	cookie是把用户数据写给浏览器，可以保存多个
+	cookie是把用户数据写给浏览器，可以保存多个
 
-​	session是把用户数据写给服务器，服务端保存
+	session是把用户数据写给服务器，服务端保存
 
-​	创建session
+	创建session
 
 ```java
  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -639,7 +640,7 @@ java server pages:java服务端界面，同servlet，用于动态web技术
 
 JSP本质上是一个servlet,jsp文件会生成一个java文件，里面的内容都放在该java文件的service方法中。
 
-该类实现了JavaBase类 JavaBase继承了HttpServlet![image-20220318202513748](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318202513748.png)
+该类实现了JavaBase类 JavaBase继承了HttpServlet![image-20220318202513748](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318202513748.png)
 
 
 
@@ -657,7 +658,7 @@ JSP本质上是一个servlet,jsp文件会生成一个java文件，里面的内�
 
 ### jsp脚本片段
 
-![image-20220318203138033](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318203138033.png)
+![image-20220318203138033](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318203138033.png)
 
 
 
@@ -733,15 +734,15 @@ JSP本质上是一个servlet,jsp文件会生成一个java文件，里面的内�
 
 #### EL表达式：
 
-![image-20220318203736609](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318203736609.png)
+![image-20220318203736609](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318203736609.png)
 
 ${ }
 
-​	获取数据
+	获取数据
 
-​	执行运算
+	执行运算
 
-​	获得web的常用对象
+	获得web的常用对象
 
 #### JSP标签
 
@@ -753,7 +754,7 @@ ${ }
 
 自定义的供我们使用的标签，作用和java代码一样
 
-![image-20220318204553720](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318204553720.png)
+![image-20220318204553720](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318204553720.png)
 
 
 
@@ -761,29 +762,29 @@ ${ }
 
 一个实体类：
 
-​	必须有无参构造
+	必须有无参构造
 
-​	属性必须私有化
+	属性必须私有化
 
-​	必须有get/set方法
+	必须有get/set方法
 
 一般用来和数据库的字段做ORM映射
 
 ORM:对象关系映射
 
-​	数据库表-->类
+	数据库表-->类
 
-​	字段（列）-->属性
+	字段（列）-->属性
 
-​	行记录    -->对象
+	行记录    -->对象
 
 #  MVC架构
 
-![image-20220318205032889](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318205032889.png)
+![image-20220318205032889](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318205032889.png)
 
-![](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220318205243623.png)
+![](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220318205243623.png)
 
-![image-20211026153400190](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20211026153400190.png)
+![image-20211026153400190](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20211026153400190.png)
 
 # IOC
 
@@ -938,22 +939,22 @@ public class Listener implements HttpSessionListener {
 
 # AJAX
 
-![image-20220319200317180](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319200317180.png)
+![image-20220319200317180](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319200317180.png)
 
 ## 同步异步
 
-![image-20220319200606181](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319200606181.png)
+![image-20220319200606181](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319200606181.png)
 
 ## Axios
 
-![image-20220319205126410](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319205126410.png)
+![image-20220319205126410](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319205126410.png)
 
 # JSON
 
-![image-20220319205719317](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319205719317.png)
+![image-20220319205719317](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319205719317.png)
 
 ## json 与 java bean转换
 
-![image-20220319205904242](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220319205904242.png)
+![image-20220319205904242](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319205904242.png)
 
- 
+
