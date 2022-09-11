@@ -292,11 +292,11 @@ http://www.springframework.org/schema/context/spring-context.xsd
 
 
 
-![image-20220309113015217](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220309113015217.png)
+![image-20220309113015217](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220309113015217.png)
 
 新注解
 
-![image-20220309142716150](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220309142716150.png)
+![image-20220309142716150](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220309142716150.png)
 
 ## bean注册
 
@@ -356,7 +356,7 @@ controller层：@controller
 
 # Spring集成junit
 
-![image-20220326225431172](C:\Users\刘怼怼\AppData\Roaming\Typora\typora-user-images\image-20220326225431172.png)
+![image-20220326225431172](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220326225431172.png)
 
 # AOP
 

@@ -1,4 +1,4 @@
-# 基础操作
+# g基础操作
 
 ![image-20220313221455371](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220313221455371.png)
 

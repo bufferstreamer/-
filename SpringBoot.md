@@ -337,6 +337,8 @@ starter-web里面调用了starter-tomcat然后调用了starter-embed-core
 
 ## 热部署
 
+
+
 ![image-20220402133947389](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402133947389.png)
 
 ![image-20220402133836109](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402133836109.png)
@@ -357,7 +359,7 @@ starter-web里面调用了starter-tomcat然后调用了starter-embed-core
 
 ![image-20220402155204323](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402155204323.png)
 
-	![image-20220402171237837](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402171237837.png)
+![image-20220402171237837](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220402171237837.png)
 
 ### 宽松绑定
 
@@ -674,3 +676,7 @@ return new OrderedHiddenHttpMethodFilter();
 ![image-20220906161152112](SpringBoot.assets/image-20220906161152112.png)
 
 ![image-20220906161232743](SpringBoot.assets/image-20220906161232743.png)
+
+#  异常处理
+
+![image-20220907205656448](D:\笔记\SpringBoot.assets\image-20220907205656448.png)
