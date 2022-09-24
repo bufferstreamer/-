@@ -9,9 +9,9 @@
 # static  （所修饰的成员属于类本身，否则属于对象）
 
     被类中所有的对象所共享，推荐使用类名调用
-
+    
     非静态成员方法可以访问所有变量和方法
-
+    
     静态成员方法只能访问静态变量和方法 因为main函数是静态方法 所以新定义的方法都用静态方法方便main访问
 
 static 方法不能被重写
@@ -83,15 +83,15 @@ this（） 访问本类构造方法 必须在构造器第一行 所以super和th
 多态 前提：1、有继承或者实现的关系
 
     				 2、有方法的重写
-
+    
     				 3、有父类引用指向子类对象 例： 动物 小白 = new 猫（）;
 
 特点：对于成员变量 编译看左边  运行看左边
 
        即编译格式需要与父类相同，假如父类中没有age 则小白.age无法通过编译 运行结果也与父类相同 假如动物.age= 10 猫.age= 5 则运行小白.age= 10
-
+    
      对于成员方法 编译看左边  运行看右边
-
+    
        即编译格式需要与父类相同，假如父类中没有getage（） 则小白.getage（）无法通过编译 运行结果与子类相同 假如动物.getage（）= 10 猫.getage（）= 5 则运行小白.getage（）= 5
 
 优点：提高代码重用性，增加可扩展性。 定义方法的时候使用父类类型作为方法的参数，实现方法时使用子类的类型来实现。
@@ -113,7 +113,7 @@ this（） 访问本类构造方法 必须在构造器第一行 所以super和th
 只有方法名没有方法体叫做抽象方法 有抽象方法的类一定为抽象类 抽象类不一定有抽象方法 抽象类可以有非抽象方法 使用abstract关键字修饰
 
     抽象类不可以直接实例化，需要有一个子类重写抽象类中所有的抽象方法，然后使用多态的形式来实例化。所以抽象类的子类必须重写抽象方法或者他也是一个抽象类，否则会报错
-   		 抽象类可以有构造方法   父类抽象方法的作用就是限定子类中必须重写某个方法
+    	 抽象类可以有构造方法   父类抽象方法的作用就是限定子类中必须重写某个方法
 
 ## 枚举类
 
@@ -129,11 +129,11 @@ this（） 访问本类构造方法 必须在构造器第一行 所以super和th
 ## 接口 interface
 
       类不能继承接口 只能实现 implements 接口 接口不能被实例化 只能通过多态的方式来实现实例化 接口的实现类要么重写接口中的所有方法 要么是一个抽象类
-
+    
               接口中的属性默认被final修饰，无法改变 默认被static修饰，可以通过接口名调用  即 public static final int i = 0; 等价于 int i = 0;
-
+    
               接口没有构造方法 接口不能有非抽象方法 所以接口的方法默认为抽象和公有权限 可以不加 public abstract
-
+    
               接口可以多实现，还可以在继承一个类的同时，多实现多个接口。类只能单继承。接口和接口是继承的关系，并且接口和接口之间可以多继承。
 
 类作为形参和返回值时 需要的是类的对象
@@ -216,8 +216,8 @@ this（） 访问本类构造方法 必须在构造器第一行 所以super和th
 ## System                 
 
 					 public static void exit(int status) 终止虚拟机 0代表正常终止 非0异常终止
-
-                        public static long currentTimeMillis() 获取当前毫秒值
+	
+	                    public static long currentTimeMillis() 获取当前毫秒值
 
 ## BigDecimal  
 
@@ -295,16 +295,16 @@ this（） 访问本类构造方法 必须在构造器第一行 所以super和th
               Object.hashCode可以返回对象的hash值
 
     HashSet集合   是Set的实现类 数据结构是哈希表 对迭代顺序不保证即不保证存储和取出的顺序一致 没有带索引的方法不能用for循环遍历 不包含重复元素
-
+    
     LinkedHashSet集合     是set的实现类 linked保证顺序存储 hash保证不重复
-
+    
     TreeSet集合       是set的实现类 元素可以按照自定义的规则进行排序 TreeSet() 无参构造方法使元素按照自然规则排序
                                                             TreeSet(Compare compare) 带参构造方法使元素按照指定方法排序
                                                         不能用for循环遍历
                                                         <>中的类需要实现TreeSet的接口 同时return 0 认为相等 不添加 1 升序存储 -1 降序存储
                                                         compare( o1 , 02 ) return o1 - o2 升序  return o2 - 01 降序存储
                                                         compareTo (object) return this.object - object 升序 object - this.object 降序
-
+    
                                                         o1=5 o2=4 return 02-01<1 系统认为o1<o2 所以输出o1 o2 即5 4
                                                         o1=5 o2=4 return o1-o2>1 系统认为o1大 所以输出o2 o1 即 4 5
                             只需要记住1-2升序 2-1降序就行
@@ -338,9 +338,9 @@ Collections                         public static<T>  boolean addAll (Collection
 Integer     Integer.valueof(Element)； 将各种类型转换为Integer
 
         Integer.parseInt(String); 将String转换为int
-
+    
         Integer 类中public int intValue(); 将Integer转换为int 注意不是static不能通过类名调用 必须实例化
-
+    
         String.valueof(int); 将int转换为String
 
 # 异常
@@ -348,12 +348,12 @@ Integer     Integer.valueof(Element)； 将各种类型转换为Integer
 异常处理：   try...catch...  
 
 				 try{
-                                可能出现异常的代码；
-                                }catch(异常类名 变量名) {
-                                            异常的处理代码；
-                                }finally {
-                                        finally的操作一定会被执行；
-                                }
+	                            可能出现异常的代码；
+	                            }catch(异常类名 变量名) {
+	                                        异常的处理代码；
+	                            }finally {
+	                                    finally的操作一定会被执行；
+	                            }
 
 
 运行时异常   无需显示处理，在编译时才出现问题。如:数组索引越界异常 空指针异常 类型转换异常 数学操作异常：10/0
@@ -398,7 +398,7 @@ Collections     他的方法都是抽象方法 可以通过类名调用         
                                                    File(String parent,String child)     File f1 = new File("E:\\download","java.txt")
                                                    File(File parent,String child)        File f1 = new File("E:\\download")
                                                                                          File f2 = new File(f1,"java.txt")
-
+    
                                          创建功能File.createNewFile() 创建一个新文件 文件不存在就创建并返回true 存在就返回false
                                                 File.mkdir() 创建一个目录  不能创建多级目录
                                                 File.mkdirs()创建该路径的目录包括任何必须但不存在的目录  可以创建多级目录
@@ -431,13 +431,13 @@ Collections     他的方法都是抽象方法 可以通过类名调用         
                                                                     					 方法 void read() 读入一个字节的数据 到达末尾返回-1
                                                                             int read(byte[] b) 读入该字节流的数据存入字节数组中 返回值为实																		际长度而不是数组的长度数组长度为5 但是只有四个字节返回值为4																		而不是5  到达末尾时返回-1
                                                                         读取时需要把字符数组转换为字符串 格式：new String(字符数																		组,offset,length)
-
+    
       输出流     字节输出流                                     FileOutputStream(String name ,boolean append)   append																							为true 写入文档末尾
                     				字符输出流                                     FileWriter(File file)
                                                                  		方法  void write(int b) 指定字节写入文件输入流
                                                                       	Void write (byte[] b)
                                                                       	Void write (byte[] b, int off,int len)
-
+    
         字符流读入  		 InputStreamReader(InputStream in,Stream charset) 创建一个指定编码的字符集
                  							   InputStreamReader()          创建默认编码的字符集                          简化为FileReader(String fileName)用于读取
         		字符流读出   OutputStreamWriter(OutputStream out,Stream charset)创建使用给定编码的writer
@@ -503,13 +503,13 @@ Properties和IO流相结合                                 void load(Reader)
                               void setDaemon(boolean )              设定为守护线程，只有守护线程时java结束
                               static void run()
                               static void stop()
-
+    
             Thread的构造方法     Thread()
                                Thread(Runnable)
                                Thread(Runnable , String name)
             优点：编码简单
                             缺点：线程类继承了thread类，无法继承其他类
-
+    
          2、声明一个实现Runnable的类,该类实现了run方法，实例化该类。将实例化的对象作为参数传递给Thread，然后启动线程。
             相比于直接继承Thread类的方法，该方法避免了java只能单继承的局限性，可以在实现接口的同时，再继承一个父类
             适合多个相同程序的代码去处理同一个资源的情况，如：多终端秒杀某件商品 把线程和代码、数据有效分离
@@ -526,7 +526,7 @@ Properties和IO流相结合                                 void load(Reader)
                                                     }
                                                     其中synchronized的对象为this
                                同步静态方法           修饰符+static+synchronized+返回值+方法名(参数列表){
-
+    
                                                     }
                                                     其中synchronized的锁对象为类名.class
 
@@ -659,10 +659,24 @@ public class Hashtable<K,V> implements Map<K,V> 从Java 2平台v1.2开始，该�
                  map()     将元素加工后放回
                  concat()  两个流合并 是静态方法，合并的两个流必须类型相同
 
-             Stream.collection(Collections.toSet()) 将Stream转换为set同理可以转换为其他的集合
-             Stream.toArray()转换为数组可以直接toArray
+```java
+    @Test
+    public void test5(){
+        int[] array = {1, 2, 5, 5, 5, 5, 6, 6, 7, 2, 9, 2};
 
-# 网络编程        
+        /*int[]转list*///java8及以上版本
+        List<Integer> list1 = Arrays.stream(array).boxed().collect(Collectors.toList());
+
+        /*list转int[]*/
+        //方法一：
+        Integer[] intArr =  list.toArray(new Integer[list.size()]);
+        //方法二：java8及以上版本
+        int[] intArr1 =  list.stream().mapToInt(Integer::valueOf).toArray();
+    }
+
+```
+
+# 网络编程
 
 三要素：IP地址(标识设备)、端口(标识程序)、协议
 
@@ -670,10 +684,10 @@ IP地址分为两大类：IPV4和IPV6
 
             IPV4：给每个主机分配一个32位得地址，即四个字节，但是用二进制表示处理太费劲了，所以转换为十进制，即192.168.1.66，称为点分十进制表示法
             IPV6：IPV4不够用了，采用128位地址，即16个字节，采用十六进制表示，每个字节用一个16进制得数字表示
-
+    
             常用命令： ipConfig：查看本机IP地址
                      ping Ip地址 ：查看该IP地址是否联通
-
+    
             特殊IP地址：127.0.0.1 是回送地址，代表了本机地址，一般用来测试
 
 InetAddress     IP地址类   static InetAddress getLocalHost() 获得本机IP地址对象
@@ -742,27 +756,27 @@ InetAddress     IP地址类   static InetAddress getLocalHost() 获得本机IP�
 ##    获得class对象
 
 			   1、类名.class
-                        2、类的对象.getClass()
-                        3、Class.forName("类的全限名")
-                                Public static Class<?> forName(String className)
-                            String getSimpleName()  获取类名
-                            String getName()        获取包名+类名
+	                    2、类的对象.getClass()
+	                    3、Class.forName("类的全限名")
+	                            Public static Class<?> forName(String className)
+	                        String getSimpleName()  获取类名
+	                        String getName()        获取包名+类名
 
 ## 获得constructor对象
 
 					  1、getConstructors() 获得public修饰的构造器
-                               2、getDeclareConstructors()  获得所有声明的构造器
-                               3、getConstructor(String.class,int.class) 根据参数列表寻找public修饰的构造器
-                               4、getDeclareConstructor(String.class,int.class)  根据参数列表寻找声明的构造器
-                                    void setAccessible(true)    改变访问权限
-                                    T newInstance(参数列表) 创建对象
+	                           2、getDeclareConstructors()  获得所有声明的构造器
+	                           3、getConstructor(String.class,int.class) 根据参数列表寻找public修饰的构造器
+	                           4、getDeclareConstructor(String.class,int.class)  根据参数列表寻找声明的构造器
+	                                void setAccessible(true)    改变访问权限
+	                                T newInstance(参数列表) 创建对象
 
 ## 获取field成员变量
 
 				      getDeclareFields()
-                               getDeclareField()
-                               void set(object obj, object value) 给目标对象（obj）的成员变量赋值
-                               object get(object obj) 获得目标对象（obj）的成员变量的值
+	                           getDeclareField()
+	                           void set(object obj, object value) 给目标对象（obj）的成员变量赋值
+	                           object get(object obj) 获得目标对象（obj）的成员变量的值
 
 ##  获取method方法
 

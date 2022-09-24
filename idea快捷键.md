@@ -58,6 +58,14 @@ shift + x
 
 alt + e
 
+## 重新编译当前文件
+
+ctrl + alt + e
+
+## show in jclasslib
+
+ctrl + alt + 1
+
 ## 生成
 
 alt + 1
@@ -161,5 +169,4 @@ alt + j 选择相同
 alt + shift + j 取消选择最后一个
 
 ctrl + alt + shift + j 选择全部相同
-
 
