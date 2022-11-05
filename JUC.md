@@ -72,6 +72,8 @@
 
 ![image-20220513124044994](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513124044994.png)
 
+![image-20221008162854884](D:\笔记\JUC.assets\image-20221008162854884.png)
+
 ### 两阶段终止模式
 
 ![image-20220513130153281](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513130153281.png)
@@ -91,6 +93,8 @@
 ![image-20220513131703038](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513131703038.png)
 
 ![image-20220513131803251](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220513131803251.png)
+
+![image-20221008164457154](D:\笔记\JUC.assets\image-20221008164457154.png)
 
 # 线程安全
 

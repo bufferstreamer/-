@@ -193,7 +193,7 @@ url可以写成*.ln格式 此时没有**/**   任何前缀加.ln均可进入该w
 public servletContext getServletContext();
 ```
 
-			
+​			
 
 ```java
 public class HelloServlet extends HttpServlet {
@@ -572,9 +572,9 @@ cookie.setMaxAge//设置cookie有效期
 **session和cookie的区别**
 
 	cookie是把用户数据写给浏览器，可以保存多个
-
+	
 	session是把用户数据写给服务器，服务端保存
-
+	
 	创建session
 
 ```java
@@ -739,9 +739,9 @@ JSP本质上是一个servlet,jsp文件会生成一个java文件，里面的内�
 ${ }
 
 	获取数据
-
+	
 	执行运算
-
+	
 	获得web的常用对象
 
 #### JSP标签
@@ -763,9 +763,9 @@ ${ }
 一个实体类：
 
 	必须有无参构造
-
+	
 	属性必须私有化
-
+	
 	必须有get/set方法
 
 一般用来和数据库的字段做ORM映射
@@ -773,9 +773,9 @@ ${ }
 ORM:对象关系映射
 
 	数据库表-->类
-
+	
 	字段（列）-->属性
-
+	
 	行记录    -->对象
 
 #  MVC架构
@@ -956,5 +956,4 @@ public class Listener implements HttpSessionListener {
 ## json 与 java bean转换
 
 ![image-20220319205904242](C:\Users\LN\AppData\Roaming\Typora\typora-user-images\image-20220319205904242.png)
-
 

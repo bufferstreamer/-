@@ -52,7 +52,7 @@ shift + x
 
 运行当前项目：alt + r
 
-运行ant（当前窗口）： alt + shift + r
+运行ant（当前窗口）： ctrl + alt + r
 
 ## 构建项目
 
@@ -66,9 +66,15 @@ ctrl + alt + e
 
 ctrl + alt + 1
 
+## Mavensearch
+
+alt + f
+
+![image-20220926152845993](D:\笔记\idea快捷键.assets\image-20220926152845993.png)
+
 ## 生成
 
-alt + 1
+ctrl + alt + `
 
 ![image-20220416233031626](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220416233031626.png)
 
@@ -90,7 +96,33 @@ ctrl + alt + q
 
 ![image-20220417124349717](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220417124349717.png)
 
+## 服务
+
+alt + 3
+
+![image-20220926141459199](D:\笔记\idea快捷键.assets\image-20220926141459199.png)
+
+## git
+
+alt + 4
+
+![image-20220926142000433](D:\笔记\idea快捷键.assets\image-20220926142000433.png)
+
+## 结构
+
+alt + 5
+
+![image-20220926142018346](D:\笔记\idea快捷键.assets\image-20220926142018346.png)
+
+## 提交
+
+alt + 6
+
+![image-20220926142034841](D:\笔记\idea快捷键.assets\image-20220926142034841.png)
+
 # 默认
+
+
 
 ## 上下文操作
 
@@ -156,6 +188,10 @@ Ctrl + shift + ↑ / ↓
 
 ctrl + 减号  
 
+## 递归收起代码段
+
+ctrl + alt + 减号
+
 ## 收起所有代码段
 
 ctrl + shift + 减号
@@ -170,3 +206,30 @@ alt + shift + j 取消选择最后一个
 
 ctrl + alt + shift + j 选择全部相同
 
+## 版本控制
+
+alt + `
+
+![image-20220926110750312](D:\笔记\idea快捷键.assets\image-20220926110750312.png)
+
+## 更新项目
+
+ctrl + t
+
+## 在方法间移动光标
+
+**Alt+Up/Down **移动光标到上一个/下一个方法开始处
+
+alt+光标上下键 在方法之间跳动，[内部类](https://so.csdn.net/so/search?q=内部类&spm=1001.2101.3001.7020)的方法也是会跳上去的
+
+## 移动光标到修改处
+
+**Ctrl+Alt+Left/Right** 光标定位到上一个/下一个浏览位置处
+
+:c
+
+## 切换选项卡
+
+alt+光标左右键 左右切换选项卡
+
+ctrl + tab 任意切换选项卡 
