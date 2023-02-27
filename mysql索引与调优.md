@@ -215,15 +215,15 @@ Query OK, 0 rows affected, 1 warning (0.11 sec)
 ![image-20221023171832879](D:\笔记\mysql索引与调优.assets\image-20221023171832879.png)
 
 ```mysql
-SET GLOBAL validate_password_policy=LOW;
-SET GLOBAL validate_password_policy=MEDIUM;
-SET GLOBAL validate_password_policy=STRONG;
-SET GLOBAL validate_password_policy=0; # For LOW
-SET GLOBAL validate_password_policy=1; # For MEDIUM
-SET GLOBAL validate_password_policy=2; # For HIGH
+SET GLOBAL validate_password.policy=LOW;
+SET GLOBAL validate_password.policy=MEDIUM;
+SET GLOBAL validate_password.policy=STRONG;
+SET GLOBAL validate_password.policy=0; # For LOW
+SET GLOBAL validate_password.policy=1; # For MEDIUM
+SET GLOBAL validate_password.policy=2; # For HIGH
 #注意，如果是插件的话,SQL为set global validate_password_policy=LOW
-
-set global validate_password_length=1;
+#mysql8把最后的_改成.了
+set global validate_password.length=1;
 ```
 
 ![image-20221023171902630](D:\笔记\mysql索引与调优.assets\image-20221023171902630.png)

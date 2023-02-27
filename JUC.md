@@ -20,6 +20,8 @@
 
 ![image-20220510224700328](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510224700328.png)
 
+
+
 # java线程
 
 ## 创建线程
@@ -39,6 +41,8 @@
  
 
 ![image-20220510230805127](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220510230805127.png)
+
+
 
 ## 原理
 

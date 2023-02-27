@@ -169,10 +169,6 @@ this（） 访问本类构造方法 必须在构造器第一行 所以super和th
 
 # 常用类
 
-
-
-
-
 ## Object  
 
 是所有类的根类 public boolean Object.equals(Object o) 判断两个对象地址是否相等。但是我们更需要判断内容是否相等，所以一般需要重写该方法。
@@ -261,7 +257,7 @@ this（） 访问本类构造方法 必须在构造器第一行 所以super和th
 
 ## Iterator<E>  iterator            
 
-迭代器     iterator.next()        使用iterator遍历时如果collection.add会抛出并						发修改异常 因		为实际修改次数不等于预期修改次数
+迭代器     iterator.next()        使用iterator遍历时如果collection.add会抛出并发修改异常 因为实际修改次数不等于预期修改次数
                                            iterator.hasNext()
 
 ## List        

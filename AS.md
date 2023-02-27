@@ -991,3 +991,743 @@ private int[] getNext(char[] chars) {
 # 集合转数组
 
 ![image-20220605142906730](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220605142906730.png)
+
+# 求完全二叉树的节点个数（思路太妙了）
+
+给你一棵 完全二叉树 的根节点 root ，求出该树的节点个数。
+
+完全二叉树 的定义如下：在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若最底层为第 h 层，则该层包含 1~ 2h 个节点。
+
+**满二叉树的节点个数为2^n - 1个，并且完全二叉树的左子树或者右子树必定有一个为满二叉树，即`完全二叉树的左右子树高度相等，左子树为满二叉树，反之，右子树为满二叉树，`所以将完全二叉树递归分解即可求得完全二叉树的节点个数**
+
+```java
+ public int countNodes(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        int leftDepth = getDepth(root.left);
+        int rightDepth = getDepth(root.right);
+        if (leftDepth == rightDepth) {// 左子树是满二叉树
+            // 2^leftDepth其实是 （2^leftDepth - 1） + 1 ，左子树 + 根结点
+            return (1 << leftDepth) + countNodes(root.right);
+        } else {// 右子树是满二叉树
+            return (1 << rightDepth) + countNodes(root.left);
+        }
+    }
+
+    private int getDepth(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        return 1 + getDepth(root.left);
+    }
+```
+
+# 从中序与后序遍历序列构造二叉树
+
+```java
+Map<Integer, Integer> map = new HashMap<>();
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        int i = 0;
+        for (int num : inorder) {
+            map.put(num, i++);
+        }
+        return build(inorder, 0, inorder.length, postorder, 0, postorder.length);
+    }
+
+    private TreeNode build(int[] inorder, int s1, int e1, int[] postorder, int s2, int e2) {
+        if (s1 >= e1 || s2 >= e2) {
+            return null;
+        }
+        TreeNode root = new TreeNode(postorder[e2 - 1]);
+        Integer index = map.get(root.val);
+        root.left = build(inorder, s1, index, postorder, s2, s2 + index - s1);
+        root.right = build(inorder, index + 1, e1, postorder, s2 + index - s1, e2 - 1);
+        return root;
+    }
+```
+
+
+
+# [ 二叉树的最近公共祖先(思路也不错)](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)
+
+```java
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+               if (root == null || root == p || root == q) {
+            return root;
+        }
+        TreeNode l = lowestCommonAncestor(root.left, p, q);
+        TreeNode r = lowestCommonAncestor(root.right, p, q);
+
+        if (l == null) {
+            return r;
+        }
+        if (r == null) {
+            return l;
+        }
+        return root; 
+    }
+```
+
+# [最大二叉树](https://leetcode.cn/problems/maximum-binary-tree/) 单调栈做法还没写
+
+# [删除二叉搜索树中的节点](https://leetcode.cn/problems/delete-node-in-a-bst/)
+
+主要考虑要删除的节点有左右子树，并且右子树有左子树的情况
+
+```java
+ public TreeNode deleteNode(TreeNode root, int key) {
+        if (root == null) {
+            return root;
+        }
+        if (root.val == key) {
+            if (root.right == null) {
+                return root.left;
+            } else if (root.left == null) {
+                return root.right;
+            } else {
+                TreeNode cur = root.right;
+                while (cur.left != null) {
+                    cur = cur.left;
+                }
+                cur.left = root.left;
+                return root.right;
+            }
+        } else if (root.val > key) {
+            root.left = deleteNode(root.left, key);
+        } else {
+            root.right = deleteNode(root.right, key);
+        }
+        return root;
+    }
+```
+
+# [把二叉搜索树转换为累加树](https://leetcode.cn/problems/convert-bst-to-greater-tree/)
+
+不要拘泥于前中后序遍历，递归方式随意调整顺序实现三个节点的任何顺序的遍历
+
+```java
+    int sum;
+    public TreeNode convertBST(TreeNode root) {
+   if (root == null) {
+            return root;
+        }
+        convertBST(root.right);
+        root.val += sum;
+        sum = root.val;
+        convertBST(root.left);
+        return root;
+    }
+```
+
+# [替换子串得到平衡字符串](https://leetcode.cn/problems/replace-the-substring-for-balanced-string/)
+
+> 有一个只含有 'Q', 'W', 'E', 'R' 四种字符，且长度为 n 的字符串。
+>
+> 假如在该字符串中，这四个字符都恰好出现 n/4 次，那么它就是一个「平衡字符串」。
+>
+>  
+>
+> 给你一个这样的字符串 s，请通过「替换一个子串」的方式，使原字符串 s 变成一个「平衡字符串」。
+>
+> 你可以用和「待替换子串」长度相同的 任何 其他字符串来完成替换。
+>
+> 请返回待替换子串的最小可能长度。
+>
+> 如果原字符串自身就是一个平衡字符串，则返回 0。
+>
+> 
+
+**示例 1：**
+
+```
+输入：s = "QWER"
+输出：0
+解释：s 已经是平衡的了。
+```
+
+**示例 2：**
+
+```
+输入：s = "QQWE"
+输出：1
+解释：我们需要把一个 'Q' 替换成 'R'，这样得到的 "RQWE" (或 "QRWE") 是平衡的。
+```
+
+**示例 3：**
+
+```
+输入：s = "QQQW"
+输出：2
+解释：我们可以把前面的 "QQ" 替换成 "ER"。
+```
+
+子串问题一般KMP或者滑动窗口 这题不错
+
+```java
+ public int balancedString(String s) {
+        int[] count = new int[26];
+        int balance = s.length() / 4;
+        for (char c : s.toCharArray()) {
+            count[c - 'A']++;
+        }
+        int res = s.length();
+        int l = 0, r = 0;
+        while (l < s.length()) {
+            while (r < s.length() && !isBalance(count, balance)) {
+                count[s.charAt(r) - 'A']--;
+                r++;
+            }
+            if (!isBalance(count, balance)) {
+                break;
+            }
+            res = Math.min(res, r - l);
+            count[s.charAt(l) - 'A']++;
+            l++;
+        }
+        return res;
+    }
+
+    private boolean isBalance(int[] count, int balance) {
+        if (count['Q' - 'A'] > balance || count['W' - 'A'] > balance || count['E' - 'A'] > balance || count['R' - 'A'] > balance) {
+            return false;
+        }
+        return true;
+    }
+```
+
+# [检查「好数组」](https://leetcode.cn/problems/check-if-it-is-a-good-array/)
+
+> 给你一个正整数数组 `nums`，你需要从中任选一些子集，然后将子集中每一个数乘以一个 任意整数，并求出他们的和。
+>
+> 假如该和结果为 `1`，那么原数组就是一个「好数组」，则返回 True；否则请返回 False。
+>
+> **示例 1：**
+>
+> ```
+> 输入：nums = [12,5,7,23]
+> 输出：true
+> 解释：挑选数字 5 和 7。
+> 5*3 + 7*(-2) = 1
+> ```
+
+重点是求两个数最大公约数的方法——辗转相除法，即**求两个数a和b的最大公约数其中a/b=c……r其中r为余数**
+
+**上述a与b的最大公约数等于b与r的最大公约数**
+
+```java
+public boolean isGoodArray(int[] nums) {
+    int x = nums[0];
+    for (int num : nums) {
+        if (gcd(num, x) == 1) {
+            break;
+        }
+        x = gcd(num, x);
+    }
+    return x == 1;
+}
+private int gcd(int num1, int num2) {
+    if (num2 == 0) {
+        return num1;
+    }
+    return gcd(num2, num1 % num2);
+}
+```
+
+# [二进制加法](https://leetcode.cn/problems/JFETK5/)
+
+给定两个 01 字符串 `a` 和 `b` ，请计算它们的和，并以二进制字符串的形式输出。
+
+输入为 **非空** 字符串且只包含数字 `1` 和 `0`。
+
+**示例 1:**
+
+```
+输入: a = "11", b = "10"
+输出: "101"
+```
+
+**示例 2:**
+
+```
+输入: a = "1010", b = "1011"
+输出: "10101"
+```
+
+自己模拟的太笨了，借鉴一种方法，大体思路是先搞定进位，进位+第一个字符串的数+第二个字符串的数=临时结果
+
+临时结果&1是最终结果  将临时结果右移1位为下一次的进位
+
+- 情况1： 1+1=2    2&1=0 最终结果是0  同时下一次的进位为1
+- 情况2： 1+0=1 或 0 + 1 = 1 最终结果&1是1 下一次进位为0
+- 情况3：  0 + 0 = 0 最终结果是0 下一次进位为0
+
+最终只需要考虑是否会多出来一位进位即可
+
+```java
+class Solution {
+    public String addBinary(String a, String b) {
+        char[] res = new char[Math.max(a.length(), b.length()) + 1];
+        int carry = 0, i = a.length() - 1, j = b.length() - 1, k = res.length - 1;
+        while (k >= 0) {
+            carry += i >= 0 ? a.charAt(i--) - '0' : 0;
+            carry += j >= 0 ? b.charAt(j--) - '0' : 0;
+            res[k--] = (char) ((carry & 1) + '0');
+            carry >>= 1;
+        }
+        return res[0] == '1' ? String.valueOf(res) : String.valueOf(res, 1, res.length - 1);
+    }
+}
+```
+
+# [前 n 个数字二进制中 1 的个数(思路太妙了)](https://leetcode.cn/problems/w3tCBm/)
+
+给定一个非负整数 `n` ，请计算 `0` 到 `n` 之间的每个数字的二进制表示中 1 的个数，并输出一个数组。
+
+**示例 1:**
+
+```
+输入: n = 2
+输出: [0,1,1]
+解释: 
+0 --> 0
+1 --> 1
+2 --> 10
+```
+
+**示例 2:**
+
+```
+输入: n = 5
+输出: [0,1,1,2,1,2]
+解释:
+0 --> 0
+1 --> 1
+2 --> 10
+3 --> 11
+4 --> 100
+5 --> 101
+```
+
+**将n分两类讨论：**
+
+- n为奇数：  奇数的最右位一定为1，将n右移一位一定变为偶数，该数的1的个数+1就是奇数的个数
+- n为偶数：  偶数的最右位一定为0，将n右移一位一定变为奇数，该数的1的个数等于偶数的个数
+
+所以某一个数的结果是将该数除二的结果推出来的，动态转移方程res[i] = res[i>>1] + i % 2
+
+```java
+    public int[] countBits(int n) {
+        int[] res = new int[n+1];
+        res[0] = 0;
+        for(int i = 1; i <= n; i++){
+            res[i] = res[i>>1] + i % 2;
+        }
+        return res;
+    }
+```
+
+# 只出现一次的数字
+
+给你一个整数数组 `nums` ，除某个元素仅出现 **一次** 外，其余每个元素都恰出现 **三次 。**请你找出并返回那个只出现了一次的元素。
+
+**示例 1：**
+
+```
+输入：nums = [2,2,3,2]
+输出：3
+```
+
+**示例 2：**
+
+```
+输入：nums = [0,1,0,1,0,1,100]
+输出：100
+```
+
+**提示：**
+
+1. `-2^31 <= nums[i] <= 2^31 - 1`
+2. `1 <= nums.length <= 3 * 104`
+3. `nums` 中，除某个元素仅出现 **一次** 外，其余每个元素都恰出现 **三次**
+4. **进阶：**你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
+
+假设答案为ans， ans是32位整数，数组中的其他数都是3个，我们一位一位的求得ans，假设求ans的第i位是1还是0，我们把数组中的所有数的第i位相加，因为其他的数个数都是3个，所以不管其他数的第i位是0还是1相加结果都可以被3整除，即0%3=0,3%3=0，所以如果数组所有数的第i位相加%3为0那么ans的第i位就是0，否则为1
+
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        int ans = 0;
+        for (int i = 0; i < 32; ++i) {
+            int total = 0;
+            for (int num: nums) {
+                total += ((num >> i) & 1);
+            }
+            if (total % 3 != 0) {
+                ans |= (1 << i);
+            }
+        }
+        return ans;
+    }
+}
+
+```
+
+# [最大子数组和(老是想不起来的贪心)](https://leetcode.cn/problems/maximum-subarray/)
+
+给你一个整数数组 `nums` ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+
+**子数组** 是数组中的一个连续部分。
+
+**示例 1：**
+
+```
+输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
+输出：6
+解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+```
+
+**示例 2：**
+
+```
+输入：nums = [1]
+输出：1
+```
+
+**示例 3：**
+
+```
+输入：nums = [5,4,-1,7,8]
+输出：23
+```
+
+**提示：**
+
+- `1 <= nums.length <= 105`
+- `-104 <= nums[i] <= 104`
+
+
+
+**主要贪心思路总是想不起来，考虑的总是加了一个负数后还要不要这个问题，其实只需要从前往后遍历考虑目前的和是不是大于零就行，即使加了一个负数，只要目前的和还是大于零对于后面依然是正向作用，其实这个也是从第一个不能是负数推出来的，要求第一个数必须为正数，推广起来就是前面的一段必须大于零。其次只需要注意都是小于零的时候怎么办就行了**
+
+```java
+    public int maxSubArray(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int cur = 0;
+        for (int i = 0; i < nums.length; i++) {
+           cur += nums[i];
+            max = Math.max(max, cur);
+            if (cur < 0) {
+                cur = 0;
+            }
+        }
+        return max;
+    }
+```
+
+# [单词长度的最大乘积](https://leetcode.cn/problems/aseY1I/)
+
+给定一个字符串数组 words，请计算当两个字符串 words[i] 和 words[j] 不包含相同字符时，它们长度的乘积的最大值。假设字符串中只包含英语的小写字母。如果没有不包含相同字符的一对字符串，返回 0。
+
+
+
+**示例 1:**
+
+```
+输入: words = ["abcw","baz","foo","bar","fxyz","abcdef"]
+输出: 16 
+解释: 这两个单词为 "abcw", "fxyz"。它们不包含相同字符，且长度的乘积最大。
+```
+
+**提示：**
+
+- `2 <= words.length <= 1000`
+- `1 <= words[i].length <= 1000`
+- `words[i]` 仅包含小写字母
+
+自己的思路是无论如何也需要两两比较，n^2的复杂度是跑不了的，本来想用一个数组来存每个单词所含有的字母，但是题目提示数组长度有1000，如果用数组来做哈希映射的话最坏要有一千个数组
+
+答案是用位运算来做映射**只有小写字母26个，在int的32位之内，这样就可以用一个数来表示一个字符串里面都有什么数字，只需要一个和原数组等长的数组来保存每个字符串对应的数字即可，如果两个字符串对应的数字做&运算为0表示没有相同字母，否则有相同字母一定不为零。**
+
+```java
+    public int maxProduct(String[] words) {
+        int[] mask = new int[words.length];
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            int length = word.length();
+            for (int j = 0; j < length; j++) {
+                mask[i] |= 1 << word.charAt(j) - 'a';
+            }
+        }
+        int max = 0;
+        for (int i = 0; i < words.length; i++) {
+            for (int j = i + 1; j < words.length; j++) {
+                if ((mask[i] & mask[j]) == 0) {
+                    max = Math.max(max, words[i].length() * words[j].length());
+                }
+            }
+        }
+        return max;
+    }
+```
+
+# [不同的二叉搜索树(差点就想出来了！)](https://leetcode.cn/problems/unique-binary-search-trees/)
+
+给你一个整数 `n` ，求恰由 `n` 个节点组成且节点值从 `1` 到 `n` 互不相同的 **二叉搜索树** 有多少种？返回满足题意的二叉搜索树的种数。
+
+**示例 1：**
+
+![img](D:\笔记\AS.assets\uniquebstn3.jpg)
+
+```
+输入：n = 3
+输出：5
+```
+
+**示例 2：**
+
+```
+输入：n = 1
+输出：1
+```
+
+**已经想到了长度为N的序列，每一个节点轮流做根节点的二叉树个数是唯一的，[1…i…n]，如上总个数G(n)为n个节点轮流做根节点的个数之和，i为根节点时，1:i - 1只能在左子树，i+1:n只能在右子树，而以i为根节点的个数分解为左子树个数乘右子树个数，即Gi(n)=G1:i-1(i-1)*Gi+1:n(n - i - 1),总的G(n)为i=1..n的Gi(n)求和**
+
+```java
+    public int numTrees(int n) {
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        for (int i = 1; i < n + 1; i++) {
+            for (int j = 1; j <= i; j++) {
+                dp[i] += dp[j - 1] * dp[i - j];
+            }
+        }
+        return dp[n];
+    }
+```
+
+# [循环码排列](https://leetcode.cn/problems/circular-permutation-in-binary-representation/)
+
+给你两个整数 `n` 和 `start`。你的任务是返回任意 `(0,1,2,,...,2^n-1)` 的排列 `p`，并且满足：
+
+- `p[0] = start`
+
+- `p[i]` 和 `p[i+1]` 的二进制表示形式只有一位不同
+
+- `p[0]` 和 `p[2^n -1]` 的二进制表示形式也只有一位不同
+
+	**示例 1：**
+
+	```
+	输入：n = 2, start = 3
+	输出：[3,2,0,1]
+	解释：这个排列的二进制表示是 (11,10,00,01)
+	     所有的相邻元素都有一位是不同的，另一个有效的排列是 [3,1,0,2]
+	
+	```
+
+先了解一下格雷码
+
+
+
+在一组数的编码中，若任意两个相邻的代码只有一位二进制数不同，则称这种编码为**格雷码**（Gray Code），另外由于最大数与最小数之间也仅一位数不同，即“首尾相连”，因此又称**循环码**或**反射码**。
+
+n位长度的格雷码可以通过n-1位长度来得出，首先n-1位长度的全部格雷码都是n位长度的一部分，然后将n-1位的格雷码逆序，并将逆序后每一个的元素第n-1位的0改变为1，然后拼接起来即可
+
+图示如下：
+
+![image-20230223132327480](D:\笔记\AS.assets\image-20230223132327480.png)
+
+
+
+同时简单方法
+
+![image-20230223133356437](D:\笔记\AS.assets\image-20230223133356437.png)
+
+**所以循环码只是初始数值不同的格雷码，那么只需要将格雷码的序列异或初始的数值就可以得到以start开始的循环码，因为格雷码第一个元素是0，异或start后就是start，此后的每一个元素异或start都与之前格雷码相差一个位而已**
+
+```java
+    public List<Integer> circularPermutation(int n, int start) {
+        List<Integer> ret = new ArrayList<Integer>();
+        for (int i = 0; i < 1 << n; i++) {
+            ret.add((i >> 1) ^ i ^ start);
+        }
+        return ret;
+    }
+```
+
+# [目标和](https://leetcode.cn/problems/target-sum/)
+
+给你一个整数数组 `nums` 和一个整数 `target` 。
+
+向数组中的每个整数前添加 `'+'` 或 `'-'` ，然后串联起所有整数，可以构造一个 **表达式** ：
+
+- 例如，`nums = [2, 1]` ，可以在 `2` 之前添加 `'+'` ，在 `1` 之前添加 `'-'` ，然后串联起来得到表达式 `"+2-1"` 。
+
+返回可以通过上述方法构造的、运算结果等于 `target` 的不同 **表达式** 的数目。
+
+**想到了01背包，只不过以前都是求能不能装满，这次是求装满了以后一共有多少种方法**
+
+滚动数组：dp[j]表示背包容量为j，共有多少种方法可以装满。
+
+- 第i个物品的重量大于j，则dp[j] = dp[j]
+
+- 不大于j时
+
+	- 装当前物品dp[j] = dp[j - nums[i]]
+	- 不装dp[j] = dp[j]
+
+	总共有dp[j]+dp[j-nums[i]]种方法
+
+	```java
+	    public int findTargetSumWays(int[] nums, int target) {
+	        int sum = 0;
+	        for (int num : nums) {
+	            sum += num;
+	        }
+	        int temp = target + sum;
+	        int[] dp = new int[temp / 2 + 1];
+	        if (temp % 2 == 1 || temp < 0) {
+	            return 0;
+	        }
+	        dp[0] = 1;
+	        for (int k : nums) {
+	            for (int j = dp.length - 1;j >= k; j--) {
+	                dp[j] += dp[j - k];
+	            }
+	        }
+	        return dp[dp.length - 1];
+	    }
+	```
+
+	
+
+# [寻找两个正序数组的中位数(**无敌思路**)](https://leetcode.cn/problems/median-of-two-sorted-arrays/)
+
+给定两个大小分别为 `m` 和 `n` 的正序（从小到大）数组 `nums1` 和 `nums2`。请你找出并返回这两个正序数组的 **中位数** 。
+
+算法的时间复杂度应该为 `O(log (m+n))` 。
+
+**示例 1：**
+
+```
+输入：nums1 = [1,3], nums2 = [2]
+输出：2.00000
+解释：合并数组 = [1,2,3] ，中位数 2
+```
+
+如何在对数时间内寻找中位数，一定是使用二分法。
+
+原数组本来有序，我们将每个数组划分成两部分，只要使得两个左半数组的长度等于两个右半数组的长度，即**A~left~+B~left~=A~right~+B~right~**，同时使各个元素都有序即可，如下图
+
+![image.png](D:\笔记\AS.assets\b9d90d65438709de1d537b8b340fb15104a10da3a2b121727e6edfc8484b6b80-image.png)
+
+设A数组的长度为m，B数组的长度为n
+
+- 当m+n为偶数时，我们令两边元素相等：
+
+```
+i+j=m-i+n-j,========> j=(m+n)/2-i
+```
+
+- 当m+n为奇数时，我们令左边元素比右边元素多1：
+
+```
+i+j+1=m-i+n-j =================> j=(m+n+1)/2-i
+```
+
+**为了能够把两个公式统一，我们将m+n为偶数时也加1，此时因为向下取整(m+n)/2-i=(m+n+1)/2-i，所以我们得到公式**
+
+​																				**`j=(m+n+1)/2-i`**
+
+**只需要根据i来用上述公式调整j，即可保证元素个数相等或左边比右边多1**
+
+然后我们在长度较小的数组`假设改数组为A`中采用二分法来获取i的位置，在另一个数组中`假设该数组为B`根据i来调整j的取值，接下来我们只需要保证
+
+- m+n为偶数时，左半部分最大的值小于等于右半部分最小的值 max ( A [ i - 1 ] , B [ j - 1 ]）） <= min ( A [ i ] , B [ j ]））
+
+​		**此时中位数为（左半部分最大值 + 右半部分最小值 ）/ 2**
+
+​		**max ( A [ i - 1 ] , B [  j  - 1 ]）+ min ( A [ i ] , B [ j ]）） /  2**
+
+- m+n为奇数时，左半部分最大的值小于等于右半部分最小的值 max ( A [ i - 1 ] , B [ j - 1 ]）） <= min ( A [ i ] , B [ j ]））
+
+	**那么，中位数就是 左半部分最大值，也就是左半部比右半部分多出的那一个数。 max ( A [ i - 1 ] , B [  j - 1 ]）**
+
+	> 边界条件处理比较繁琐，我们先讨论一般情况：
+	>
+	> - i与j是相反方向变化，所以不会有i与j同时最小或最大的情况，我们只需要保证i和j都不在边界的同时，A[i-1]<B[j]即可，如果不满足说明i太大了，此时i向左边界变化
+	> - 另外，保证i和j都不在边界的同时，A[i] > B[j - 1]，如果不满足说明i太小了，i应该向右边界变化
+	> - 直至找到满足条件的i，此时在判断m+n是奇数还是偶数，来决定是否需要第二个数即可。
+	> - 上述条件没有讨论边界情况，所以在单独讨论一下边界情况就可以了。
+
+	**边界情况：**
+
+	- **当 i = 0, 或者 j = 0，也就是切在了最前边。**
+
+	![image.png](D:\笔记\AS.assets\30b527fe396e5cad5b539bea21d609e28a8b9a0ab952a343a60df0f1ed834851-image.png)
+
+	此时左半部分当 j = 0 时，最大的值就是 A [ i - 1 ] ；当 i = 0 时 最大的值就是 B [ j - 1] 。右半部分最小值和之前一样。
+
+	- **当 i = m 或者 j = n，也就是切在了最后边。**
+
+	![image.png](D:\笔记\AS.assets\0aa2ef8bec471732ec8f4f3a5290d13ed1a907b7906201b980776987495abdfe-image.png)
+
+	此时左半部分最大值和之前一样。右半部分当 j = n 时，最小值就是 A [ i ] ；当 i = m 时，最小值就是B [ j ] 。
+
+	
+
+	
+
+	时间复杂度：`O(log（min（m，n））`
+
+	我们对较短的数组进行了二分查找，所以时间复杂度是` O(log（min（m，n））`
+
+	空间复杂度：`O(1)`
+
+	只有一些固定的变量，和数组长度无关，所以空间复杂度是 `O(1)`。
+
+	
+
+```java
+public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
+        if (m > n) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
+        int iMin = 0, iMax = m;
+        while (iMin <= iMax) {
+            int i = iMin + iMax >> 1;
+            int j = (m + n + 1) / 2 - i;
+            if (i != 0 && j != n && nums1[i - 1] > nums2[j]) {
+                iMax = i - 1;
+            } else if (i != m && j != 0 && nums2[j - 1] > nums1[i]) {
+                iMin = i + 1;
+            } else {
+                int maxLeft = 0;
+                if (i == 0) {
+                    maxLeft = nums2[j - 1];
+                } else if (j == 0) {
+                    maxLeft = nums1[i - 1];
+                } else {
+                    maxLeft = Math.max(nums1[i - 1], nums2[j - 1]);
+                }
+                if ((m + n) % 2 == 0) {
+                    int minRight = 0;
+                    if (i == m) {
+                        minRight = nums2[j];
+                    } else if (j == n) {
+                        minRight = nums1[i];
+                    } else {
+                        minRight = Math.min(nums1[i], nums2[j]);
+                    }
+                    return (minRight + maxLeft) / 2.0;
+                }
+                return maxLeft;
+            }
+        }
+        return 0;   
+    }
+```
+
