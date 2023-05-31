@@ -1244,3 +1244,309 @@ $(select).val()	获取表单的内容 单选框多选框的赋值等 即value
 $(select).attr()	设置获取属性的值	一个形参为获取该属性的值 两个为设置
 
 $(select).prop()	同上
+
+## ES6
+
+### 简介
+
+ECMAScript 6.0（以下简称 ES6，ECMAScript 是一种由 Ecma 国际(前身为欧洲计算机制造商
+协会,英文名称是 European Computer Manufacturers Association)通过 ECMA-262标准化的脚本
+程序设计语言）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了，并且
+从 ECMAScript 6 开始，开始采用年号来做版本。即 ECMAScript 2015，就是 ECMAScript6。
+它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。
+每年一个新版本。
+
+### let
+
+```js
+// var 声明的变量往往会越域
+// let 声明的变量有严格局部作用域
+{
+var a = 1;
+let b = 2;
+}
+console.log(a); // 1
+console.log(b); // ReferenceError: b is not defined
+// var 可以声明多次
+// let 只能声明一次
+var m = 1
+var m = 2
+let n = 3
+// let n = 4
+console.log(m) // 2
+console.log(n) // Identifier 'n' has already been declared
+// var 会变量提升
+// let 不存在变量提升
+console.log(x); // undefined
+var x = 10;
+console.log(y); //ReferenceError: y is not defined
+let y = 20;
+```
+
+### const 声明常量（只读变量）
+
+```js
+// 1. 声明之后不允许改变
+// 2. 一但声明必须初始化，否则会报错
+const a = 1;
+a = 3; //Uncaught TypeError: Assignment to constant variable.
+```
+
+### 数组解构
+
+```js
+let arr = [1,2,3];
+//以前我们想获取其中的值，只能通过角标。ES6 可以这样：
+const [x,y,z] = arr;// x，y，z 将与 arr 中的每个位置对应来取值
+// 然后打印
+console.log(x,y,z);
+```
+
+### 对象解构
+
+```js
+const person = {
+name: "jack",
+age: 21,
+language: ['java', 'js', 'css']
+}
+// 解构表达式获取值，将 person 里面每一个属性和左边对应赋值
+const { name, age, language } = person;
+// 等价于下面
+// const name = person.name;
+// const age = person.age;
+// const language = person.language;
+// 可以分别打印
+console.log(name);
+console.log(age);
+console.log(language);
+//扩展：如果想要将 name 的值赋值给其他变量，可以如下,nn 是新的变量名
+const { name: nn, age, language } = person;
+console.log(nn);
+console.log(age);
+console.log(language);
+```
+
+### 函数参数默认值
+
+```js
+//在 ES6 以前，我们无法给一个函数参数设置默认值，只能采用变通写法：
+function add(a, b) {
+// 判断 b 是否为空，为空就给默认值 1
+b = b || 1;
+return a + b;
+}
+// 传一个参数
+console.log(add(10));
+//现在可以这么写：直接给参数写上默认值，没传就会自动使用默认值
+function add2(a , b = 1) {
+return a + b;
+}
+// 传一个参数
+console.log(add2(10));
+
+```
+
+### 、实战：箭头函数结合解构表达式
+
+```js
+//需求，声明一个对象，hello 方法需要对象的个别属性
+//以前的方式：
+const person = {
+name: "jack",
+age: 21,
+language: ['java', 'js', 'css']
+}
+function hello(person) {
+console.log("hello," + person.name)}
+//现在的方式
+var hello2 = ({ name }) => { console.log("hello," + name) };
+//测试
+hello2(person);
+```
+
+### 声明对象简写
+
+```js
+const age = 23
+const name = "张三"// 传统
+const person1 = { age: age, name: name }
+console.log(person1)
+// ES6：属性名和属性值变量名一样，可以省略
+const person2 = { age, name }
+console.log(person2) //{age: 23, name: "张三"}
+```
+
+### 对象的函数属性简写
+
+```js
+let person = {
+name: "jack",
+// 以前：
+eat: function (food) {
+console.log(this.name + "在吃" + food);
+},
+// 箭头函数版：这里拿不到 this
+eat2: food => console.log(person.name + "在吃" + food),
+// 简写版：
+eat3(food) {
+console.log(this.name + "在吃" + food);
+}
+}
+person.eat("apple");
+```
+
+### 对象拓展运算符
+
+```js
+// 1、拷贝对象（深拷贝）
+let person1 = { name: "Amy", age: 15 }
+let someone = { ...person1 }
+console.log(someone) //{name: "Amy", age: 15}
+// 2、合并对象
+let age = { age: 15 }
+let name = { name: "Amy" }
+let person2 = { ...age, ...name } //如果两个对象的字段名重复，后面对象字
+段值会覆盖前面对象的字段值
+console.log(person2) //{age: 15, name: "Amy"}
+```
+
+### map 和 reduce
+
+```js
+let arr = ['1', '20', '-5', '3'];
+console.log(arr)
+arr = arr.map(s => parseInt(s));
+console.log(arr)
+//map()：接收一个函数，将原数组中的所有元素用这个函数处理后放入新数组返回。
+```
+
+语法：
+`arr.reduce(callback,[initialValue])`
+`reduce `为数组中的每一个元素依次执行回调函数，不包括数组中被删除或从未被赋值的元素，接受四个参数：
+
+初始值（或者上一次回调函数的返回值），当前元素值，当前索引，调用 reduce 的数组。callback （执行数组中每个值的函数，包含四个参数）
+1、previousValue （上一次调用回调返回的值，或者是提供的初始值（initialValue））
+2、currentValue （数组中当前被处理的元素）
+3、index （当前元素在数组中的索引）
+4、array （调用 reduce 的数组）
+initialValue （作为第一次调用 callback 的第一个参数。）
+
+```js
+const arr = [1,20,-5,3];
+//没有初始值：
+console.log(arr.reduce((a,b)=>a+b));//19
+console.log(arr.reduce((a,b)=>a*b));//-300//指定初始值：
+console.log(arr.reduce((a,b)=>a+b,1));//20
+console.log(arr.reduce((a,b)=>a*b,0));//-0
+```
+
+### Promise 语法
+
+```js
+const promise = new Promise(function (resolve, reject) {
+// 执行异步操作
+if (/* 异步操作成功 */) {
+resolve(value);// 调用 resolve，代表 Promise 将返回成功的结果
+} else {
+reject(error);// 调用 reject，代表 Promise 会返回失败结果
+}
+});
+//使用箭头函数可以简写为：
+const promise = new Promise((resolve, reject) =>{
+// 执行异步操作
+if (/* 异步操作成功 */) {
+resolve(value);// 调用 resolve，代表 Promise 将返回成功的结果
+} else {
+reject(error);// 调用 reject，代表 Promise 会返回失败结果
+}
+});
+```
+
+## 模块化
+
+模块化就是把代码进行拆分，方便重复利用。类似 java 中的导包：要使用一个包，必须先导包。而 JS 中没有包的概念，换来的是 模块。模块功能主要由两个命令构成：`export`和`import`。
+
+- `export`命令用于规定模块的对外接口。
+- `import`命令用于导入其他模块提供的功能。
+
+比如我定义一个 js 文件:hello.js，里面有一个对象
+
+```js
+const util = {
+sum(a,b){
+return a + b;
+}
+}
+```
+
+我可以使用 export 将这个对象导出：
+
+```js
+const util = {
+sum(a,b){return a + b;
+}
+}
+export {util};
+```
+
+
+当然，也可以简写为：
+
+```js
+export const util = {
+sum(a,b){
+return a + b;
+}
+}
+```
+
+`export`不仅可以导出对象，一切 JS 变量都可以导出。比如：基本类型变量、函数、数组、对象。
+当要导出多个值时，还可以简写。比如我有一个文件：user.js：
+
+```js
+var name = "jack"
+var age = 21
+export {name,age}
+```
+
+上面的导出代码中，都明确指定了导出的变量名，这样其它人在导入使用时就必须准确写出变量名，否则就会出错。
+因此 js 提供了`default`关键字，可以对导出的变量名进行省略
+例如：
+
+```js
+// 无需声明对象的名字
+export default {
+sum(a,b){
+return a + b;
+}
+}
+这样，当使用者导入时，可以任意起名字
+```
+
+使用`export`命令定义了模块的对外接口以后，其他 JS 文件就可以通过`import`命令加载这
+个模块。
+
+```js
+// 导入 utilimport util from 'hello.js'
+// 调用 util 中的属性
+util.sum(1,2)
+//要批量导入前面导出的 name 和 age：
+import {name, age} from 'user.js'
+console.log(name + " , 今年"+ age +"岁了")
+```
+
+## nodejs
+
+前端开发，少不了 node.js；Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
+
+http://nodejs.cn/api/
+我们关注与 node.js 的 npm 功能就行；
+NPM 是随同 NodeJS 一起安装的包管理工具，JavaScript-NPM，Java-Maven；
+1）、官网下载安装 node.js，并使用` node -v` 检查版本
+2）、配置 npm 使用淘宝镜像
+`npm config set registry http://registry.npm.taobao.org/`
+3）、大家如果 `npm install` 安装依赖出现 chromedriver 之类问题，先在项目里运行下面命令
+`npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver`
+然后再运行 `npm install`
+

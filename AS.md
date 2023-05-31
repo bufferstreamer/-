@@ -1,3 +1,19 @@
+# markdown
+
+Markdown-分数表示(Typora,Latex)
+在写算法题解的时候，遇到在markdown中表示分数的情况，遂查询相关资料，以备后续查询使用。
+
+表达式	显示效果
+`$ {4ac \over b} $ `                                     	$ {4ac \over b} $
+
+`$ {b-c} \over {2a} $ `                       $ {b-c} \over {2a} $
+
+`$ \frac{a-b}{bc} $`                             $ \frac{a-b}{bc} $
+
+`$ \frac ba $`	                    	$ \frac ba $
+
+[更多语法](https://blog.csdn.net/qq_38342510/article/details/124064158)
+
 # 异或交换两个数
 
 ```java
@@ -14,9 +30,13 @@ a=a^b;
 
 ![image-20220417220045366](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220417220045366.png)
 
-# 小和问题
+# 消去最右的1
 
- 
+X & (X - 1)
+
+每次减一将最右的1及1右面的0翻转，然后与上自身后将最右的1和右面的所有数字都变为0
+
+# 小和问题
 
 ```java
 import org.junit.Test;
@@ -73,133 +93,101 @@ public class Leetcode {
 
 # 快排
 
+**思路：总体是递归**
+
+**对数组从left 到 right 进行排序， 先在范围内选择一个哨兵，然后将数组递归的在left到哨兵之前和哨兵之后到right排序，直到left等于right排序就完成了，具体的某一趟排序：将哨兵挪到最后，然后维护两个指针i,j使得i左面的元素都小于哨兵j右面的元素都大于等于哨兵，当i>j时，交换i和哨兵的位置就在这趟排序中完成**
+
  
 
 ```java
-package com.dlut.ln;
-
-import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Arrays;
-
-@SpringBootTest
-public class QuickSort {
-
-    @Test
-    public void test() {
-        int[] arr = {5, 1, 9, 5, 2, 11, 4, 3, 99, 166, 88, 25, 7, 48};
-        sort(arr, 0, arr.length - 1);
-        System.out.println(Arrays.toString(arr));
+class Solution {
+    public int[] sortArray(int[] nums) {
+        randomizedQuicksort(nums, 0, nums.length - 1);
+        return nums;
     }
 
-    void sort(int[] arr, int l, int r) {
+    public void randomizedQuicksort(int[] nums, int l, int r) {
         if (l < r) {
-
-            int random = l + (int) (Math.random() * (r - l + 1));
-            swap(arr, random, r);
-            int[] index = quickSort(arr, l, r);
-            sort(arr, l, index[0]);
-            sort(arr, index[1], r);
-        }
-
-    }
-
-    private int[] quickSort(int[] arr, int l, int r) {
-        int left = l - 1;
-        int right = r;
-        int[] index = new int[2];
-        for (int i = l; i < right; ) {
-            if (arr[i] < arr[r]) {
-                swap(arr, left + 1, i);
-                left++;
-                i++;
-            } else if (arr[i] == arr[r]) {
-                i++;
-            } else {
-                swap(arr, right - 1, i);
-                right--;
+            int i = new Random().nextInt(r + 1 - l) + l;
+            swap(nums, i, r);
+            int sentry = nums[r];
+            int left = l, j = r - 1;
+            while (j >= left && nums[j] >= sentry) {
+                j--;
             }
+            while (left <= j) {
+                if (nums[left] >= sentry) {
+                    swap(nums, left, j);
+                    j--;
+                } else {
+                    left++;
+                }
+            }
+            swap(nums, left, r);
+            randomizedQuicksort(nums, l, left - 1);
+            randomizedQuicksort(nums, left + 1, r);
         }
-        swap(arr, right, r);
-        index[0] = left;
-        index[1] = right;
-        return index;
     }
 
-    private void swap(int[] arr, int i, int j) {
-        int temp;
-        temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
 ```
 
 # 堆排
 
+**思路：用数组构建一个大顶堆，然后每次将堆顶的最大元素与末尾元素交换，再维护去除最后一位元素的堆，循环下去直到堆中只有一个元素**
+
 ```java
-package com.dlut.ln;
-
-import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Arrays;
-
-@SpringBootTest
-public class HeapTest {
-    @Test
-    public void testHeap() {
-        int[] arr = {5, 1, 9,11, 4, 3, 99, 166, 88, 25, 7, 48};
-        heapSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-
-    public void heapSort(int[] arr) {
-        int heapSize = arr.length;
-        for (int i = 0; i < arr.length; i++) {
-            heapInsert(arr, i);
-        }
-        swap(arr, 0, --heapSize);
-        while (heapSize > 0) {
-
-            heapify(arr, 0, heapSize--);
-            swap(arr, 0, heapSize);
-
+ public void heapSort(int[] nums) {
+        int r = nums.length - 1;
+        buildMaxHeap(nums, r);
+        for (int i = r; i > 0; i--) {
+            swap(nums, 0, i);
+            maxHeapify(nums, 0, i - 1);
         }
     }
 
-    public void heapify(int[] arr, int index, int heapSize) {
-        int largest;
+    public void buildMaxHeap(int[] nums, int len) {
+        for (int i = len >> 1; i >= 0; i--) {
+            maxHeapify(nums, i, len);
+        }
+    }
 
-        int left = index * 2 + 1;
-        while (left < heapSize) {
-            largest = left + 1 < heapSize && arr[left + 1] > arr[left] ? left + 1 : left;
-            largest = arr[index] > arr[largest] ? index : largest;
-            if (largest == index) {
+    public void maxHeapify(int[] nums, int i, int len) {
+        while (i <= len >> 1) {
+            if (i * 2 + 1 > len) {
+                return;
+            }
+            int lson = i * 2 + 1;
+            int rson = i * 2 + 2;
+            int max = i;
+            if (nums[i] < nums[lson]) {
+                max = lson;
+            }
+            if (rson <= len) {
+                if (nums[rson] > nums[max]) {
+                    max = rson;
+                }
+            }
+            if (max != i) {
+                swap(nums, max, i);
+                i = max;
+            } else {
                 break;
             }
-            swap(arr, index, largest);
-            index = largest;
-            left = index * 2 + 1;
         }
+        
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 
-    public void heapInsert(int[] arr, int index) {
-        while (arr[index] > arr[(index - 1) / 2]) {
-            swap(arr, index, (index - 1) / 2);
-            index = (index - 1) / 2;
-        }
     }
-
-    private void swap(int[] arr, int j, int i) {
-        int temp;
-        temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-}
 ```
 
 ## 优先级队列
@@ -210,15 +198,52 @@ java提供的以小顶堆为结构的
 PriorityQueue<Integer> heap = new PriorityQueue<>();
 ```
 
-![image-20220419154038836](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220419154038836.png)
+
 
 可以解决基本有序数组排序问题（即每个数在最终排好序的位置与当前位置的差不超过K）
 
-# 比较器
 
-![image-20220419155404475](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220419155404475.png)
 
-![image-20220419154306228](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220419154306228.png)
+# 归并排序
+
+**很简单的递归思想，将数组从中间分开，分别对左右两个数组进行排序，得到两个有序数组进行合并即可**
+
+```java
+ public int[] sortArray(int[] nums) {
+        tmp = new int[nums.length];
+        mergeSort(nums, 0, nums.length - 1);
+        return nums;
+    }
+
+    public void mergeSort(int[] nums, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int mid = l + (r - l >> 1);
+        mergeSort(nums, l, mid);
+        mergeSort(nums, mid + 1, r);
+        int cnt = 0;
+        int i = l, j = mid + 1;
+        while (i <= mid && j <= r) {
+            if (nums[i] >= nums[j]) {
+                tmp[cnt++] = nums[j];
+                j++;
+            } else {
+                tmp[cnt++] = nums[i];
+                i++;
+            }
+        }
+        while (i <= mid) {
+            tmp[cnt++] = nums[i++];
+        }
+        while (j <= r) {
+            tmp[cnt++] = nums[j++];
+        }
+        System.arraycopy(tmp, 0, nums, l, cnt);
+    }
+```
+
+
 
 # 桶排
 
@@ -278,15 +303,11 @@ public class BucketTest {
 
 实验来看快排最快 但是有空间且不稳定 堆排不用空间 但是不稳定 归并有空间但是稳定
 
-# 哈希表和有序表
 
-![image-20220420211722085](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220420211722085.png)
-
-![image-20220420211731447](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220420211731447.png)
 
 ## 回文链表
 
-![image-20220420211829666](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220420211829666.png)
+
 
 ```java
 class Node {
@@ -422,19 +443,9 @@ class Node {
 
 不用额外空间时采用快慢指针   若有环则相遇 快指针回到原点再次相遇即为环首
 
-![image-20220421152543935](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220421152543935.png)
 
-# 二叉树
 
-![image-20220422125604121](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422125604121.png)
 
-## 递归序
-
-![image-20220422121845613](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220422121845613.png)
-
-1为第一次到达该节点 2为第二次到达 3为第三次到达  每个节点都会被经历过三次 
-
-通过三次到达节点时的不同操作可以完成先中后序遍历二叉树
 
 ## 非递归遍历
 
@@ -446,25 +457,9 @@ class Node {
 
 ## 题目
 
-![image-20220424191614877](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220424191614877.png)
-
-![image-20220424200540473](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220424200540473.png)
-
-![image-20220425124208230](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220425124208230.png)
-
-![image-20220425124844162](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220425124844162.png)
-
-![image-20220425133313726](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220425133313726.png)
+折纸求纸痕的排列顺序
 
 其实除了第一次对折会产生一个凹痕 剩下的每次对折都是在当前已经有的折痕上方产生一个凹痕 下方产生一个凸痕 也就是说折叠N次的纸条的痕迹就是N层的 头结点为凹的 每一个节点的左孩子为凹右孩子为凸的满二叉树  而折痕从上向下的顺序也就是对应的二叉树的中序遍历
-
-# 图
-
-![image-20220426131951288](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220426131951288.png)
-
-# 递归
-
-![image-20220426210021836](C:/Users/LN/AppData/Roaming/Typora/typora-user-images/image-20220426210021836.png)
 
 # 从高位到低位解析数字
 
@@ -1073,7 +1068,7 @@ Map<Integer, Integer> map = new HashMap<>();
 
 # [删除二叉搜索树中的节点](https://leetcode.cn/problems/delete-node-in-a-bst/)
 
-主要考虑要删除的节点有左右子树，并且右子树有左子树的情况
+主要考虑要删除的节点有左右 子树，并且右子树有左子树的情况
 
 ```java
  public TreeNode deleteNode(TreeNode root, int key) {
@@ -1491,7 +1486,7 @@ class Solution {
 输出：1
 ```
 
-**已经想到了长度为N的序列，每一个节点轮流做根节点的二叉树个数是唯一的，[1…i…n]，如上总个数G(n)为n个节点轮流做根节点的个数之和，i为根节点时，1:i - 1只能在左子树，i+1:n只能在右子树，而以i为根节点的个数分解为左子树个数乘右子树个数，即Gi(n)=G1:i-1(i-1)*Gi+1:n(n - i - 1),总的G(n)为i=1..n的Gi(n)求和**
+**已经想到了长度为N的序列，每一个节点轮流做根节点的二叉树个数是唯一的，[1…i…n]，如上总个数G(n)为n个节点轮流做根节点的个数之和，i为根节点时，1:i - 1只能在左子树，i+1:n只能在右子树，而以i为根节点的个数分解为左子树个数乘右子树个数，即G~i~(n)=G~1:i-1~(i-1)*G~i+1:n~(n - i - 1),总的G(n)为i=1..n的G~i~(n)求和**
 
 ```java
     public int numTrees(int n) {
@@ -1633,7 +1628,7 @@ i+j=m-i+n-j,========> j=(m+n)/2-i
 - 当m+n为奇数时，我们令左边元素比右边元素多1：
 
 ```
-i+j+1=m-i+n-j =================> j=(m+n+1)/2-i
+i+j-1=m-i+n-j =================> j=(m+n+1)/2-i
 ```
 
 **为了能够把两个公式统一，我们将m+n为偶数时也加1，此时因为向下取整(m+n)/2-i=(m+n+1)/2-i，所以我们得到公式**
@@ -1700,9 +1695,9 @@ public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         while (iMin <= iMax) {
             int i = iMin + iMax >> 1;
             int j = (m + n + 1) / 2 - i;
-            if (i != 0 && j != n && nums1[i - 1] > nums2[j]) {
+            if (i != 0  && nums1[i - 1] > nums2[j]) {
                 iMax = i - 1;
-            } else if (i != m && j != 0 && nums2[j - 1] > nums1[i]) {
+            } else if (i != m  && nums2[j - 1] > nums1[i]) {
                 iMin = i + 1;
             } else {
                 int maxLeft = 0;
@@ -1729,5 +1724,1151 @@ public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         }
         return 0;   
     }
+```
+
+# [二进制数转字符串](https://leetcode.cn/problems/bianry-number-to-string-lcci/)
+
+二进制数转字符串。给定一个介于0和1之间的实数（如0.72），类型为double，打印它的二进制表达式。如果该数字无法精确地用32位以内的二进制表示，则打印“ERROR”。
+
+**示例1:**
+
+```
+ 输入：0.625
+ 输出："0.101"
+```
+
+**示例2:**
+
+```
+ 输入：0.1
+ 输出："ERROR"
+ 提示：0.1无法被二进制准确表示
+```
+
+**提示：**
+
+- 32位包括输出中的 `"0."` 这两位。
+- 题目保证输入用例的小数位数最多只有 `6` 位
+
+**重点是任何进制的数乘以改进制等于小数点右移一位，比如十进制乘十，二进制乘二**
+
+所以假设一个十进制数`0.abc`对应的二进制为`0.xyz`,将其乘二变为`x.yz`其中x为1或者0，我们将其取出后减去x，然后重复乘二，每次得到一位，重复至num为零得到每一位的二进制，如果num始终不为零则无法表示，返回ERROR
+
+```java
+    public String printBin(double num) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("0.");
+            for (int i = 0; i < 6; i++) {
+                if (num == 0) {
+                    break;
+                }
+                num *= 2;
+                int bit = (int) num;
+                sb.append(bit);
+                num -= bit;
+            }
+            return num == 0 ? sb.toString() : "ERROR";
+    }
+```
+
+对于上述代码中的循环次数有如下证明：
+
+一个小数可以被二进制准确表示，那么他一定可以表示为一个形如$\frac{b}{2^k}$ 的**最简分数**，并且b与2必须互质。
+
+如果一个只有六位的num可以准确表示为二进制，那么一定有
+$$
+ \frac {a} {10^6} = \frac {a}{2^65^6} =\frac{b}{2^k} 
+$$
+
+
+两边同时乘$2^k$得到
+$$
+\frac {a2^{k-6}}{ 5^k} ={b}
+$$
+，而b与2互质，上述等式要想成立，k-6必须小于等于0。所以只需要考虑六位。
+
+# [接雨水](https://leetcode.cn/problems/trapping-rain-water/)
+
+给定 `n` 个非负整数表示每个宽度为 `1` 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+
+**示例 1：**
+
+![img](D:\笔记\AS.assets\rainwatertrap.png)
+
+```
+输入：height = [0,1,0,2,1,0,1,3,2,1,2,1]
+输出：6
+解释：上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 
+```
+
+**以下所有求总和的方法都基于一个思想：按列求雨水。**
+
+**即考虑数组中位置为i的元素高度为height[i]，他所能接到的雨水为左面第一个比他高的位置left的高度height[left]与右面第一个比他高的位置right的高度height[right]两者中最小值与它本身的高度之差。也是木桶理论即`ans[i]=min(height[left],height[right]) - height[i]`**，正是基于这种分列的思想才有如下解法。
+
+## 单调栈解法
+
+单调栈从栈顶到栈低升序排列，从前往后遍历height，如果height[i]大于栈顶元素，说明一定可以接到雨水，此时待加入元素为右边界，栈顶元素为中间的槽，栈顶元素下面的元素为左边界。分别记为right，mid，left。我们取min（left，right）记作min，则当前可接雨水为min-mid加到`ans`上,然后循环 直到栈顶元素大于当前元素，将当前元素入栈，如果相等就将栈顶元素出栈再将当前元素入栈。**注意，栈中存放的是索引而不是数组值**
+
+需要考虑的边界条件有：
+
+- 当前栈中只有一个元素，此时pop一个后无法获得peek值，直接结束本次循环
+- 当前栈顶元素出栈获得所接雨水后需要继续循环遍历，直到栈顶元素大于当前元素，在此之前`i`不能变，所以i–抵消了i++
+
+```java
+ public int trap(int[] height) {
+      int ans = 0;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+        for (int i = 1; i < height.length; i++) {
+            if (height[stack.peek()] > height[i]) {
+                stack.push(i);
+            } else if (height[stack.peek()] == height[i]) {
+                stack.pop();
+                stack.push(i);
+            } else {
+
+                int mid = stack.pop();
+                if (stack.isEmpty()) {
+                    stack.push(i);
+                    continue;
+                }
+                int left = stack.peek();
+                int h = Math.min(height[left], height[i]) - height[mid];
+                int w = i - left - 1;
+                ans += h * w;
+                if (height[stack.peek()] < height[i]) {
+                    i--;
+                } else {
+                    stack.push(i);
+                }
+            }
+        }
+        return ans;
+    }
+```
+
+## 动态规划
+
+单调栈是帮我们考虑了左边的第一个大于栈顶元素的位置，待加入元素作为右面第一个大于栈顶元素的位置，我们比较这两个元素即可，所以可以考虑采用动态规划，建立两个数组来保存每个元素左面第一个大于它的元素和右面第一个大于它的元素，Left[i],Right[i]。数组的定义分别是`下标为i的元素左（右）面第一个大于它的元素的值为Left[i](Right[i])`。
+
+
+
+```java
+ public int trap(int[] height) {
+        int n = height.length;
+        if (n == 0) {
+            return 0;
+        }
+
+        int[] leftMax = new int[n];
+        leftMax[0] = height[0];
+        for (int i = 1; i < n; ++i) {
+            leftMax[i] = Math.max(leftMax[i - 1], height[i]);
+        }
+
+        int[] rightMax = new int[n];
+        rightMax[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; --i) {
+            rightMax[i] = Math.max(rightMax[i + 1], height[i]);
+        }
+
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            ans += Math.min(leftMax[i], rightMax[i]) - height[i];
+        }
+        return ans;
+    }
+
+```
+
+## 双指针优化
+
+从上面可以看到，每一个数组元素只用了一次，所以我们考虑压缩数组，采用两个变量来代替数组。leftMax表示元素i左面最大的元素值，rightMax表示元素j右面最大的元素值。我们让i只往右走，j只往左走来遍历数组，每次i或者j动的时候就把对应位置的应该加的雨水加到ans上面。当i和j碰面的时候整个数组就遍历结束。
+
+应该明白的信息：
+
+- 当leftMax < rightMax时，我们有i右面的所有元素的最大值一定大于或等于j右面的元素的最大值rightMax，所以i元素的左右两端的较小的最大值一定为leftMax。所以我们可以得到i点可以接到的雨水
+- 当leftMax > rightMax时，我们有j左面的所有元素的最大值一定大于或等于i左面的元素的最大值leftMax ，所以j元素的左右两端的较小的最大值一定为rightMax。所以我们可以得到j点可以接到的雨水
+
+```java
+public int trap(int[] height) {
+        int i = 0;
+        int j = height.length - 1;
+        int leftMax = 0;
+        int rightMax = 0;
+        int ans = 0;
+        while (i <= j) {
+            if (leftMax < rightMax) {
+                leftMax = Math.max(leftMax, height[i]);
+                ans += leftMax - height[i];
+                i++;
+            } else {
+                rightMax = Math.max(rightMax, height[j]);
+                ans += rightMax - height[j];
+                j--;
+            }
+        }
+        return ans;
+}
+```
+
+# 按位求子集
+
+给你一个整数数组 `nums` ，返回其中 **按位与三元组** 的数目。
+
+**按位与三元组** 是由下标 `(i, j, k)` 组成的三元组，并满足下述全部条件：
+
+0 <= i < nums.length
+0 <= j < nums.length
+0 <= k < nums.length
+nums[i] & nums[j] & nums[k] == 0 ，其中 & 表示按位与运算符。
+
+**示例 1：**
+
+```
+输入：nums = [2,1,3]
+输出：12
+解释：可以选出如下 i, j, k 三元组：
+(i=0, j=0, k=1) : 2 & 2 & 1
+(i=0, j=1, k=0) : 2 & 1 & 2
+(i=0, j=1, k=1) : 2 & 1 & 1
+(i=0, j=1, k=2) : 2 & 1 & 3
+(i=0, j=2, k=1) : 2 & 3 & 1
+(i=1, j=0, k=0) : 1 & 2 & 2
+(i=1, j=0, k=1) : 1 & 2 & 1
+(i=1, j=0, k=2) : 1 & 2 & 3
+(i=1, j=1, k=0) : 1 & 1 & 2
+(i=1, j=2, k=0) : 1 & 3 & 2
+(i=2, j=0, k=1) : 3 & 2 & 1
+(i=2, j=1, k=0) : 3 & 1 & 2
+
+```
+
+**提示：**
+
+- `1 <= nums.length <= 1000`
+- `0 <= nums[i] < 2^16`
+
+暴力搜索n^3^会超时，应该先确定两个数，然后用第三个数与结果组成两个数，复杂度降为n^2^
+
+****
+
+创建一个大小为2^16^的数组，保存两个数与后的数量，在用第三个数遍历该数组得到最终结果。
+
+```java
+public int countTriplets(int[] nums) {
+        int[] cnt = new int[1 << 16];
+        for (int x : nums) {
+            for (int y : nums) {
+                ++cnt[x & y];
+            }
+        }
+        int ans = 0;
+        for (int x : nums) {
+            for (int mask = 0; mask < (1 << 16); ++mask) {
+                if ((x & mask) == 0) {
+                    ans += cnt[mask];
+                }
+            }
+        }
+        return ans;
+    }
+
+```
+
+考虑按位求子集来优化一下。
+
+第二次遍历的时候每个数与哈希数组都与了一次，我们考虑一个数x与另一个数y与结果为零的情况是：在x为0的位上y可以为任何数，在x为1的位上y只能为零。
+
+所以我们让`x`异或`0xffff`也就是16个1得到结果z**注意不能直接将x取反，因为x有三十二位，取反不对**，z为1的位是x原本为0的那些位，而这些位置上哈希数组中的数可以为0或者1，其他位置上则必须为0.所以z的含有不同个数的1子集就是哈希数组的索引。
+
+**如何求一个数z的含有不同1的子集？**
+
+令`z=(z - 1) & mask`,其中mask是最开始的那个z，我们每次减一再与mask，都将z最右位的1去除。
+
+> 比如111，我们得到的子集结果就是，110,101,100,011,010,001,000
+
+```java
+        int ans = 0;
+        int[] temp = new int[1 << 16];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                temp[nums[i] & nums[j]]++;
+            }
+        }
+        for (int num : nums) {
+            int mask = 0xffff ^ num;
+            for (int i = mask; i > 0; i = (i - 1) & mask) {
+                ans += temp[i];
+            }
+            ans += temp[0];
+        }
+        return ans;
+```
+
+# [柱状图中最大的矩形](https://leetcode.cn/problems/largest-rectangle-in-histogram/)
+
+**比接雨水难想很多**
+
+给定 *n* 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
+
+求在该柱状图中，能够勾勒出来的矩形的最大面积。
+
+**示例 1:**
+
+![img](D:\笔记\AS.assets\histogram.jpg)
+
+```
+输入：heights = [2,1,5,6,2,3]
+输出：10
+解释：最大的矩形为图中红色区域，面积为 10
+```
+
+**同样，首先明确的是如何求得最大矩形的方法，我们以一个柱形i高度为高，一直向两边延伸直到第一个小于他的柱形为止，得到的面积是该柱形i所能得到的最大面积**
+
+所以考虑单调栈，每次得出栈顶元素对应的矩形的面积，元素升序入栈，遇到第一个小于栈顶元素时宽度就是未入栈元素下标 - 栈顶左侧元素下标 - 1（因为要刨除未入栈元素和栈顶左侧元素）
+
+所以所形成的的矩形的宽为当前遍历元素i减去栈顶元素top下面的元素left再减1，高度为栈顶元素的高度。
+
+考虑当前元素与栈顶元素相等时，直接压栈或者弹出再压栈都可，因为计算宽度用的是栈顶下面的元素，但是出栈再压栈回少比较几次。比如2334，如果直接压栈会把两个3都计算一次，但是实际上最大一定出现在前面的3，因为后面的3的left是前面的3，而前面的3的left是2，宽度一定大。
+
+**考虑如果数组全部升序：则无法得到结果，所以在数组最后面加一个0，可以将元素全部出栈**
+
+**考虑如果数组全部降序：则peek的时候会出现null，如421,4入栈2会把他弹出，再peek此时栈中么元素，弹出的是null，所以在数组前面加一个0，防止null**
+
+```java
+    public int largestRectangleArea(int[] heights) {
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        int[] newarr = new int[heights.length + 2];
+        int res = 0;
+        for (int i = 1; i < newarr.length - 1; i++) {
+            newarr[i] = heights[i - 1];
+        }
+        heights = newarr;
+        stack.push(0);
+        for (int i = 1; i < heights.length; i++) {
+            if (heights[i] > heights[stack.peek()]) {
+                stack.push(i);
+            } else if (heights[i] == heights[stack.peek()]) {
+                stack.pop();
+                stack.push(i);
+            } else {
+                Integer mid = stack.pop();
+                Integer left = stack.peek();
+                int w = i - left - 1;
+                int h = heights[mid];
+                res = Math.max(res, w * h);
+                if (heights[left] < heights[i]) {
+                    stack.push(i);
+                } else {
+                    i--;
+                }
+            }
+        }
+        return res;
+    }
+```
+
+
+
+# [花括号展开 II(hard)](https://leetcode.cn/problems/brace-expansion-ii/)
+
+花括号展开的表达式可以看作一个由 **花括号**、**逗号** 和 **小写英文字母** 组成的字符串，定义下面几条语法规则：
+
+- 如果只给出单一的元素 `x`，那么表达式表示的字符串就只有 `"x"`。`R(x) = {x}`
+  - 例如，表达式 `"a"` 表示字符串 `"a"`。
+  - 而表达式 `"w"` 就表示字符串 `"w"`。
+- 当两个或多个表达式并列，以逗号分隔，我们取这些表达式中元素的并集。`R({e_1,e_2,...}) = R(e_1) ∪ R(e_2) ∪ ...`
+
+  - 例如，表达式 `"{a,b,c}"` 表示字符串 `"a","b","c"`。
+
+  - 而表达式 `"{{a,b},{b,c}}"` 也可以表示字符串 `"a","b","c"`。
+- 要是两个或多个表达式相接，中间没有隔开时，我们从这些表达式中各取一个元素依次连接形成字符串。R(e_1 + e_2) = {a + b for (a, b) in R(e_1) × R(e_2)}
+	- 例如，表达式 `"{a,b}{c,d}"` 表示字符串 `"ac","ad","bc","bd"`。
+- 表达式之间允许嵌套，单一元素与表达式的连接也是允许的。
+	- 例如，表达式 `"a{b,c,d}"` 表示字符串 `"ab","ac","ad"`。
+
+给出表示基于给定语法规则的表达式 `expression`，返回它所表示的所有字符串组成的有序列表。
+
+​	**示例 1：**
+
+```
+输入：expression = "{a,b}{c,{d,e}}"
+输出：["ac","ad","ae","bc","bd","be"]
+```
+
+**第一眼看到就想用栈来做，但是组合的逻辑太复杂了。然后就是想到递归，一般这种字符串解析都是递归，涉及到括号我们想的就是要从里往外来递归，找到第一个右括号，然后找到与他匹配的左括号，这两个括号中间的字符串是只有逗号的，我们把他按逗号拆分成多个字符串，并与括号之外的前半部分字符串和后半部分字符串分别组成新的字符串，这个步骤就相当于解析好了最里层的字符串，然后递归的执行下去，直到整个字符串中没有括号，我们把他加入集合中然后排序即可**
+
+```java
+public List<String> braceExpansionII(String expression) {
+        TreeSet<String> res = new TreeSet<>(String::compareTo);
+        dfs(expression, res);
+        return new ArrayList<>(res);
+    }
+
+    private void dfs(String expression, Set<String> res) {
+        int right;
+        int left = 0;
+        if (expression.indexOf('}') == -1) {
+            res.add(expression);
+            return;
+        } else {
+            right = expression.indexOf('}');
+//            right是第一个有括号但是left不是第一个左括号 是right左面第一个
+//            left = expression.indexOf('{');
+            for (int i = right; i >= 0; i--) {
+                if (expression.charAt(i) == '{') {
+                    left = i;
+                    break;
+                }
+            }
+        }
+
+        String a = expression.substring(0, left);
+        String c = expression.substring(right + 1);
+        String[] split = expression.substring(left + 1, right).split(",");
+        for (String b : split) {
+            dfs(a + b + c, res);
+        }
+    }
+```
+
+# [Dota2 参议院](https://leetcode.cn/problems/dota2-senate/)
+
+![image-20230307151844793](D:\笔记\AS.assets\image-20230307151844793.png)
+
+**思路很简单，尽量从后面删除不同阵营的，直到只剩下一个阵营的人，做法很巧妙，从前往后遍历，记录D的个数，根据个数来对应不同的操作，这样就巧妙地解决了一轮结束以后，当前位置对下一轮前面位置的影响**
+
+```java
+    public String predictPartyVictory(String senate) {
+        boolean R = true, D = true;
+        int cnt = 0;//>0 D duo
+        char[] sen = senate.toCharArray();
+        while (R && D) {
+            R = false;
+            D = false;
+            for (int i = 0; i < senate.length(); i++) {
+                if (sen[i] == 'R') {
+                    if (cnt > 0) {
+                        sen[i] = 0;
+                    } else {
+                        R = true;
+                    }
+                    cnt--;
+                }
+                if (sen[i] == 'D') {
+                    if (cnt >= 0) {
+                        D = true;
+                    } else {
+                        sen[i] = 0;
+                    }
+                    cnt++;
+                }
+            }
+        }
+        return R == true ? "Radiant" : "Dire";
+    }
+```
+# 字典树
+
+**字典树主要是为了处理字符串的查询问题，通过构建一棵前缀树，然后给一个字符串，判断前缀树中是否存在该字符串或者该字符串的前缀**
+**主要做法是：通过一个Trie数组属性的children来表示该节点的子节点，一个boolean属性的isEnd表示该节点是否是一个字符串的结尾字符**
+
+**核心功能就是两个，一个是插入一个字符串，一个是查找字符串是否存在**
+
+```java
+class Trie {
+    Trie[] children = new Trie[26];
+    boolean isEnd = false;
+
+    public void insert(String w) {
+        Trie node = this;
+        for (int i = w.length() - 1; i >= 0; --i) {
+            int idx = w.charAt(i) - 'a';
+            if (node.children[idx] == null) {
+                node.children[idx] = new Trie();
+            }
+            node = node.children[idx];
+        }
+        node.isEnd = true;
+    }
+
+    public boolean query(StringBuilder s) {
+        Trie node = this;
+        for (int i = s.length() - 1, j = 0; i >= 0 && j < 201; --i, ++j) {
+            int idx = s.charAt(i) - 'a';
+            if (node.children[idx] == null) {
+                return false;
+            }
+            node = node.children[idx];
+            if (node.isEnd) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+# 岛屿问题的通用解法
+
+**岛屿问题的通用dfs模板：假设0为水1为陆地。假如求岛屿数量——遍历1，对每一个1采用dfs，并将其改为2，统计数量**
+
+
+
+**DFS 的基本结构**
+网格结构要比二叉树结构稍微复杂一些，它其实是一种简化版的图结构。要写好网格上的 DFS 遍历，我们首先要理解二叉树上的 DFS 遍历方法，再类比写出网格结构上的 DFS 遍历。我们写的二叉树 DFS 遍历一般是这样的：
+
+
+
+```java
+void traverse(TreeNode root) {
+    // 判断 base case
+    if (root == null) {
+        return;
+    }
+    // 访问两个相邻结点：左子结点、右子结点
+    traverse(root.left);
+    traverse(root.right);
+}
+
+```
+
+可以看到，二叉树的 DFS 有两个要素：**「访问相邻结点」**和**「判断 base case」**。
+
+第一个要素是**访问相邻结点**。二叉树的相邻结点非常简单，只有左子结点和右子结点两个。二叉树本身就是一个递归定义的结构：一棵二叉树，它的左子树和右子树也是一棵二叉树。那么我们的 DFS 遍历只需要递归调用左子树和右子树即可。
+
+第二个要素是 判断 base case。一般来说，二叉树遍历的 base case 是 `root == null`。这样一个条件判断其实有两个含义：一方面，这表示` root` 指向的子树为空，不需要再往下遍历了。另一方面，在 `root == null `的时候及时返回，可以让后面的 `root.left` 和` root.right `操作不会出现空指针异常。
+
+对于网格上的 DFS，我们完全可以参考二叉树的 DFS，写出网格 DFS 的两个要素：
+
+首先，网格结构中的格子有多少相邻结点？答案是上下左右四个。对于格子` (r, c)` 来说（r 和 c 分别代表行坐标和列坐标），四个相邻的格子分别是` (r-1, c)`、`(r+1, c)`、`(r, c-1)`、`(r, c+1)`。换句话说，网格结构是「四叉」的。
+
+其次，网格 DFS 中的` base case` 是什么？从二叉树的 `base case `对应过来，应该是网格中不需要继续遍历、`grid[r][c]` 会出现数组下标越界异常的格子，也就是那些超出网格范围的格子。
+
+这样，我们得到了网格 DFS 遍历的框架代码：
+
+```java
+void dfs(int[][] grid, int r, int c) {
+    // 判断 base case
+    // 如果坐标 (r, c) 超出了网格范围，直接返回
+    if (!inArea(grid, r, c)) {
+        return;
+    }
+    // 访问上、下、左、右四个相邻结点
+    dfs(grid, r - 1, c);
+    dfs(grid, r + 1, c);
+    dfs(grid, r, c - 1);
+    dfs(grid, r, c + 1);
+}
+
+// 判断坐标 (r, c) 是否在网格中
+boolean inArea(int[][] grid, int r, int c) {
+    return 0 <= r && r < grid.length 
+        	&& 0 <= c && c < grid[0].length;
+}
+
+```
+
+**如何避免重复遍历**
+
+网格结构的 DFS 与二叉树的 DFS 最大的不同之处在于，遍历中可能遇到遍历过的结点。这是因为，网格结构本质上是一个「图」，我们可以把每个格子看成图中的结点，每个结点有向上下左右的四条边。在图中遍历时，自然可能遇到重复遍历结点。
+
+这时候，DFS 可能会不停地「兜圈子」，永远停不下来，如下图所示：
+
+![DFS 遍历可能会兜圈子（动图）](AS.assets/7fec64afe8ab72c5df17d6a41a9cc9ba3879f58beec54a8791cbf108b9fd0685.gif)
+
+如何避免这样的重复遍历呢？答案是标记已经遍历过的格子。以岛屿问题为例，我们需要在所有值为 1 的陆地格子上做 DFS 遍历。每走过一个陆地格子，就把格子的值改为 2，这样当我们遇到 2 的时候，就知道这是遍历过的格子了。也就是说，每个格子可能取三个值：
+
+- 0 —— 海洋格子
+- 1 —— 陆地格子（未遍历过）
+- 2 —— 陆地格子（已遍历过）
+
+我们在框架代码中加入避免重复遍历的语句：
+
+```java
+void dfs(int[][] grid, int r, int c) {
+    // 判断 base case
+    if (!inArea(grid, r, c)) {
+        return;
+    }
+    // 如果这个格子不是岛屿，直接返回
+    if (grid[r][c] != 1) {
+        return;
+    }
+    grid[r][c] = 2; // 将格子标记为「已遍历过」
+    
+    // 访问上、下、左、右四个相邻结点
+    dfs(grid, r - 1, c);
+    dfs(grid, r + 1, c);
+    dfs(grid, r, c - 1);
+    dfs(grid, r, c + 1);
+}
+
+// 判断坐标 (r, c) 是否在网格中
+boolean inArea(int[][] grid, int r, int c) {
+    return 0 <= r && r < grid.length 
+        	&& 0 <= c && c < grid[0].length;
+}
+
+```
+
+![标记已遍历的格子](AS.assets/20fe202fb5e5fc5048e140c29310c1bcbb17661860d2441e8a3feb1236a2e44d.gif)
+
+按照此模板即可解决岛屿问题，如求岛屿的数量可在遍历时将某一个岛屿全部改为2，统计数到1的次数
+
+```java
+    public int numIslands(char[][] grid) {
+        int cnt = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '1') {
+                    cnt++;
+                    area(grid, i, j);
+                }
+            }
+        }
+        return cnt;
+    }
+
+    private void area(char[][] grid, int i, int j) {
+        if (!isValid(grid, i, j)) {
+            return ;
+        }
+        if (grid[i][j] != '1') {
+            return ;
+        }
+
+        grid[i][j] = '2';
+
+         area(grid, i + 1, j) ; area(grid, i - 1, j) ; area(grid, i, j + 1) ; area(grid, i, j - 1);
+    }
+
+    private boolean isValid(char[][] grid, int i, int j) {
+        return i >= 0 && i < grid.length && j >= 0 && j < grid[0].length;
+    }
+```
+
+求岛屿的最大面积即可在遍历时每遇到一个1加一，统计遇到1的时候的最大值
+
+```java
+public int maxAreaOfIsland(int[][] grid) {
+    int res = 0;
+    for (int r = 0; r < grid.length; r++) {
+        for (int c = 0; c < grid[0].length; c++) {
+            if (grid[r][c] == 1) {
+                int a = area(grid, r, c);
+                res = Math.max(res, a);
+            }
+        }
+    }
+    return res;
+}
+
+int area(int[][] grid, int r, int c) {
+    if (!inArea(grid, r, c)) {
+        return 0;
+    }
+    if (grid[r][c] != 1) {
+        return 0;
+    }
+    grid[r][c] = 2;
+    
+    return 1 
+        + area(grid, r - 1, c)
+        + area(grid, r + 1, c)
+        + area(grid, r, c - 1)
+        + area(grid, r, c + 1);
+}
+
+boolean inArea(int[][] grid, int r, int c) {
+    return 0 <= r && r < grid.length 
+        	&& 0 <= c && c < grid[0].length;
+}
+
+```
+
+求岛屿的周长可以发现，一个岛屿的周长是越界或与水相邻时加1
+
+![将岛屿周长中的边分为两类](AS.assets/66d817362c1037ebe7705aacfbc6546e321c2b6a2e4fec96791f47604f546638.jpg)
+
+```java
+public int islandPerimeter(int[][] grid) {
+    for (int r = 0; r < grid.length; r++) {
+        for (int c = 0; c < grid[0].length; c++) {
+            if (grid[r][c] == 1) {
+                // 题目限制只有一个岛屿，计算一个即可
+                return dfs(grid, r, c);
+            }
+        }
+    }
+    return 0;
+}
+
+int dfs(int[][] grid, int r, int c) {
+    // 函数因为「坐标 (r, c) 超出网格范围」返回，对应一条黄色的边
+    if (!inArea(grid, r, c)) {
+        return 1;
+    }
+    // 函数因为「当前格子是海洋格子」返回，对应一条蓝色的边
+    if (grid[r][c] == 0) {
+        return 1;
+    }
+    // 函数因为「当前格子是已遍历的陆地格子」返回，和周长没关系
+    if (grid[r][c] != 1) {
+        return 0;
+    }
+    grid[r][c] = 2;
+    return dfs(grid, r - 1, c)
+        + dfs(grid, r + 1, c)
+        + dfs(grid, r, c - 1)
+        + dfs(grid, r, c + 1);
+}
+
+// 判断坐标 (r, c) 是否在网格中
+boolean inArea(int[][] grid, int r, int c) {
+    return 0 <= r && r < grid.length 
+        	&& 0 <= c && c < grid[0].length;
+}
+
+```
+
+填海造陆问题——即将一块海水变为陆地，求可以形成的最大岛屿面积。
+
+同样是将岛屿全部dfs遍历一次，将同一块岛屿的值改为一个独一无二的下标（比如可以从2开始），且此下标对应的值为岛屿的面积，然后遍历水，判断上下左右四块有没有非零，尝试将这块水变为陆地求得得到的面积，依次遍历水求得最大值即可。
+
+![标记每个岛屿的索引（下标）](AS.assets/56ec808215d4ff3014476ef22297522b3731602266f9a069a82daf41001f904c.jpg)
+
+```java
+ int mark = 2;
+
+
+    int[] area = new int[250000];
+
+    public int largestIsland(int[][] grid) {
+        int max = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == 1) {
+                    area[mark] = area(grid, i, j);
+                    max = Math.max(max, area[mark]);
+                    mark++;
+                }
+            }
+        }
+        System.out.println(Arrays.deepToString(grid));
+        System.out.println(area[2] + "========" + area[3]);
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == 0) {
+                    int temp = getMax2(grid, i, j);
+                    max = Math.max(max, temp);
+                    System.out.println(max);
+                }
+            }
+        }
+        return max;
+    }
+
+    private int getMax2(int[][] grid, int i, int j) {
+        int sum = 0;
+        HashSet<Integer> set = new HashSet<>();
+        if (isValid(grid, i - 1, j) && grid[i - 1][j] != 0) {
+            set.add(grid[i - 1][j]);
+        }
+        if (isValid(grid, i + 1, j) && grid[i + 1][j] != 0) {
+            set.add(grid[i + 1][j]);
+        }
+        if (isValid(grid, i, j - 1) && grid[i][j - 1] != 0) {
+            set.add(grid[i][j - 1]);
+        }
+        if (isValid(grid, i, j + 1) && grid[i][j + 1] != 0) {
+            set.add(grid[i][j + 1]);
+        }
+        int[] array = set.stream().mapToInt(Integer::intValue).toArray();
+        for (int num : array) {
+            sum += area[num];
+        }
+        return sum + 1;
+    }
+
+    private int area(int[][] grid, int i, int j) {
+        if (!isValid(grid, i, j)) {
+            return 0;
+        }
+        if (grid[i][j] != 1) {
+            return 0;
+        }
+
+        grid[i][j] = mark;
+        return 1 + area(grid, i + 1, j) + area(grid, i - 1, j) + area(grid, i, j + 1) + area(grid, i, j - 1);
+    }
+
+    private boolean isValid(int[][] grid, int i, int j) {
+        return i >= 0 && i < grid.length && j >= 0 && j < grid[0].length;
+    }
+```
+
+# [搜索旋转排序数组](https://leetcode.cn/problems/search-in-rotated-sorted-array/)
+
+整数数组 `nums` 按升序排列，数组中的值 **互不相同** 。
+
+在传递给函数之前，`nums` 在预先未知的某个下标 `k`（`0 <= k < nums.length`）上进行了 **旋转**，使数组变为 `[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]`（下标 **从 0 开始** 计数）。例如， `[0,1,2,4,5,6,7]` 在下标 `3` 处经旋转后可能变为 `[4,5,6,7,0,1,2]` 。
+
+给你 **旋转后** 的数组 `nums` 和一个整数 `target` ，如果 `nums` 中存在这个目标值 `target` ，则返回它的下标，否则返回 `-1` 。
+
+你必须设计一个时间复杂度为 `O(log n)` 的算法解决此问题。
+
+**示例 1：**
+
+```
+输入：nums = [4,5,6,7,0,1,2], target = 0
+输出：4
+```
+
+**示例 2：**
+
+```
+输入：nums = [4,5,6,7,0,1,2], target = 3
+输出：-1
+```
+
+**示例 3：**
+
+```
+输入：nums = [1], target = 0
+输出：-1
+```
+
+**提示：**
+
+- `1 <= nums.length <= 5000`
+- `-104 <= nums[i] <= 104`
+- `nums` 中的每个值都 **独一无二**
+- 题目数据保证 `nums` 在预先未知的某个下标上进行了旋转
+- `-104 <= target <= 104`
+
+![image-20230326154816851](AS.assets/image-20230326154816851.png)
+
+**主要判断mid是落在了两端线段的哪一块，一个原则是不管落在那一段，必定有一块是有序地，如果正好落在中间两边都是有序的**
+
+```java
+    public int search(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        while (l <= r) {
+            int mid = l + (r - l >> 1);
+            if (nums[mid] == target) {
+                return mid;
+            }
+            //说明落在了下面的线段部分，右侧有序
+            if (nums[mid] < nums[r]) { 
+                //如果目标值就在右半段线段
+                if (target > nums[mid] && target <= nums[r]) {
+                    l = mid + 1;
+                } else {
+                    r = mid - 1;
+                }
+                //说明落在了上面的线段部分，左侧有序
+            } else {
+                //如果目标值就在左半段线段
+                if (target < nums[mid] && target >= nums[l]) {
+                    r = mid - 1;
+                } else {
+                    l = mid + 1;
+                }
+            }
+        }
+        //没找到目标值
+        return -1;
+    }
+```
+
+# [旋转图像](https://leetcode.cn/problems/rotate-image/)
+
+给定一个 *n* × *n* 的二维矩阵 `matrix` 表示一个图像。请你将图像顺时针旋转 90 度。
+
+你必须在**[ 原地](https://baike.baidu.com/item/原地算法)** 旋转图像，这意味着你需要直接修改输入的二维矩阵。**请不要** 使用另一个矩阵来旋转图像。
+
+ 
+
+**示例 1：**
+
+![img](AS.assets/mat1.jpg)
+
+```
+输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+输出：[[7,4,1],[8,5,2],[9,6,3]]
+```
+
+**示例 2：**
+
+![img](AS.assets/mat2.jpg)
+
+```
+输入：matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+```
+
+ 
+
+**提示：**
+
+- `n == matrix.length == matrix[i].length`
+- `1 <= n <= 20`
+- `-1000 <= matrix[i][j] <= 1000`
+
+**确实很巧妙，先根据水平对称轴翻转，然后根据主对角线翻转**
+
+![image-20230326162112801](AS.assets/image-20230326162112801.png)
+
+![image-20230326162118072](AS.assets/image-20230326162118072.png)
+
+```java
+ public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        for (int i = 0; i < n >> 1; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] ^= matrix[n - i - 1][j];
+                matrix[n - i - 1][j] ^= matrix[i][j];
+                matrix[i][j] ^= matrix[n - i - 1][j];
+            }
+        }
+            for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+                matrix[i][j] ^= matrix[j][i];
+                matrix[j][i] ^= matrix[i][j];
+                matrix[i][j] ^= matrix[j][i];
+            }
+        }
+    }
+```
+
+# [二叉树展开为链表（很妙的思路）](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/)
+
+给你二叉树的根结点 `root` ，请你将它展开为一个单链表：
+
+- 展开后的单链表应该同样使用 `TreeNode` ，其中 `right` 子指针指向链表中下一个结点，而左子指针始终为 `null` 。
+- 展开后的单链表应该与二叉树 [**先序遍历**](https://baike.baidu.com/item/先序遍历/6442839?fr=aladdin) 顺序相同。
+
+ 
+
+**示例 1：**
+
+![img](AS.assets/flaten.jpg)
+
+```
+输入：root = [1,2,5,3,4,null,6]
+输出：[1,null,2,null,3,null,4,null,5,null,6]
+```
+
+**示例 2：**
+
+```
+输入：root = []
+输出：[]
+```
+
+**示例 3：**
+
+```
+输入：root = [0]
+输出：[0]
+```
+
+ 
+
+**提示：**
+
+- 树中结点数在范围 `[0, 2000]` 内
+- `-100 <= Node.val <= 100`
+
+**想先序遍历，将每一个左孩子放到右孩子的位置上，但是此时丢失了右孩子的指针，所以想到采用右左中的遍历顺序，也就是倒先序，这样右孩子不会丢失**
+
+```java
+    private TreeNode pre = null;
+
+    public void flatten(TreeNode root) {
+        if (root == null)
+            return;
+        flatten(root.right);
+        flatten(root.left);
+        root.right = pre;
+        root.left = null;
+        pre = root;
+    }
+```
+
+# [二叉树中的最大路径和](https://leetcode.cn/problems/binary-tree-maximum-path-sum/)
+
+
+
+**路径** 被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。同一个节点在一条路径序列中 **至多出现一次** 。该路径 **至少包含一个** 节点，且不一定经过根节点。
+
+**路径和** 是路径中各节点值的总和。
+
+给你一个二叉树的根节点 `root` ，返回其 **最大路径和** 。
+
+ 
+
+**示例 1：**
+
+![img](AS.assets/exx1.jpg)
+
+```
+输入：root = [1,2,3]
+输出：6
+解释：最优路径是 2 -> 1 -> 3 ，路径和为 2 + 1 + 3 = 6
+```
+
+**示例 2：**
+
+![img](AS.assets/exx2.jpg)
+
+```
+输入：root = [-10,9,20,null,null,15,7]
+输出：42
+解释：最优路径是 15 -> 20 -> 7 ，路径和为 15 + 20 + 7 = 42
+```
+
+ 
+
+**提示：**
+
+- 树中节点数目范围是 `[1, 3 * 104]`
+- `-1000 <= Node.val <= 1000`
+
+
+
+
+
+**最大路径和其实就是某一个节点的到叶子结点的两条路径的和最大，我们维护一个节点到叶子结点的最大路径值V~root~，那么该题所求就是遍历每一个节点，求得节点值与左子树的节点最大值与右子树的节点最大值之和，即max=node.val + V~node.left~+V~node.right~,但是需要注意，V~node.left~和V~node.right~只取大于零的部分**
+
+```java
+class Solution {
+    int max = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        getMax(root);
+        return max;
+    }
+
+    private int getMax(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int right = Math.max(getMax(root.right), 0);
+        int left = Math.max(getMax(root.left), 0);
+        max = Math.max(max,root.val + left + right);
+
+        return root.val + Math.max(left, right);
+    }
+}
+```
+
+# 分解质因数
+
+**将一个数组中的数相乘然后分解成尽可能多的质因数相乘的形式**
+
+思路：用最小的质因数2开始除，能整除的时候就一直除，直到不能整除为止，然后将质因数加一，注意不会出现被合数整除的情况，比如说3+1到4，不会有该数能被4整除的情况，因为能被4整除一定能被2整除，所以可以直接+1处理，**需要注意的是，1不是质数，最终结果需要判断是不是1**
+
+- 时间复杂度： O（n$\sqrt{U}$ ）记U = $max(nums[i])$
+- 空间复杂度：O（$\frac{U}{logU}$) 
+
+```java
+ public int distinctPrimeFactors(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            for (int j = 2; j * j <= num; j++) {
+                if (num % j == 0) {
+                    set.add(j);
+                    while (num % j == 0) {
+                        num /= j;
+                    }
+                }
+            }
+            if (num != 1)
+            set.add(num);
+        }
+        // System.out.println(set);
+        return set.size();
+    }
+```
+
+# 二分法求第一个大于等于某元素的位置
+
+**红蓝染色法：红色表示小于目标值，蓝色表示大于等于目标值，left指针左面的元素都是红色，right指针右面的元素都是蓝色，left与right中间的元素未染色，表示不确定。比较nums[mid]与target的大小，如果nums[mid] < target我们可以知道mid左面的元素一定小于target，我们将他染成红色，即将lfet=mid + 1，如果nums[mid]>=target，我们知道mid右面的元素也一定大于等于target，所以我们将其染为蓝色，即right=mid - 1，最终结束的时候left指针一定在right指针右面，且right + 1 = left,所以我们知道right右面的元素都是大于等于target的，left左面的元素都是小于target的，所以求第一个大于等于target的位置就是right右面的第一个元素也就是left的位置**
+
+![image-20230329182932392](AS.assets/image-20230329182932392.png)
+
+```java
+    public int getTarget(int target, int[] nums) {
+	int l = 0, r = nums.length - 1;
+        while (l <= r) {
+            int mid = l + (r - l >> 1);
+            if (nums[mid] >= target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return left;
+    }
+```
+
+
+
+这是求>=,同理我们
+
+- \> : 等价为 >= (target + 1)
+- < : 等价为 >=target的索引 - 1
+- <=: 等价为 >= (target - 1) 的索引 - 1
+- ==: 普通的二分即可
+
+# 求素数
+
+## 埃氏筛
+
+**思路是i从2开始，将2的倍数去除，然后在剩余的元素中将i加一，继续去除倍数，直到i结束**
+
+可以用一个list来存放最终结果，用一个布尔数组来标记当前数据是否是素数，同时要注意溢出问题，用该方法求n以内的素数的时间复杂度是O（nloglogn)
+
+```java
+public int[] closestPrimes(int left, int right) {
+        ArrayList<Integer> list = new ArrayList<>();
+        boolean[] isPrime = new boolean[right + 1];
+        for (int i = 2; i <= right; i++) {
+            if (!isPrime[i]) {
+                list.add(i);//是素数就加入到集合中
+            }
+            //不必从i+1开始考虑，之前的合数已经被前一个数所标记了，从i^2开始就行
+            for (long j = (long) i * i; j <= right; j += i) {
+                isPrime[(int) j] = true;
+            }
+        }
+             System.out.println(list);
+
+}
+```
+
+## 线性筛
+
+**埃氏筛每一个元素都被标记了多次，线性筛的思想是每个数只标记自身与比自身小的质数的乘积，这样每个元素只被标记一次，降低了复杂度,时间复杂度为O(n)**
+
+```java
+public int[] closestPrimes(int left, int right) {
+        ArrayList<Integer> list = new ArrayList<>();
+        boolean[] isPrime = new boolean[right + 1];
+        for (int i = 2; i <= right; i++) {
+            if (!isPrime[i]) {
+                list.add(i);
+            }
+            for (int j = 0; j < list.size(); j++) {
+                if (list.get(j) > i || list.get(j) * i > right) {
+                    break;
+                }
+                isPrime[list.get(j) * i] = true;
+            }
+        }
+}
 ```
 
